@@ -1,0 +1,36 @@
+---
+import Footer from "/src/components/Footer.astro"
+import Header from "/src/components/Header.astro"
+import "/src/styles/global.css"
+const {pageTitle}=Astro.props;
+const organization="BYR Docs";
+const pageDescription="BYR Docs 维基真题收录北京邮电大学近年试题，是一个开放、共建、共享的维基网站。";
+---
+<!DOCTYPE html>
+<html lang=zh>
+	<head>
+		<link rel=icon type=image/svg+xml href=/favicon.svg />
+		<link rel=apple-touch-icon type=image/svg+xml href=/favicon.svg />
+		<!--<link rel=canonical href={pageUrl} />-->
+		<meta charset=utf-8 />
+		<meta name=viewport content=width=device-width />
+		<meta name=generator content={Astro.generator} />
+		<meta name=description content={pageDescription} />
+		<meta name=keywords content="北邮,北京邮电大学,考试题目,维基" />
+		<meta name=author content={organization} />
+		<!--<meta property=og:image content=https://byrdocs.org/og.png />
+		<meta property=og:title content={pageTitle} />
+		<meta property=og:description content={pageDescription} />
+		<meta property=og:type content=website />
+		<meta property=og:url content={pageUrl} />
+		<meta property=twitter:card content=summary />
+		<meta property=twitter:title content={pageTitle} />
+		<meta property=twitter:description content={pageDescription} />-->
+		<title>{`${pageTitle} - BYR Docs 维基真题`}</title>
+	</head>
+	<body>
+		<Header pageTitle={pageTitle}/>
+		<slot />
+		<Footer />
+	</body>
+</html>

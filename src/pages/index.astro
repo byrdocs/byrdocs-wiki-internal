@@ -1,17 +1,14 @@
 ---
-
+import Layout from "/src/layouts/Layout.astro";
 ---
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout pageTitle="首页">
+	<p>欢迎来到维基真题!</p>
+	<p>本站收录北京邮电大学近年的期中、期末考试题。</p>
+	<p>你可以为本站添加试卷、补充题目或撰写解答。任何一笔小编辑都可能帮到无数读者！</p>
+	<h2>用户指引</h2>
+	<h3>搜索试题</h3>
+	<p>请使用 <a href=https://byrdocs.org>BYR Docs 搜索</a>。</p>
+	<h3>作出贡献</h3>
+	<p>你可以在 <a href=https://github.com>GitHub 仓库</a> 中下载、编辑并提交你的PR。</p>
+	<p><strong>不要担心犯错</strong>，即便你对自己编写的答案缺少信心。总会有人能够对这些答案作出更正，但前提是要有人迈出「编写答案」的第一步。</p>
+</Layout>

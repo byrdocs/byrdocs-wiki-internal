@@ -1,0 +1,32 @@
+---
+import ThemeIcon from "/src/components/ThemeIcon.astro";
+const {pageTitle}=Astro.props;
+---
+<nav>
+	<div class=header>
+		<a class=link-item href="/" title="回到首页"><img src=/favicon.svg height=30px></img></a>
+		<span class=page-title>{pageTitle}</span>
+		<ThemeIcon />
+	</div>
+</nav>
+<style>
+	.header{
+		display:flex;
+		justify-content:space-between;
+		align-items:center;
+		width:100%;
+	}
+	.page-title{
+		font-weight:bold;
+		font-size:30px;
+		color:#404040;
+	}
+	:global(html.dark) .page-title{
+		font-weight:bold;
+		font-size:30px;
+		color:#ffffff;
+	}
+	.link-item{
+		text-decoration:none;
+	}
+</style>

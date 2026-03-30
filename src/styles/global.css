@@ -1,0 +1,20 @@
+html{
+	background-color:#ffffff;
+	color:#000000;
+}
+html.dark{
+	background-color:#000000;
+	color:#ffffff;
+}
+a{
+	color:#0645ad;
+}
+a:visited{
+	color:#5a3696;
+}
+html.dark a{
+	color:#8ec5ff;
+}
+html.dark a:visited{
+	color:#c6a8ff;
+}
