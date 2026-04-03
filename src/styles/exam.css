@@ -40,6 +40,7 @@ html.dark .exam-blank:disabled{
 .exam-solution{
 	border:solid 1px;
 	border-radius:4px;
+	display:flow-root;
 }
 .exam-solution-summary{
 	cursor:pointer;
@@ -52,7 +53,7 @@ html.dark .exam-blank:disabled{
 	padding:0 4px;
 }
 .exam-choices{
-	border-radius:8px;
+	border:none;
 }
 .exam-choice-letter{
 	font-size:18px;
@@ -118,4 +119,29 @@ html.dark .exam-blank:disabled{
 }
 .exam-choices-submit.is-not-all-correct{
 	color:red;
+}
+.exam-figure{
+	margin:1em 0;
+}
+.exam-figure-image{
+	display:flex;
+	height:auto;
+	max-width:250px;
+}
+.exam-figure-float{
+	border:solid 1px #bbb;
+	clear:right;
+	float:right;
+	margin:0 0 1em 1em;
+}
+html.dark .exam-figure-float{
+	border:solid 1px #444;
+}
+.exam-figure-caption{
+	text-align:center;
+	font-size:0.9em;
+	color:#444;
+}
+html.dark .exam-figure-caption{
+	color:#bbb;
 }
