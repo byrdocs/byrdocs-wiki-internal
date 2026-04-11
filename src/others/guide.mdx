@@ -102,13 +102,24 @@
 
 `Blank` 组件常用于填空题中，作用是隐藏答案，只在用户点击时显示答案。
 
-```mdx
-1. 本题的答案是 <Blank>答案</Blank>。
-2. 下一题的答案是 <Blank />。
-```
-
-1. 本题的答案是 <Blank>答案</Blank>。
-2. 下一题的答案是 <Blank />。
+<div class="guide-example-grid">
+	<div class="guide-example-panel guide-example-code">
+		<div class="guide-example-panel-title">源代码</div>
+		<div class="guide-example-panel-body">
+			<pre><code class="language-mdx">{`1. 本题的答案是 <Blank>答案</Blank>。
+2. 下一题的答案是 <Blank />。`}</code></pre>
+		</div>
+	</div>
+	<div class="guide-example-panel">
+		<div class="guide-example-panel-title">预览</div>
+		<div class="guide-example-panel-body guide-example-preview">
+			<ol>
+				<li>本题的答案是 <Blank>答案</Blank>。</li>
+				<li>下一题的答案是 <Blank />。</li>
+			</ol>
+		</div>
+	</div>
+</div>
 
 #### `Slot` 和 `Choices` 组件，及 `Option` `True` 附属组件
 
@@ -119,8 +130,11 @@
 - 选项使用数个 `Option` 或 `True` 组件排布。A, B, C 等编号将按顺序自动生成，**切勿手动添加编号**。
 - `True` 组件意味着这个选项是本题的正确答案；`Option` 则意味着不是（或不知道）。如果一个 `Choices` 中没有任何 `True`，则将本题视为暂无答案。
 
-```mdx
-1. 本题的答案是 <Slot />。
+<div class="guide-example-grid">
+	<div class="guide-example-panel guide-example-code">
+		<div class="guide-example-panel-title">源代码</div>
+		<div class="guide-example-panel-body">
+			<pre><code class="language-mdx">{`1. 本题的答案是 <Slot />。
 
 <Choices multiple>
     <True>1</True>
@@ -146,50 +160,69 @@
     <Option>1</Option>
     <Option>2</Option>
     <Option>3</Option>
-</Choices>
-```
+</Choices>`}</code></pre>
+		</div>
+	</div>
+	<div class="guide-example-panel">
+		<div class="guide-example-panel-title">预览</div>
+		<div class="guide-example-panel-body guide-example-preview">
+			<ol>
+				<li>本题的答案是 <Slot />。</li>
+			</ol>
 
-1. 本题的答案是 <Slot />。
+			<Choices multiple>
+				<True>1</True>
+				<Option>2</Option>
+				<True>3</True>
+			</Choices>
 
-<Choices multiple>
-    <True>1</True>
-    <Option>2</Option>
-    <True>3</True>
-</Choices>
+			<p>本题的答案先是 <Slot item="2" />，后是 <Slot item="3" />。</p>
 
-本题的答案先是 <Slot item="2" />，后是 <Slot item="3" />。
+			<Choices multiple>
+				<True>1</True>
+				<Option>2</Option>
+			</Choices>
 
-<Choices multiple>
-    <True>1</True>
-    <Option>2</Option>
-</Choices>
+			<Choices multiple>
+				<Option>1</Option>
+				<True>2</True>
+			</Choices>
 
-<Choices multiple>
-    <Option>1</Option>
-    <True>2</True>
-</Choices>
+			<ol start={4}>
+				<li>本题的答案是 <Slot />。</li>
+			</ol>
 
-4. 本题的答案是 <Slot />。
-
-<Choices>
-    <Option>1</Option>
-    <Option>2</Option>
-    <Option>3</Option>
-</Choices>
+			<Choices>
+				<Option>1</Option>
+				<Option>2</Option>
+				<Option>3</Option>
+			</Choices>
+		</div>
+	</div>
+</div>
 
 #### `Solution` 组件
 
 `Solution` 组件常用于解答题中，作用是隐藏大段答案，用户可以展开查看。
 
-```mdx
-<Solution>
+<div class="guide-example-grid">
+	<div class="guide-example-panel guide-example-code">
+		<div class="guide-example-panel-title">源代码</div>
+		<div class="guide-example-panel-body">
+			<pre><code class="language-mdx">{`<Solution>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-</Solution>
-```
-
-<Solution>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-</Solution>
+</Solution>`}</code></pre>
+		</div>
+	</div>
+	<div class="guide-example-panel">
+		<div class="guide-example-panel-title">预览</div>
+		<div class="guide-example-panel-body guide-example-preview">
+			<Solution>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</Solution>
+		</div>
+	</div>
+</div>
 
 #### `Figure` 组件
 
@@ -197,23 +230,13 @@
 
 - 图片来源 `src` 只能使用 [public/](https://github.com/byrdocs/byrdocs-wiki-internal/tree/master/public) 目录内的文件，使用时不加 `public/` 前缀。
 - 图片默认使用斥文嵌入；如需串文旁置，请加注 `float` 属性。
-- 组件内填写图片标题；如果留空，则代表没有图片标题。
+- 组件内填写图片标题；如果留空，则代表没有图片标题。（建议只在串文旁置时使用图片标题）
 
-```mdx
-两种插入图片的方法：
-
-<Figure src="favicon.svg" float>
-    BYR Docs 维基真题
-</Figure>
-
-串文旁置
-
-<Figure src="favicon.svg" />
-
-斥文嵌入
-```
-
-两种插入图片的方法：
+<div class="guide-example-grid">
+	<div class="guide-example-panel guide-example-code">
+		<div class="guide-example-panel-title">源代码</div>
+		<div class="guide-example-panel-body">
+			<pre><code class="language-mdx">{`两种插入图片的方法：
 
 <Figure src="favicon.svg" float>
     BYR Docs 维基真题
@@ -223,4 +246,23 @@
 
 <Figure src="favicon.svg" />
 
-斥文嵌入
+斥文嵌入`}</code></pre>
+		</div>
+	</div>
+	<div class="guide-example-panel">
+		<div class="guide-example-panel-title">预览</div>
+		<div class="guide-example-panel-body guide-example-preview">
+			<p>两种插入图片的方法：</p>
+
+			<Figure src="favicon.svg" float>
+				BYR Docs 维基真题
+			</Figure>
+
+			<p>串文旁置</p>
+
+			<Figure src="favicon.svg" />
+
+			<p>斥文嵌入</p>
+		</div>
+	</div>
+</div>
