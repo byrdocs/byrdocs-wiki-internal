@@ -18,7 +18,7 @@
 
 <Choices>
     <Option>多选题</Option>
-    <True>单选题</True>
+    <Option correct>单选题</Option>
 </Choices>
 
 2. 下面哪些试题命名是符合规范的？
@@ -26,7 +26,7 @@
 <Choices multiple>
     <Option>24-25-线性代数-期末</Option>
     <Option>23-24-2-高等数学-期中</Option>
-    <True>25-26-1-计算导论与程序设计-期末（网络空间安全学院）</True>
+    <Option correct>25-26-1-计算导论与程序设计-期末（网络空间安全学院）</Option>
     <Option>23-25-1-人工智能引论B-期末</Option>
     <Option>维基真题编辑者自测</Option>
 </Choices>
@@ -40,43 +40,43 @@
 3. 在前言中，“答案完成度”可以填哪些值？
 
 <Choices multiple>
-    <True>完整</True>
+    <Option correct>完整</Option>
     <Option>可靠</Option>
-    <True>完整可靠</True>
-    <True>残缺</True>
+    <Option correct>完整可靠</Option>
+    <Option correct>残缺</Option>
 </Choices>
 
 下面几个组件中，涉及题面的有 <Slot item="4" />，涉及答案的有 <Slot item="5" />。
 
 <Choices multiple>
-    <True>Blank</True>
-    <True>Choices</True>
-    <True>Figure</True>
-    <True>Slot</True>
+    <Option correct>Blank</Option>
+    <Option correct>Choices</Option>
+    <Option correct>Figure</Option>
+    <Option correct>Slot</Option>
     <Option>Solution</Option>
 </Choices>
 
 <Choices multiple>
-    <True>Blank</True>
-    <True>Choices</True>
-    <True>Figure</True>
+    <Option correct>Blank</Option>
+    <Option correct>Choices</Option>
+    <Option correct>Figure</Option>
     <Option>Slot</Option>
-    <True>Solution</True>
+    <Option correct>Solution</Option>
 </Choices>
 
 6. `Figure` 组件可以使用哪些参数？
 
 <Choices multiple>
     <Option>item</Option>
-    <True>float</True>
-    <True>src</True>
+    <Option correct>float</Option>
+    <Option correct>src</Option>
     <Option>multiple</Option>
 </Choices>
 
 7. `Slot` 组件的 `item` 属性意味着什么？
 
 <Choices>
-    <True>题号</True>
+    <Option correct>题号</Option>
     <Option>题量</Option>
     <Option>分值</Option>
 </Choices>
@@ -84,35 +84,35 @@
 8. 以下每个选项都是一道选择题的定义。其中哪些实现是合理的？
 
 <Choices multiple>
-    <True>
+    <Option correct>
         ```mdx
         <Choices>
             <Option>1</Option>
             <Option>2</Option>
         </Choices>
         ```
-    </True>
-    <True>
+    </Option>
+    <Option correct>
         ```mdx
         <Choices>
-            <True>1</True>
+            <Option correct>1</Option>
             <Option>2</Option>
         </Choices>
         ```
-    </True>
-    <True>
+    </Option>
+    <Option correct>
         ```mdx
         <Choices multiple>
-            <True>1</True>
+            <Option correct>1</Option>
             <Option>2</Option>
         </Choices>
         ```
-    </True>
+    </Option>
     <Option>
         ```mdx
         <Choices>
-            <True>1</True>
-            <True>2</True>
+            <Option correct>1</Option>
+            <Option correct>2</Option>
         </Choices>
         ```
     </Option>
@@ -126,7 +126,7 @@
 9. 以下哪些说法是正确的？
 
 <Choices multiple>
-    <True>当同一个简答题的各个小题间关系紧密时，应当使用有序列表来罗列各个小题。</True>
+    <Option correct>当同一个简答题的各个小题间关系紧密时，应当使用有序列表来罗列各个小题。</Option>
     <Option>当某道大题包含一个题图时，可以把整道大题截图放在附件目录下，再用 `Figure` 插入正文。</Option>
     <Option>维基真题必须使用 `Choices` `Blank` `Answer` 等规范化组件编写题目，禁止私自使用其它组件、脚本和样式。</Option>
     <Option>维基真题是互助形式的网站。对于暂无答案的题目，可以留空等待后人填写答案，比如 `<Blank />` `<Solution />` 等。</Option>
@@ -143,7 +143,7 @@
 1. BYR Docs 主站的网址是 <Blank>https://byrdocs.org</Blank>。
 2. 对于一般编辑者来说，文件结构中只有两个目录是需要关注的。它们分别是保存试题文件的 <Blank>exams/</Blank> 和保存题目附件的 <Blank>public/</Blank>。
 3. 在维基真题中，大题的题号使用 <Blank>二</Blank> 级标题。
-4. 在 `Choices` 块中，应使用 <Blank>Option</Blank> 组件来定义选择题选项；对于正确答案的项，应使用 <Blank>True</Blank> 组件来定义。
+4. 在 `Choices` 块中，应使用 <Blank>Option</Blank> 组件来定义选择题选项；对于正确答案的项，应加注 <Blank>correct</Blank> 属性。
 5. 在维基真题中，前言应使用 <Blank>yaml</Blank> 语法，正文应使用符合维基真题规范的 <Blank>mdx</Blank> 语法。
 6. 这组填空题在源代码中要以 <Blank>有序列表</Blank> 来定义。
 
@@ -190,10 +190,10 @@
 
 ### 4.
 
-在使用 `Choices` 组件的选择题中，如果所有选项都是 `Option`，那么这题会如何？如果把其中一个改为 `True`，又会如何？
+在使用 `Choices` 组件的选择题中，如果所有选项都是 `Option`，那么这题会如何？如果给其中一个 `Option` 加上 `correct` 属性，又会如何？
 
 <Solution>
 如果所有选项都是 `Option`，这题会被视为“暂无答案”。
 
-如果把某一选项改为 `True`，这个选项会变成这题的答案。
+如果给某一选项加上 `correct` 属性，这个选项会变成这题的答案。
 </Solution>

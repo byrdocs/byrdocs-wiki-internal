@@ -1,6 +1,7 @@
 ---
 const {correct}=Astro.props;
-const answer=correct===true?"true":undefined;
+const isCorrect=correct===true||correct==="true"||correct==="";
+const answer=isCorrect?"true":undefined;
 ---
 <label class="exam-choice-option" data-answer={answer}>
 	<input class="exam-choice-input" type="radio" />
