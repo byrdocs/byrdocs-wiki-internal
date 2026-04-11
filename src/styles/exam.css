@@ -26,7 +26,7 @@ html.dark{
 	position:relative;
 	vertical-align:baseline;
 	white-space:normal;
-	min-width:6em;
+	min-width:6.7em;
 }
 .exam-blank:hover{
 	background:#d0d0d7;
@@ -38,6 +38,7 @@ html.dark{
 .exam-blank.is-disabled{
 	color:#6d6d6d;
 	cursor:default;
+	display:inline-block;
 }
 html.dark .exam-blank{
 	background:#343434;
