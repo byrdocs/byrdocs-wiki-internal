@@ -5,15 +5,19 @@ const isFloat=float===true||float==="true"||float==="";
 const isSvg=/\.svg(?:$|[?#])/i.test(src);
 const caption=hasCaption?await Astro.slots.render("default"):undefined;
 const imageAlt=alt??(hasCaption?"题图":src);
+const imageSrc=`/${src}`;
 ---
 <figure class:list={["exam-figure",isFloat&&"exam-figure-float"]} data-exam-figure>
 	<button aria-label="预览图片" class="exam-figure-trigger" data-exam-figure-trigger type="button">
-		<img alt={imageAlt} class="exam-figure-image" loading="lazy" src={`/${src}`} />
+		<img alt={imageAlt} class="exam-figure-image" loading="lazy" src={imageSrc} />
 	</button>
 	{caption&&<figcaption class="exam-figure-caption" set:html={caption} />}
 	<dialog aria-label="图片预览" class="exam-figure-dialog" data-exam-figure-dialog>
 		<div class="exam-figure-dialog-panel">
-			<img alt={imageAlt} class:list={["exam-figure-dialog-image",isSvg&&"exam-figure-dialog-image-svg"]} loading="lazy" src={`/${src}`} />
+			{isSvg?
+				<div aria-label={imageAlt} class="exam-figure-dialog-svg-container" data-exam-figure-svg-container data-src={imageSrc} role="img"></div>
+			:
+				<img alt={imageAlt} class="exam-figure-dialog-image" loading="lazy" src={imageSrc} />}
 			{caption&&<div class="exam-figure-dialog-caption" set:html={caption} />}
 		</div>
 	</dialog>
@@ -24,18 +28,74 @@ const imageAlt=alt??(hasCaption?"题图":src);
 		figure.setAttribute("data-exam-figure-ready","true");
 		const trigger=figure.querySelector("[data-exam-figure-trigger]");
 		const dialog=figure.querySelector("[data-exam-figure-dialog]");
+		const svgContainer=figure.querySelector("[data-exam-figure-svg-container]");
 
 		if(!(trigger instanceof HTMLButtonElement)||!(dialog instanceof HTMLDialogElement))
 			return;
 
+		const fitSvgPreview=()=>{
+			if(!(svgContainer instanceof HTMLDivElement))
+				return;
+			const svg=svgContainer.querySelector("svg");
+			if(!(svg instanceof SVGSVGElement))
+				return;
+			try{
+				const box=svg.getBBox();
+				if(box.width<=0||box.height<=0)
+					return;
+				svg.setAttribute("viewBox",`${box.x} ${box.y} ${box.width} ${box.height}`);
+				const maxWidth=window.innerWidth*0.92;
+				const maxHeight=window.innerHeight*0.88;
+				const scale=Math.min(maxWidth/box.width,maxHeight/box.height);
+				svgContainer.style.width=`${box.width*scale}px`;
+				svgContainer.style.height=`${box.height*scale}px`;
+			}
+			catch{}
+		};
+
+		const loadSvgPreview=async()=>{
+			if(!(svgContainer instanceof HTMLDivElement))
+				return;
+			if(svgContainer.getAttribute("data-ready")==="true"){
+				fitSvgPreview();
+				return;
+			}
+			const src=svgContainer.getAttribute("data-src");
+			if(!src)
+				return;
+			try{
+				const response=await fetch(src);
+				if(!response.ok)
+					return;
+				const text=await response.text();
+				const parsed=new DOMParser().parseFromString(text,"image/svg+xml");
+				const svg=parsed.documentElement;
+				if(!(svg instanceof SVGSVGElement))
+					return;
+				svg.classList.add("exam-figure-dialog-svg");
+				svg.removeAttribute("width");
+				svg.removeAttribute("height");
+				svg.setAttribute("preserveAspectRatio","xMidYMid meet");
+				svgContainer.replaceChildren(svg);
+				svgContainer.setAttribute("data-ready","true");
+				requestAnimationFrame(()=>requestAnimationFrame(fitSvgPreview));
+			}
+			catch{}
+		};
+
 		trigger.addEventListener("click",()=>{
 			if(!dialog.open)
 				dialog.showModal();
+			void loadSvgPreview();
 		});
 
 		dialog.addEventListener("click",event=>{
 			if(event.target===dialog)
 				dialog.close();
+		});
+		window.addEventListener("resize",()=>{
+			if(dialog.open)
+				fitSvgPreview();
 		});
 	});
 </script>

@@ -350,8 +350,17 @@ html.dark .exam-figure-float{
 	object-fit:contain;
 	width:auto;
 }
-.exam-figure-dialog-image-svg{
-	width:92vw;
+.exam-figure-dialog-svg-container{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	max-height:88vh;
+	max-width:92vw;
+}
+.exam-figure-dialog-svg{
+	display:block;
+	height:100%;
+	width:100%;
 }
 .exam-figure-dialog-caption{
 	color:#e5e7eb;
