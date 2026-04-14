@@ -127,7 +127,7 @@
 
 `Slot` 和 `Choices` 组件常用于选择题中。前者的作用是简单地在题面中插入一个空位；后者的作用是提供答题框，当用户提交时可以检验答案。
 
-- `Slot` 可以使用 `item` 属性加注题号，适用于多道题目共用同一题面的情况。
+- `Slot` 和 `Choices` 都可以使用 `item` 属性加注题号，适用于多道题目共用同一题面的情况。
 - `Choices` 中的选择题默认为单选；如果是多选，需加注 `multiple` 属性。
 - 选项统一使用 `Option` 组件排布。A, B, C 等编号将按顺序自动生成，**切勿手动添加编号**。
 - `correct` 属性意味着这个 `Option` 是本题的正确答案；未加注 `correct` 的 `Option` 则意味着不是（或不知道）。如果一个 `Choices` 中没有任何带 `correct` 属性的 `Option`，则将本题视为暂无答案。
@@ -148,12 +148,12 @@
 
             本题的答案先是 <Slot item="2" />，后是 <Slot item="3" />。
 
-            <Choices multiple>
+            <Choices item="2" multiple>
                 + 1
                 - 2
             </Choices>
 
-            <Choices multiple>
+            <Choices item="3" multiple>
                 - 1
                 + 2
             </Choices>
@@ -185,12 +185,12 @@
 
             本题的答案先是 <Slot item="2" />，后是 <Slot item="3" />。
 
-            <Choices multiple>
+            <Choices item="2" multiple>
                 + 1
                 - 2
             </Choices>
 
-            <Choices multiple>
+            <Choices item="3" multiple>
                 - 1
                 + 2
             </Choices>

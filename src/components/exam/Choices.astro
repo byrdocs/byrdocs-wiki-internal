@@ -1,8 +1,10 @@
 ---
-const {multiple=false}=Astro.props;
+const {multiple=false,item}=Astro.props;
 const isMultiple=multiple===true||multiple==="true"||multiple==="";
+const itemText=item==null?undefined:String(item).trim()||undefined;
 ---
-<fieldset class:list={["exam-choices",isMultiple?"multiple":"single"]} data-multiple={isMultiple?"true":"false"}>
+<fieldset aria-label={itemText?`第 ${itemText} 题选项`:undefined} class:list={["exam-choices",isMultiple?"multiple":"single"]} data-multiple={isMultiple?"true":"false"}>
+	{itemText&&<div class="exam-choices-item">第 {itemText} 题</div>}
 	<div class="exam-choices-options">
 		<slot />
 	</div>
