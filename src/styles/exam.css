@@ -356,17 +356,21 @@ html.dark .exam-blank.is-disabled:hover{
 	clear:right;
 	float:right;
 	margin:0 0 1em 1em;
-	max-width:min(100%,250px);
+	max-width:100%;
 	padding:0.5em;
+	width:300px;
 }
 .exam-figure-float .exam-figure-media{
 	justify-items:center;
+	width:100%;
 }
 .exam-figure-float .exam-figure-trigger{
 	margin-inline:auto;
+	width:100%;
 }
 .exam-figure-float .exam-figure-image{
 	margin:auto;
+	width:100%;
 }
 .exam-figure-float .exam-figure-missing{
 	justify-items:center;
