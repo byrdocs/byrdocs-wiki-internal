@@ -1,0 +1,239 @@
+---
+时间: 2023-2024学年第一学期
+科目: 信号与系统
+类型: 本科
+阶段: 期中
+答案完成度: 完整
+学院:
+- 未来学院
+---
+
+## 一、填空题（每空 1 分，共 12 分）
+
+1. $\int_{-\infty}^{\infty}\mathrm e^{-t}\delta(t-3)\,\mathrm dt=$ <Blank>$\mathrm e^{-3}$</Blank>。
+
+2. 信号 $\sin(2t)$ 是 <Blank>功率</Blank> （能量/功率）有限信号，其能量（或功率）为 <Blank>$\frac12$</Blank>。
+
+3. 信号 $\operatorname{Sa}(t)=\frac{\sin t}{t}$ 是 <Blank>偶函数</Blank> （奇函数/偶函数），$\int_{0}^{+\infty}\operatorname{Sa}(t)\,\mathrm dt=$ <Blank>$\frac\pi2$</Blank>。
+
+4. 系统的全响应可分解为自由响应与强迫响应两部分响应之和，也可分解为 <Blank>暂态</Blank> 响应及稳态响应两部分响应之和。
+
+5. 线性系统应该满足 <Blank>齐次性</Blank> 和 <Blank>可加性</Blank>。
+
+6. 冲激信号 $\delta(t)$ 的傅里叶变换为 <Blank>$1$</Blank>。
+
+7. 已知 $f(t)$ 傅里叶变换为 $F(\omega)$，则 $f'(t)$ 的傅里叶变换为 <Blank>$\mathrm j\omega F(\omega)$</Blank>。
+
+8. 有一线性时不变系统，当激励 $e_1(t)=\delta(t)$ 时，响应 $r_1(t)=2u(t)$，可以用一个 <Blank>积分器</Blank> 和 <Blank>乘法器</Blank> 两个基本运算单元实现该系统。
+
+## 二、填空题（每空 2 分，共 30 分）
+
+1. 对信号 $x_a(t)=\sin(100\pi t)$ 进行抽样，抽样频率为 $400\,\mathrm{Hz}$，抽样后得到序列 $x(n)=\left.x_a(t)\right|_{t=nT}$, $x(n)$ 的周期为 <Blank>8</Blank>。
+
+2. 对于离散信号 $f(n)=2\sin\left(\frac{n\pi}{16}\right)+\cos\left(\frac{n\pi}8\right)-6\sin\left(\frac{n\pi}2+\frac\pi6\right)$，判断其是否为周期序列，若是周期序列试确定其基波周期 $N=$ <Blank>$32$</Blank>。（若为非周期序列，填不存在）
+
+3. 题图 2-3 所示为信号 $f(t)$ 的波形，则信号 $\int_{-\infty}^\infty\frac{\mathrm df(t)}{\mathrm dt}\,\mathrm dt=$ <Blank>$0$</Blank>。
+
+<Figure src="23-24-1-信号与系统-期中-题图2-3.svg" float>
+    题图2-3
+</Figure>
+
+4. 已知 $x_1(n)=n\left[u(n)-u(n-4)\right]$, $x_2(n)=\left(\frac12\right)^{n+1}u(n+1)$，则信号 $x_1(n)\cdot x_2(n)$ 包含的所有序列值之和为 <Blank>$\frac{11}{16}$</Blank>。
+
+5. 某一系统的输出信号为 $y(t)=9\cos^2\left(200t+\frac\pi6\right)$，该信号的直流分量为 <Blank>$\frac92$</Blank>，交流分量为 <Blank>$\frac92\cos\left(400t+\frac\pi3\right)$</Blank>。
+
+6. 离散时间系统的方框图如题图 2-6 所示，该系统的差分方程式为 <Blank>$y(n)=x(n-1)-4x(n)+4y(n-1)-3y(n-2)$</Blank>。
+
+<Figure src="23-24-1-信号与系统-期中-题图2-6.svg" float>
+    题图2-6
+</Figure>
+
+7. 已知某线性时不变系统的单位阶跃响应为 $g(t)=tu(t)$，则其冲激响应 $h(t)=$ <Blank>$u(t)$</Blank>。
+
+8. 若 $s_1(t)=f(t)\otimes f(t)$，则 $f(t-1)\otimes f(t-2)=$ <Blank>$s_1(t-3)$</Blank>。
+
+9. 某线性时不变复合系统如题图 2-9 所示，则该复合系统的冲激响应 $h(t)=$ <Blank>$h_1(t)+\delta(t)$</Blank>。
+
+<Figure src="23-24-1-信号与系统-期中-题图2-9.svg" float>
+    题图2-9
+</Figure>
+
+10. 某线性离散时间系统的单位样值响应为 $y(n)=\left(\frac13\right)^nu(n)$，则该系统的单位阶跃响应为 <Blank>$\frac{3-\left(\frac13\right)^n}2u(n)$</Blank>。
+
+11. 已知一线性时不变离散系统可以用差分方程表示 $y(n)-0.8y(n-1)=x(n)$，该系统是 <Blank>稳定</Blank> 系统（稳定/不稳定）。
+
+12. 已知 $\cos(3t+\theta_1)$ 和 $\sin(3t+\theta_2)$ 在 $t\in\left[0,\frac23\pi\right]$ 正交，则 $\cos(\theta_1-\theta_2)=$ <Blank>$1$</Blank>。
+
+13. 若信号 $f(t)$ 的频带宽度为 $B$，则 $f(2t)$ 的频带宽度为 <Blank>$2B$</Blank>。
+
+14. 某线性时不变系统的单位冲激响应为 $h(t)=\mathrm e^{-t}u(t)$，则该系统是 <Blank>因果</Blank> （因果/非因果）系统。
+
+## 三、计算画图题（10 分）
+
+### 1.
+
+已知信号 $x_1(t)=\sin(\omega_0t)$，该信号的周期为 $T=1\,\mathrm s$，请画出信号 $x_2(t)=x_1(t)\left[u(t)-u(t-T)\right]$ 的波形图。
+
+<Solution>
+    <Figure src="23-24-1-信号与系统-期中-解答3-1.svg" />
+</Solution>
+
+### 2.
+
+信号 $f(t)$ 的波形如题图 3 所示，画出信号 $f(-3t-2)$ 的波形图。
+
+<Figure src="23-24-1-信号与系统-期中-题图2-3.svg" float>
+    题图3
+</Figure>
+
+<Solution>
+    <Figure src="23-24-1-信号与系统-期中-解答3.2.svg" />
+</Solution>
+
+## 四、计算题（10 分）
+
+某线性时不变系统在激励为 $e(t)$ 的零状态响应为 $r(t)$，波形如题图 4 所示。
+
+<Figure src="23-24-1-信号与系统-期中-题图4.svg" float>
+    题图4
+</Figure>
+
+1. 求该线性时不变系统的冲激响应 $h(t)$。
+
+<Solution>
+    $$
+    \begin{align*}
+    h(t)*e(t)={}&r(t)\\
+    h(t-\tau)\,\mathrm d\tau={}&r(t)\\
+    \int_0^th(t-\tau)\,\mathrm d\tau={}&r(t)\;(0\le t\le2)
+    \end{align*}
+    $$
+
+    等号两侧同时对 $t$ 求微分，则有 $h(t)=\frac{\mathrm dr(t)}{\mathrm dt}\;(0\le t\le2)$，
+
+    故 $h(t)=u(t)-u(t-1)$。
+</Solution>
+
+2. 如果激励 $e(t)=u(t)-u(t-1)$ 作用于系统，利用卷积积分求此系统的零状态响应 $y(t)$，并画出响应 $y(t)$ 的波形。（若在 1  中求不出 $h(t)$，可以设 $h(t)=u(t)-u(t-1)$）。
+
+<Solution>
+    $y(t)=e(t)*h(t)=\int_{-\infty}^t[u(\tau)-u(\tau-1)][u(t-\tau)-u(t-\tau-1)]\,\mathrm d\tau$
+
+    解得 $y(t)=\begin{cases}t,&0\le t\le1\\2-t,&1\le t\le2\end{cases}$。
+
+    <Figure src="23-24-1-信号与系统-期中-解答4.2.svg" />
+</Solution>
+
+## 五、计算题（10 分）
+
+某离散时间系统的方框图如题图 5 所示，已知 $x(n)=a^nu(n),\;0<a<1$，$h_1(n)=\delta(n),\,h_2(n)=u(n)$，试求系统的零状态响应 $y(n)$。
+
+<Figure src="23-24-1-信号与系统-期中-题图5.svg" float>
+    题图5
+</Figure>
+
+1. 求复合系统的单位样值响应 $h(n)$。
+
+<Solution>
+    由图可知 $y(n)=x(n)*h_1(n)*[h_1(n)+h_2(n)]$，
+
+    当 $x(n)=\delta(n)$ 时，
+
+    $$
+    \begin{align*}h(n)={}&\delta(n)*h_1(n)*[h_1(n)+h_2(n)]\\={}&h_1(n)*[\delta(n)+u(n)]\\={}&h_1(n)*\delta(n)+\delta(n)*u(n)\\={}&\delta(n)+u(n)\end{align*}
+    $$
+</Solution>
+
+2. 求系统的零状态响应 $y(n)$。
+
+<Solution>
+    $$
+    \begin{align*}y(n)={}&x(n)*h(n)\\={}&a^nu(n)*[\delta(n)+u(n)]\\={}&a^nu(n)+a^nu(n)*u(n)\\={}&a^nu(n)+\sum_{m=0}^\infty a^mu(m)u(n-m)\\={}&a^nu(n)+\sum_{m=0}^na^m\\={}&\left(a^n+\frac{1-a^{n+1}}{1-a}\right)u(n)\end{align*}
+    $$
+</Solution>
+
+## 六、计算题（10 分）
+
+已知某周期信号的傅里叶级数展开式为
+
+$$
+f(t)=1-\frac12\cos\left(\frac\pi4t-\frac{2\pi}3\right)+\frac14\sin\left(\frac\pi3t-\frac\pi6\right)
+$$
+
+画出信号的单边谱和双边谱。
+
+<Solution>
+    $f(t)=1+\frac12\cos\left(\frac\pi4t+\frac\pi3\right)+\frac14\cos\left(\frac\pi3t-\frac{2\pi}3\right)$
+
+    单边谱
+
+    <Figure src="23-24-1-信号与系统-期中-解答6a.svg" />
+
+    双边谱
+
+    <Figure src="23-24-1-信号与系统-期中-解答6b.svg" />
+</Solution>
+
+## 七、计算题（10 分）
+
+如题图 7 所示，$f_2(t)=f_1(t)*f_1(t),\,f_3(t)=f_2(t-2)$。
+
+<Figure src="23-24-1-信号与系统-期中-题图7.svg" float>
+    题图7
+</Figure>
+
+1. 求 $F_1(\omega)$ 的表达式。
+
+<Solution>
+    $F_1(\omega)=\int_{-\infty}^\infty f_1(t)\mathrm e^{-\mathrm j\omega t}\mathrm dt=2\operatorname{Sa}(\omega)$
+</Solution>
+
+2. 求 $F_2(\omega)$ 的表达式（利用 $F_1(\omega)$ 表示）及其频带宽度。
+
+<Solution>
+    $F[f_1(t)*f_1(t)]=F_1(\omega)F_1(\omega)=4\operatorname{Sa}^2(\omega)$
+
+    $B=\pi$
+</Solution>
+
+3. 求 $F_3(\omega)$ 的表达式（利用 $F_2(\omega)$ 表示），并求出 $F_3(\omega)$ 的相位值。
+
+<Solution>
+    因为 $F[f_2(t)]=4\operatorname{Sa}^2(\omega)$，
+
+    所以 $F[f_3(t)]=F[f_2(t-2)]=4\operatorname{Sa}^2(\omega)\mathrm e^{-2\mathrm j\omega}=F_2(\omega)\mathrm e^{-2\mathrm j\omega}$
+
+    因此 $\varphi(\omega)=-2\omega$。
+</Solution>
+
+## 八、上机实验题（8 分）
+
+利用 MATLAB 或 Python 语言构造一个如题图 8 所示的离散正弦信号（横坐标单位均为秒）：
+
+<Figure src="23-24-1-信号与系统-期中-题图8a.svg" float>
+    题图8a-Python 实现
+</Figure>
+
+<Figure src="23-24-1-信号与系统-期中-题图8b.svg" float>
+    题图8b-MATLAB 实现
+</Figure>
+
+1. 该离散信号的包络线所构成的模拟信号，其频率是多少 ($\mathrm{Hz}$)？
+
+<Solution>
+    $T=0.001\,\mathrm s$，所以 $f=\frac1T=1000\,\mathrm{Hz}$
+</Solution>
+
+2. 该离散信号的数字角频率是多少？
+
+<Solution>
+    $f(n)=\sin\left(\frac14\pi n\right)$
+
+    所以 $\omega_d=\frac14\pi$
+</Solution>
+
+3. 人耳是否能听到包络线所构成的模拟信号对应频率的振动信号？
+
+<Solution>
+    可以
+</Solution>

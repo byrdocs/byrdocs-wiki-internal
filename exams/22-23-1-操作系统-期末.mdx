@@ -1,0 +1,145 @@
+---
+时间: 2022-2023学年第一学期
+科目: 操作系统
+阶段: 期末
+类型: 本科
+学院:
+- 计算机学院
+来源: e3c523e673314ecd9e797d43e97f0006
+答案完成度: 残缺
+---
+
+## 1. (15 points)
+
+Consider the following set of processes, with the length of the CPU burst given in milliseconds:
+
+| Process | Burst Time | Priority |
+| --- | --- | --- |
+| P1 | 7 | 2 |
+| P2 | 10 | 1 |
+| P3 | 3 | 3 |
+| P4 | 5 | 4 |
+| P5 | 2 | 4 |
+| P6 | 6 | 2 |
+
+The processes are assumed to have arrived in the order P1, P2, P3, P4, P5, P6, all at time 0. The execution of these processes using the following scheduling algorithms: nonpreemptive priority (a smaller priority number implies a higher priority).
+
+1. Draw a Gantt chart illustrating the execution of these processes;
+2. What is the turnaround time of each process for the scheduling algorithms?
+3. What is the waiting time of each process for the scheduling algorithms?
+
+## 2. (15 points)
+
+A bicycle factory has three workshops. Workshops 1 and 2 are production workshops, producing bicycle stands (自行车架) and bicycle wheels respectively. Workshop 3 is the assembly workshop, which is responsible for assembling bicycle stands and wheels into the finished bicycles.
+
+Each of bicycle stands and bicycle wheels produced by the production workshops is sent to the assembly workshop. Bicycle stands are placed on the shelf F1 which can store at most 10, bicycle wheels are placed on the shelf F2, which can store at most 20.
+
+The workers in the assembly workshop take one bicycle stand and two bicycle wheels from the shelf each time to assemble a bicycle.
+
+Workers cannot put to or take from the shelves for the bicycle stands or wheels at the same time.
+
+Use the semaphore mechanism to achieve the effective management of the producing process.
+
+1. give out the definitions and initial values of semaphores, and
+2. write out the code structure of the works respectively.
+
+## 3. (15 points)
+
+In a concurrent system, process $P_1$, $P_2$, $P_3$, $P_4$ and $P_5$ exclusively use five types of critical resources $\mathbf{R}_1$, $\mathbf{R}_2$, $\mathbf{R}_3$, $\mathbf{R}_4$ and $\mathbf{R}_5$, and each type of resource has only one instance.
+
+Consider the following snapshot of the system, which describes the holding and waiting-for relationships among these processes and resources. For examples, $P_2$ is now waiting for $R_1$ that is already allocated to $P_1$, and so on.
+
+<table>
+    <thead>
+        <tr>
+            <th colSpan={2}>holding</th>
+            <th colSpan={2}>waiting-for</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>$P_1$</td>
+            <td>$R_1$</td>
+            <td>$P_2$</td>
+            <td>$R_1$</td>
+        </tr>
+        <tr>
+            <td>$P_2$</td>
+            <td>$R_2$</td>
+            <td>$P_1,\,P_5$</td>
+            <td>$R_2$</td>
+        </tr>
+        <tr>
+            <td>$P_2$</td>
+            <td>$R_3$</td>
+            <td>$P_3$</td>
+            <td>$R_3$</td>
+        </tr>
+        <tr>
+            <td>$P_3$</td>
+            <td>$R_4$</td>
+            <td>$P_2,\,P_4$</td>
+            <td>$R_4$</td>
+        </tr>
+        <tr>
+            <td>$P_4$</td>
+            <td>$R_5$</td>
+            <td>$P_2$</td>
+            <td>$R_5$</td>
+        </tr>
+    </tbody>
+</table>
+
+Answer the following questions.
+
+1. Which processes are in deadlock, and why?
+2. In order to handle the deadlock at lowest cost, which process should be selected as a victim process to be terminated or rollback, and why?
+
+## 4. (15 points)
+
+For improving system performance, when OS loads a program and creates its corresponding process, the first n pages in the process virtual address space, i.e. page 0, 1, ..., n-1, are often successively loaded into n frames that are allocated to the process by prepaging. In a demand-paging system, a process is allocated with 4 frames, and then the number of the frames will not be changed. The size of the page/frame is 4KB. The replacement is local replacement (each process selects from only its own set of allocated frames).
+
+When the process is executed, the following logical address sequence (in hexadecimal values) are visited in the first 20us:
+
+```text
+0x000 F00, 0x003 6D0, 0x002 2E0, 0x004 2A0, 0x006 6B0, 0x005 4E4,
+0x007 204, 0x006 F40, 0x002 140, 0x003 524, 0x004 5F0, 0x003 004,
+```
+
+Answer the following questions:
+
+1. What is the reference string?
+2. Illustrate the replacement procedure by a figure for LRU replacement algorithms. How many page faults and page replacements would occur for the LRU replacement algorithms?
+
+## 5. (10 points)
+
+Consider segmentation with paging system with $2^{36}$ bytes of physical memory. The logical address space consists of up to 16 segments. Each segment can be up to $2^{12}$ pages, and page size of 1024 bytes,
+
+1. how many bits in the logical address specify the segment number?
+2. how many bits in the logical address specify the page number?
+3. how many bits in the logical address specify the offset within a page?
+4. what is the size of a frame?
+5. how many bits in the physical address specify the frame number?
+6. how many bits in the physical address specify the frame offset?
+7. how many entries are in the page table (how long is the page table) ?
+
+## 6. (15 points)
+
+A file consists of m records, numbered from 0 to m-1, and each record is 512-byte in size. The operating system uses a bitmap to manage free disk space, and the disk is 1 TB in size. OS takes multi-level indexed allocation to allocate disk blocks on disk for the file; the index block and data block are all 1024 bytes in size. Several sequential records are stored in one block, but a record is not permitted to straddle two blocks.
+
+The file’s directory takes an array with 7 entries to record the locations of the blocks for the file, and the entries are already loaded into main memory. The first 4 entries are employed as the direct index, the fifth and sixth entries as the single-level indirect index, and the seventh entry as the double-level indirect index; in an index block, a block number (denoting the on-disk address of the index block or data block) occupies 4 bytes.
+
+Answer the following questions.
+
+1. Compute the size of the bitmap.
+2. How many records are there in the file with the maximum size that OS can support, and Why?
+3. It is assumed that the file is 800KB in size. To access the record numbered 1200 in the file, how many blocks are needed to read, and why?
+
+Assuming that all the file index and data blocks are not preloaded in memory.
+
+## 7. (15 points)
+
+Suppose that a disk has 200 cylinders, numbered from 0 to 199. The disk is currently serving a request at cylinder 40, and the previous request was at cylinder 20. The queue of pending requests in FIFO order is 139,117,59,173,60,57,20,5,74, Starting from the current head position, what is the scheduling order and the total distance (in cylinders) that the disk arm moves to satisfy all the pending requests, for each of the following disk-scheduling algorithms?
+
+1. LOOK
+2. SCAN

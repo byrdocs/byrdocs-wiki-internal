@@ -1,0 +1,249 @@
+---
+时间: 2022-2023学年第一学期
+科目: 数学分析（上）
+阶段: 期末
+类型: 本科
+学院:
+- 未来学院
+来源: ea3e76bc82602bd146eef2124b820790
+答案完成度: 残缺
+---
+
+## 一 求解下列各题 (每题 6 分, 共 42 分)
+
+### 1.
+
+求 $\lim_{x\rightarrow0}\frac{\mathrm{e}^x-\cos x-x}{\sqrt[3]{1+2x^2}-1}$.
+
+<Solution>
+    $$
+    \begin{align}
+    \lim_{x\rightarrow0}\frac{\mathrm{e}^x-\cos x-x}{\left(1+2x^2\right)^\frac13-1}
+    ={}&\lim_{x\rightarrow0}\frac{1+x+\frac{x^2}{2}-1+\frac{x^2}2-x+o(x^2)}{1+\frac23x^2-1+o(x^2)}\\
+    ={}&\frac32
+    \end{align}
+    $$
+</Solution>
+
+### 2.
+
+求 $\int\frac{\arctan x}{x^3}\,\mathrm{d}x$.
+
+<Solution>
+    $$
+    \begin{align}
+    {}&\int\frac{\arctan x}{x^3}\,\mathrm{d}x\\
+    ={}&-\frac12\int\arctan x\,\mathrm{d}\frac1{x^2}\\
+    ={}&-\frac1{2x^2}\arctan x+\frac12\int\frac{\mathrm dx}{x^2(x^2+1)}\\
+    ={}&-\frac1{2x^2}\arctan x+\frac12\int\frac{\mathrm dx}{x^2}-\frac12\int\frac{\mathrm dx}{x^2+1}\\
+    ={}&-\frac1{2x^2}\arctan x-\frac1{2x}-\frac12\arctan x+C
+    \end{align}
+    $$
+</Solution>
+
+### 3.
+
+当 $x\rightarrow0$ 时, $\sin x-x\cos x$ 与 $ax^n$ 为等价无穷小, 求 $a$ 及 $n$.
+
+<Solution>
+    $\sin x-x\cos x=x-\frac1{3!}x^3-x(1-\frac1{2!}x^2)+o(x^3)=\frac13x^3+o(x^3)$,
+
+    所以 $a=\frac13$, $n=3$.
+</Solution>
+
+### 4.
+
+计算 $\int_{-1}^1\frac{\sin x+1}{4-x^2}\,\mathrm{d}x$.
+
+<Solution>
+    因为 $\frac{\sin x}{4-x^2}$ 是关于 $x$ 的奇函数, 所以在 $(-1,1)$ 内它的积分是 $0$.
+
+    那么原式就等于
+
+    $$
+    \begin{align}
+    \int_{-1}^1\frac1{4-x^2}\,\mathrm dx
+    ={}&\frac14\int_{-1}^1\frac{\mathrm dx}{2-x}+\frac14\int_{-1}^1\frac{\mathrm dx}{2+x}\\
+    ={}&\frac14\left.\ln\frac{2+x}{2-x}\right|_{-1}^1\\
+    ={}&\frac12\ln3
+    \end{align}
+    $$
+</Solution>
+
+### 5.
+
+已知连续函数 $f(x)$ 满足 $f(x)=\int_0^{3x}f\left(\frac t3\right)\mathrm{d}t+\mathrm{e}^{2x}$, 求 $f(x)$.
+
+<Solution>
+    等号两侧对 $x$ 求导,得
+
+    $$
+    f'(x)=3f(x)+2\mathrm e^{2x}
+    $$
+
+    该微分方程的通解为 $f_1(x)=C\mathrm e^{3x}$, 特解为 $f_0(x)=-2\mathrm e^{2x}$.
+
+    所以 $f(x)=C\mathrm e^{3x}-2\mathrm e^{2x}$.
+
+    再将其代入原方程中,解得 $C=3$.
+
+    综上所述, $f(x)=3\mathrm e^{3x}-2\mathrm e^{2x}$.
+</Solution>
+
+### 6.
+
+讨论非正常积分 $\int_1^{+\infty}\left[\frac1{x^p}-\ln\left(1-\frac1{x^p}\right)\right]\,\mathrm{d}x\;(p>0)$ 的敛散性.
+
+<Solution>
+    $p>1$时收敛；$0<p\le1$时发散
+</Solution>
+
+### 7.
+
+计算 $I=\int_0^{n\pi}x\left|\sin x\right|\,\mathrm{d}x$, 其中 $n$ 为正整数.
+
+<Solution>
+    将原式分段积分, 即
+
+    $$
+    \sum_{k=1}^n\int_{(k-1)\pi}^{k\pi}x\left|\sin x\right|\,\mathrm dx=\sum_{k=1}^n(-1)^{k+1}\int_{(k-1)\pi}^{k\pi}x\sin x\,\mathrm dx
+    $$
+
+    而因为
+
+    $$
+    \begin{align}
+    \int_{(k-1)\pi}^{k\pi}x\sin x\,\mathrm{d}x
+    ={}&-\int_{(k-1)\pi}^{k\pi}x\,\mathrm d\cos x\\
+    ={}&-\left.x\cos x\right|_{(k-1)\pi}^{k\pi}+\int_{(k-1)\pi}^{k\pi}\cos x\,\mathrm dx\\
+    ={}&-k\pi(-1)^k+(k-1)\pi(-1)^{k-1}\\
+    ={}&(2k-1)\pi(-1)^{k-1}
+    \end{align}
+    $$
+
+    所以 $I=\sum_{k=1}^n(-1)^{k+1}(-1)^{k-1}(2k-1)\pi=n^2\pi$.
+</Solution>
+
+## 二 (10 分)
+
+求函数 $y=\frac1{x^2-2x+4}$ 的单调区间, 极值, 凹凸区间和拐点.
+
+<Solution>
+    $$
+    y'=\frac{2(1-x)}{(x^2-2x+4)^2}
+    $$
+
+    令$y'=0$,解得$x=1$.
+
+    $x<1, y'>0$，单调增区间$( -\infty,1)$;
+
+    $x>1, y'<0$，单调减区间$(1,+\infty)$;
+
+    $x=1$时，极大值$y=\frac12$,无极小值；
+
+    $$
+    y''=\frac{6x(x-2)}{(x^2-2x+4)^3}
+    $$
+
+    令,$y''=0$,解得$x=0,x=2$.
+
+    $x<0,x>2$时，$y''>0$, 凹区间为$(-\infty,0),(2,+\infty)$;
+
+    $0<x<2$时，$y''<0$, 凸区间为$(0,2)$;
+
+    解得拐点为$(0,\frac14)$和$(2,\frac14)$。
+</Solution>
+
+## 三 (10 分)
+
+求微分方程 $y''+2y'+2y=x(\mathrm{e}^x+1)$ 的通解.
+
+<Solution>
+    为了求出它的特解, 我们首先将该微分方程分解为两部分:
+
+    $$
+    y''+2y'+2y=x\mathrm e^x
+    \text{ 及 }
+    y''+2y'+2y=x
+    $$
+
+    对于第一个方程, 设 $y_1=(Ax+B)\mathrm e^x$, 通过待定系数解得 $y_1=(\frac15 x-\frac4{25})\mathrm e^x$;
+
+    对于第二个方程, 设 $y_2=Dx+E$, 通过待定系数解得 $y_2=x-2$.
+
+    所以原微分方程的特解为 $y_0=(\frac15x-\frac4{25})\mathrm e^x+x-2$.
+
+    特征方程为 $r^2+2r+2=0$ 解得一对复根 $r=1\pm\mathrm i$, 所以对应齐次微分方程的通解为 $y^*=(C_1\cos x+C_2\sin x)\mathrm e^{-x}$.
+
+    综上所述, 原微分方程的通解为 $y=(C_1\cos x+C_2\sin x)\mathrm e^{-x}+(\frac15x-\frac4{25})\mathrm e^x+x-2$.
+</Solution>
+
+## 四 (10 分)
+
+设曲线 $y=ax^2\;(a>0,\;x>0)$ 与 $y=1-x^2$ 相交于点 $A$, 过坐标原点 $O$ 和点 $A$ 的直线与曲线 $y=ax^2$ 围成一个平面图形, 试求解下列问题:
+
+1. 此平面图形的面积是多少?
+2. 问 $a$ 为何值时, 该图形绕 $x$ 轴一周所得的旋转体体积最大?
+
+<Solution>
+    (1)联立两曲线：
+
+    $$
+    \begin{cases}
+    y=ax^2\\
+    y=1-x^2
+    \end{cases}
+    $$
+
+    解得  $A(\frac1{\sqrt{a+1}}, \frac1{a+1})$
+
+    面积:
+
+    $$
+    S=\frac12\cdot\frac1{\sqrt{a+1}}\cdot\frac{a}{a+1} - \int_{0}^{\frac1{\sqrt{a+1}}} ax^2\,\mathrm{d}x
+    $$
+
+    计算出  $S=\frac{a}{6(a+1)^\frac32}$
+
+    (2)体积:
+
+    $$
+    V=\frac13\cdot\pi(\frac{a}{a+1})^2\cdot\frac1{\sqrt{a+1}}-\pi\int_{0}^{\frac1{\sqrt{a+1}}} (ax^2)^2\,\mathrm{d}x
+    $$
+
+    化简得：
+
+    $$
+    V(a)=\frac{2\pi{a^2}}{15(a+1)^\frac52}
+    $$
+
+    对体积表达式求导：
+
+    $$
+    V'(a)=\frac{\pi{a}(4-a)}{15(a+1)^\frac72}
+    $$
+
+    令$V'(a)=0$,得$a=4$.
+
+    当$0<a<4$时，$V'(a)>0,V(a)$单调递增；
+
+    当$a>4$时，$V'(a)<0,V(a)$单调递减。
+
+    故当$a=4$时，旋转体体积最大。
+</Solution>
+
+## 五 (10 分)
+
+设 $k\le0$, 证明: 方程 $kx+\frac1{x^2}=1$ 有且仅有一个正的实根.
+
+## 六 (10 分)
+
+设 $f(x)$ 在 $[a,b]$ 上连续且单调增加, 证明:
+
+$$
+\int_a^bxf(x)\,\mathrm{d}x\ge\frac{a+b}2\int_a^bf(x)\,\mathrm{d}x
+$$
+
+## 七 (8 分)
+
+设函数 $f(x)$ 在 $[0,1]$ 上具有二阶连续导数, $f(0)=f(1)$, 且 $\left|f''(x)\right|\le2$, 证明 $\left|f'(x)\right|\le1$.
