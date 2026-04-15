@@ -1,0 +1,252 @@
+---
+时间: 2023-2024学年第一学期
+类型: 本科
+阶段: 期末
+科目: 数学分析（上）
+来源: a9f888544171a632cb9e304501f3c20c
+答案完成度: 完整可靠
+学院:
+- 计算机学院
+---
+
+## 一 填空题 (本大题共 10 小题, 每小题 3 分, 共 30 分)
+
+1. $\lim_{n\rightarrow\infty}n\left(\sqrt[n]{\mathrm{e}}-\cos\frac1n\right)=$ <Blank>$1$</Blank>.
+
+2. 设 $\lim_{x\rightarrow+\infty}f'(x)=A$, 则 $\lim_{x\rightarrow+\infty}[f(x+1)-f(x-1)]=$ <Blank>$2A$</Blank>.
+
+3. 设 $a_n=\frac{1^3+2^3+\cdots+n^3}{n^4+n^2}$, 则 $\lim_{n\rightarrow\infty}a_n=$ <Blank>$\frac14$</Blank>.
+
+4. 已知 $f(x)=\int_0^{x^2}\left(\mathrm{e}^{t^2}-1\right)\,\mathrm{d}t$ 且 $x\rightarrow0$ 时, $f(x)=O(x^k)$. 那么 $k=$ <Blank>$6$</Blank>.
+
+5. 设函数 $y=f(x)$ 由参数方程 $\begin{cases}x=2+\ln{t}\\y=\int_1^t\frac{\sin{u}}u\,\mathrm{d}u\end{cases}$ 确定, 则 $\left.\frac{\mathrm{d}^2y}{\mathrm{d}x^2}\right|_{x=2}=$ <Blank>$\cos1$</Blank>.
+
+6. 曲线 $y=\ln{x}$ 与直线 $x=\frac1{\mathrm e}, x=\mathrm{e}$ 及 $x$ 轴围成的封闭图形的面积为 <Blank>$2-\frac2{\mathrm e}$</Blank>.
+
+7. 反常积分 $\int_{-1}^1\frac1{x\cos{x}}\,\mathrm{d}x$ 的敛散性为 <Blank>发散</Blank>. (填**收敛**或**发散**)
+
+8. 记不超过 $x$ 的最大整数为 $[x]$, 则 $\int_1^{+\infty}\left[\frac3x\right]\,\mathrm{d}x=$ <Blank>$\frac52$</Blank>.
+
+9. $\int_{-\frac\pi4}^{\frac\pi4}\left(\tan{x}+\sqrt{1+\left|\sin{2x}\right|}\right)^2\mathrm{d}x=$ <Blank>$3$</Blank>.
+
+10. 常微分方程 $\mathrm{d}y-2x(1+y^2)\,\mathrm{d}x=0$ 的通解为 <Blank>$y=\tan\left(x^2+c\right)$</Blank>.
+
+## 二 (12 分)
+
+讨论函数 $y=\frac{(x-3)^2}{4(x-1)}$ 的单调性, 求其极值及图形的渐近线.
+
+<Solution>
+    $y'=\frac{(x-3)(x+1)}{4(x-1)^2}$
+
+    ||$(-\infty,-1)$|$-1$|$(-1,1)$|$1$|$(1,3)$|$3$|$(3,+\infty)$|
+    |---|---|---|---|---|---|---|---|
+    |$y'$|+||-||-||+|
+    |$y$|单增|极大值点|单减||单减|极小值点|单增|
+
+    根据导数值对函数增减性进行分析, 得到极大值 $y(-1)=-2$; 极小值 $y(3)=0$.
+
+    $\lim_{x\rightarrow1+}y=+\infty$, 曲线有垂直渐近线 $x=1$.
+
+    $\lim_{x\rightarrow+\infty}\frac yx=\lim_{x\rightarrow+\infty}\frac{(x-3)^2}{4x(x-1)}=\frac14$, $\lim_{x\rightarrow+\infty}(y-\frac{x}{4})=\lim_{x\rightarrow+\infty}\left[\frac{(x-3)^2}{4(x-1)}-\frac x4\right]=-\frac54$, 因此曲线有斜渐近线 $y=\frac x4-\frac54$.
+</Solution>
+
+## 三 (12 分)
+
+设函数 $f(x)$ 在 $[a,b]$ 在连续.
+
+1. 证明: $\int_a^bf(x)\,\mathrm{d}x=\int_a^bf(a+b-x)\,\mathrm{d}x$
+
+    <Solution>
+        令 $t=a+b-x$, 可得
+
+        $$
+        \int_a^bf(a+b-x)\,\mathrm{d}x=-\int_b^af(t)\,\mathrm{d}t=\int_a^bf(t)\,\mathrm{d}t=\int_a^bf(x)\,\mathrm{d}x
+        $$
+    </Solution>
+
+2. 求: $\int_0^\pi\frac{x\sin{x}}{1+\cos^2x}\,\mathrm{d}x$
+
+    <Solution>
+        由 (1) 结论知，
+
+        $$
+        \begin{align*}
+        \int_0^\pi\frac{x\sin x}{1+\cos^2x}\,\mathrm{d}x
+        ={}&\int_0^\pi\frac{(\pi-x)\sin(\pi-x)}{1+\cos^2(\pi-x)}\,\mathrm{d}x\\
+        ={}&\int_0^\pi\frac{(\pi-x)\sin x}{1+\cos^2x}\,\mathrm dx\\
+        ={}&\pi\int_0^\pi\frac{\sin{x}}{1+\cos^2x}\,\mathrm{d}x-\int_0^\pi\frac{x\sin{x}}{1+\cos^2x}\,\mathrm{d}x
+        \end{align*}
+        $$
+
+        再移项可得
+
+        $$
+        \begin{align*}
+        \int_0^\pi\frac{x\sin x}{1+\cos^2x}\,\mathrm{d}x={}&\frac\pi2\int_0^\pi\frac{\sin x}{1+\cos^2x}\,\mathrm{d}x\\
+        ={}&\left.-\frac\pi2\arctan(\cos x)\right|_0^\pi\\
+        ={}&\frac{\pi^2}4
+        \end{align*}
+        $$
+    </Solution>
+
+## 四 (12 分)
+
+设 $f(x)=\frac{x-2}{2x^2+x-1}$. 求
+
+1. $f^{(n)}(0)\;(n\ge1)$
+
+    <Solution>
+        $$
+        \begin{align*}
+        f(x)={}&\frac1{1-2x}+\frac1{1+x}\\={}&\sum_{i=0}^n(2x)'+\sum_{i=0}^n(-x)'+o(x'')\\={}&\sum_{i=0}^n\left[2^i+(-1)^i\right]x^i+o(x^n)
+        \end{align*}
+        $$
+
+        $\frac{f^{(n)}(0)}{n!}=2^n+(-1)^n$, 故 $f^{(n)}(0)=n!\cdot[2^n+(-1)^n]$.
+    </Solution>
+
+2. $\int f(x)\,\mathrm{d}x$
+
+    <Solution>
+        $$
+        \begin{align*}
+        \int f(x)\,\mathrm{d}x={}&\int\left(\frac1{1-2x}+\frac1{1+x}\right)\,\mathrm{d}x\\
+        ={}&\ln\left|1+x\right|-\frac12\ln\left|2x-1\right|+C\\
+        ={}&\ln\frac{\left|1+x\right|}{\sqrt{\left|2x-1\right|}}+C
+        \end{align*}
+        $$
+    </Solution>
+
+## 五 (8 分)
+
+求平面曲线 $y=\sqrt{x}$ 和 $y=x^2$ 围成的封闭图形绕 $y$ 旋转一周所划过的立体的体积 $V$.
+
+<Solution>
+    $xOy$ 面内图形 $0\le x\le1,\;x^2\le y\le1$ 绕 $y$ 轴旋转一周所得立体的体积为
+
+    $$
+    V_1=\pi\int_0^1y\,\mathrm{d}y=\frac\pi2
+    $$
+
+    $xOy$ 面内图形 $0\le x\le1,\;\sqrt x\le y\le1$ 绕 $y$ 轴旋转一周所得立体的体积为
+
+    $$
+    V_2=\pi\int_0^1y^4\,\mathrm{d}y=\frac\pi5
+    $$
+
+    可知 $V=V_1-V_2=\frac{3\pi}{10}$.
+</Solution>
+
+## 六 (10 分)
+
+设 $f(x)=\begin{cases}x^2,&0\le x\le1\\2x-1,&1<x\le2\end{cases}$, 求
+
+1. $\int f(x)\,\mathrm{d}x$
+
+    <Solution>
+        当 $0\le x\le1$ 时,
+
+        $$
+        \int f(x)\,\mathrm{d}x=\int x^2\mathrm{d}x=\frac{x^3}3+C_1
+        $$
+
+        当 $1<x\le2$ 时,
+
+        $$
+        \int f(x)\,\mathrm{d}x=\int(2x-1)\,\mathrm{d}x=x^2-x+C_2
+        $$
+
+        $\int f(x)\,\mathrm{d}x$ 在 $x=1$ 连续, 因此
+
+        $$
+        \lim_{x\rightarrow1^-}\left(\frac{x^3}3+C_1\right)=\lim_{x\rightarrow1^+}(x^2-x+C_2)
+        $$
+
+        即 $C_2=C_1+\frac13$.
+
+        $$
+        \int f(x)\,\mathrm{d}x=\begin{cases}\frac{x^3}3+C,&0\le x\le1\\x^2-x+\frac13+C,&1<x\le2.\end{cases}
+        $$
+    </Solution>
+
+2. $\int_0^x f(t)\,\mathrm{d}t$
+
+    <Solution>
+        当 $0\le x\le1$ 时,
+
+        $$
+        \int_0^xf(t)\,\mathrm{d}t=\int_0^xt^2\mathrm{d}t=\frac{x^3}3
+        $$
+
+        当 $1<x\le2$ 时
+
+        $$
+        \int_0^xf(t)\,\mathrm{d}t=\int_0^1t^2\mathrm{d}t+\int_1^x(2t-1)\,\mathrm{d}t=\frac13+\left.(t^2-t)\right|_1^x=x^2-x+\frac13
+        $$
+    </Solution>
+
+## 七 (12 分)
+
+设函数 $f(x)$ 是方程 $f''(x)+2af'(x)+a^2f(x)=\mathrm{e}^{-x}\;(a>0,\;a\ne1)$ 的满足条件 $f(0)=f'(0)=0$ 的特解, 求
+
+1. $\lim_{x\rightarrow0}\frac{\ln(1-x^2)}{f(\sin{x})}$
+
+    <Solution>
+        据已知, $f''(0)=1$
+
+        $f(x)=f(0)+f'(0)x+\frac1{2!}f''(0)x^2+o(x^2)=\frac{x^2}2+o(x^2)\sim\frac{x^2}2$,
+
+        $\lim_{x\rightarrow0}\frac{\ln(1-x^2)}{f(\sin x)}=\lim_{x\rightarrow0}\frac{-x^2}{\frac{\sin^2x}2}=-2$.
+    </Solution>
+
+2. $\int_0^{+\infty}f(x)\,\mathrm{d}x$
+
+    <Solution>
+        解已知微分方程的特征方程 $\lambda^2+2a\lambda+a^2=0$ 得
+
+        $\lambda_1=\lambda_2=-a$.
+
+        $a>0,\;a\ne1$, 因此 $f(x)$ 形如下式:
+
+        $f(x)=c_1\mathrm{e}^{-ax}+c_2x\mathrm{e}^{-ax}+k\mathrm{e}^{-x}$ ($k$ 是确定的常数)
+
+        并有 
+
+        $\lim_{x\rightarrow+\infty}f(x)=\lim_{x\rightarrow+\infty}f'(x)=0$,
+
+        由已知方程及条件 $f(0)=f'(0)=0$ 得
+
+        $$
+        \begin{align*}{}&a^2\int_0^{+\infty}f(x)\,\mathrm{d}x\\={}&\int_0^{+\infty}\mathrm{e}^{-x}\mathrm{d}x-2a\int_0^{+\infty}f'(x)\,\mathrm{d}x-\int_0^{+\infty}f''(x)\,\mathrm{d}x\\={}&\left.\mathrm{e}^{-x}\right|_{+\infty}^0+2a\left.f(x)\right|_{+\infty}^0+\left.f'(x)\right|_{+\infty}^0\\={}&1+2af(0)+f'(0)\\={}&1\end{align*}
+        $$
+
+        $$
+        \int_0^{+\infty}f(x)\,\mathrm dx=\frac1{a^2}
+        $$
+    </Solution>
+
+## 八 (6 分)
+
+设函数 $f(x)$ 在 $x=x_0$ 有 $n$ 阶导数 ($n>2$), 且
+
+$$
+f''(x_0)=f'''(x_0)=\cdots=f^{(n-1)}(x_0)=0,\;f^{(n)}(x_0)\ne0.
+$$
+
+判断点 $(x_0,f(x_0))$ 是否为曲线 $y=f(x)$ 的拐点.
+
+<Solution>
+    记 $F(x)=f''(x)$, 据已知
+
+    $$
+    \begin{align*}F(x)={}&F(x_0)+F'(x_0)(x-x_0)+\frac{F''(x_0)}{2!}(x-x_0)^2+\dots+\frac{F^{(n-2)}(x_0)}{(n-2)!}(x-x_0)^{n-2}+o[(x-x_0)^{n-2}]\\={}&f''(x_0)+f'''(x_0)(x-x_0)+\frac{f^{(4)}(x_0)}{2!}(x-x_0)^2+\dots+\frac{f^{(n)}(x_0)}{(n-2)!}(x-x_0)^{n-2}+o[(x-x_0)^{n-2}]\\={}&\frac{f^{(n)}(x_0)}{(n-2)!}(x-x_0)^{n-2}+o[(x-x_0)^{n-2}]\end{align*}
+    $$
+
+    即 $f''(x)=\frac{f^{(n)}(x_0)}{(n-2)!}(x-x_0)^{n-2}+o[(x-x_0)^{n-2}]$.
+
+    在 $x_0$ 的充分小邻域 $U(x_0)$ 内, $f''(x)$ 与 $\frac{f^{(n)}(x_0)}{(n-2)!}(x-x_0)^{n-2}$ 符号相同.
+
+    若 $n$ 为奇数, 则在 $U^-(x_0)$ 和 $U^+(x_0)$ 内, $f''(x)$ 符号相反，曲线凹凸性改变，因此 $(x_0,f(x_0))$ 是拐点。
+
+    若 $n$ 为偶数，则在 $U^-(x_0)$ 和 $U^+(x_0)$ 内，$f''(x)$ 符号相同, 曲线凹凸性不变, 点 $(x_0,f(x_0))$ 非拐点.
+</Solution>

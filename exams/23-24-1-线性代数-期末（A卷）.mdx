@@ -1,0 +1,187 @@
+---
+时间: 2023-2024学年第一学期
+类型: 本科
+阶段: 期末
+科目: 线性代数
+来源: 4b978327fc237c4762a10f129945dbc8
+答案完成度: 完整可靠
+学院:
+- 电子工程学院
+---
+
+## 一 填空 (30 分, 每空 3 分)
+
+1. 行列式 $\left|\begin{matrix}1&2&3&4\\2&3&4&1\\3&4&1&2\\4&1&2&3\end{matrix}\right|=$ <Blank>$160$</Blank>.
+
+2. 已知二次型 $f(x_1,x_2,x_3)=x_1^2+2x_2^2+2x_3^2+2x_1x_2-2x_1x_3$, $g(y_1,y_2,y_3)=y_1^2+y_2^2+y_3^2+2y_2y_3$, 是否存在正交变换将 $f(x_1,x_2,x_3)$ 化成 $g(y_1,y_2,y_3)$? <Blank>否</Blank> (回答**是**或**否**)
+
+3. 设 $H=E-3uu^T$, 其中 $E$ 为 3 阶单位矩阵, $u$ 为单位列向量, 则 $H^n$ 的迹 $\operatorname{tr}(H^n)=$ <Blank>$(-2)^n+2$</Blank>.
+
+4. 已知线性方程组 $\begin{cases}ax_1+x_3=1\\x_1+ax_2+x_3=0\\x_1+2x_2+ax_3=0\\ax_1+bx_2=3\end{cases}$ 有解, 其中 $a,b$ 为常数, 若 $\left|\begin{matrix}a&0&1\\1&a&1\\1&2&a\end{matrix}\right|=4$, 则 $\left|\begin{matrix}1&a&1\\1&2&a\\a&b&0\end{matrix}\right|=$ <Blank>$12$</Blank>.
+
+5. 已知 $n$ 阵矩阵 $A$ 的行列式 $\left|A\right|=3$, $A^*$ 为 $A$ 的伴随矩阵, 则 $\left|(A^*)^*\right|=$ <Blank>$3^{(n-1)^2}$</Blank>..
+
+6. 矩阵 $A=\left(\begin{matrix}1&2&3&4\\2&3&4&5\\5&4&3&2\end{matrix}\right)$ 的行最简形矩阵是 <Blank>$\left(\begin{matrix}1&0&-1&2\\0&1&2&3\\0&0&0&0\end{matrix}\right)$</Blank>.
+
+7. 若向量组 $\alpha_1=(a,1,-1,1)^T$, $\alpha_2=(1,1,b,a)^T$, $\alpha_3=(1,a,-1,1)^T$ 线性相关,且其中任意两个向量线性无关, 则 $ab=$ <Blank>$-4$</Blank>.
+
+8. 已知矩阵 $A=\left(\begin{matrix}1&2&3\\4&5&6\\7&8&9\end{matrix}\right)$, 则 $A$ 的伴随矩阵 $A^*$ 的秩 $r(A^*)=$ <Blank>$1$</Blank>.
+
+9. 矩阵 $M=\left(\begin{matrix}m_{11}&m_{12}&m_{13}\\m_{21}&m_{22}&m_{23}\\m_{31}&m_{32}&m_{33}\end{matrix}\right)$, $N=\left(\begin{matrix}m_{11}+m_{13}&m_{13}&m_{12}\\m_{21}+m_{23}&m_{23}&m_{22}\\m_{31}+m_{33}&m_{33}&m_{32}\end{matrix}\right)$, $P_1=\left(\begin{matrix}1&0&0\\0&0&1\\0&1&0\end{matrix}\right)$, $P_2=\left(\begin{matrix}1&0&0\\0&1&0\\1&0&1\end{matrix}\right)$, 则必有 <Slot />.
+
+<Choices>
+    - $MP_1P_2=N$
+    + $MP_2P_1=N$
+    - $P_1P_2M=N$
+    - $P_2P_1M=N$
+</Choices>
+
+10. 已知实矩阵 $A=\left(\begin{matrix}1&c&c\\c&1&c\\c&c&1\end{matrix}\right)$ 的秩为 $2$, 则 $c=$ <Blank>$-\frac12$</Blank>.
+
+## 二 (10 分)
+
+求满足相应条件的矩阵.
+
+### (1)
+
+已知二阶矩阵 $T$ 的特征值为 $\lambda_1=1$ 和 $\lambda_2=2$, 对应的特征向量分别为 $(3,4)^T$ 和 $(-4,3)^T$. 求它的逆矩阵 $T^{-1}$.
+
+<Solution>
+    由特征值的定义和性质可知, 如果 $T\xi_i=\lambda_i\xi_i,\;(i=1,2)$, 则有 $TP=P\Lambda$, 这里 $P=(\xi_1,\xi_2),\;\Lambda=\left(\begin{matrix}1&0\\0&2\end{matrix}\right)$.
+
+    $T^{-1}=(P\Lambda P^{-1})^{-1}=P\Lambda^{-1}P^{-1}=\frac1{25}\left(\begin{matrix}3&-4\\4&3\end{matrix}\right)\left(\begin{matrix}1&0\\0&2^{-1}\end{matrix}\right)\left(\begin{matrix}3&4\\-4&3\end{matrix}\right)=\frac1{25}\left(\begin{matrix}17&6\\6&\frac{41}2\end{matrix}\right)$
+</Solution>
+
+### (2)
+
+已知 $N=\left(\begin{matrix}1&-2&3\\-4&5&-6\\7&-8&9\end{matrix}\right)=A+C$, 其中 $A^T=A$, $C^T=-C$. 求 $C$.
+
+<Solution>
+    $A=\frac12(N+N^T)$, $C=\frac12(N-N^T)$, $C=\frac12\left[\left(\begin{matrix}1&-2&3\\-4&5&-6\\7&-8&9\end{matrix}\right)-\left(\begin{matrix}1&-4&7\\-2&5&-8\\3&-6&9\end{matrix}\right)\right]=\left(\begin{matrix}0&1&-2\\-1&0&1\\2&-1&0\end{matrix}\right)$
+</Solution>
+
+## 三 (12 分)
+
+已知向量组 $\alpha_1=(1,1,1,1)^T$, $\alpha_2=(2,3,4,3)^T$, $\alpha_3=(1,0,-1,0)^T$, $\alpha_4=(1,3,6,4)^T$, 求向量组 $\alpha_1,\alpha_2,\alpha_3,\alpha_4$ 的极大无关组, 并把不在该极大无关组中的向量用该极大线性无关组线性表示出来.
+
+<Solution>
+    $$
+    \left(\begin{matrix}1&2&1&1\\1&3&0&3\\1&4&-1&6\\1&3&0&4\end{matrix}\right)
+    \rightarrow
+    \left(\begin{matrix}1&2&1&1\\0&1&-1&2\\0&2&-2&5\\0&1&-1&3\end{matrix}\right)
+    \rightarrow
+    \left(\begin{matrix}1&2&1&1\\0&1&-1&2\\0&0&0&1\\0&0&0&0\end{matrix}\right)
+    \rightarrow
+    \left(\begin{matrix}1&0&3&0\\0&1&-1&0\\0&0&0&1\\0&0&0&0\end{matrix}\right)
+    $$
+
+    由此, 极大线性无关组为 $\alpha_1,\,\alpha_2,\,\alpha_4$, 且 $\alpha_3=3\alpha_1-\alpha_2$.
+</Solution>
+
+## 四 (14 分)
+
+当 $a,b$ 取什么值时, 方程组 $\begin{cases}x_1+x_2+x_3+x_4+x_5=1\\3x_1+2x_2+x_3+x_4-3x_5=a\\x_2+2x_3+2x_4+6x_5=3\\5x_1+4x_2+3x_3+3x_4-x_5=b\end{cases}$ 有解? 在有解的情形, 求方程组的通解.
+
+<Solution>
+    $$
+    \left(\begin{matrix}1&1&1&1&1&1\\3&2&1&1&-3&a\\0&1&2&2&6&3\\5&4&3&3&-1&b\end{matrix}\right)
+    \rightarrow
+    \left(\begin{matrix}1&0&-1&-1&-5&2\\0&1&2&2&6&3\\0&0&0&0&0&a\\0&0&0&0&0&b-2\end{matrix}\right)
+    $$
+
+    所以当 $a=0$ 且 $b=2$ 时原方程组有解, 即
+
+    $$
+    \left(\begin{matrix}1&1&1&1&1&1\\3&2&1&1&-3&a\\0&1&2&2&6&3\\5&4&3&3&-1&b\end{matrix}\right)
+    \rightarrow
+    \left(\begin{matrix}1&0&-1&-1&-5&-2\\0&1&2&2&6&3\\0&0&0&0&0&0\\0&0&0&0&0&0\end{matrix}\right)
+    $$
+
+    与原方程组同解方程组:
+
+    $$
+    \begin{cases}x_1=-2+x_3+x_4+5x_5\\x_2=3-2x_3-2x_4-6x_5\end{cases}
+    $$
+
+    解得特解 $\eta=(-2,3,0,0,0)^T$.
+
+    与导出组同解的线性方程组
+
+    $$
+    \begin{cases}x_1=x_3+x_4+5x_5\\x_2=-2x_3-2x_4-6x_5\end{cases}
+    $$
+
+    其基础解系为
+
+    $$
+    \begin{cases}\eta_1=(1,-2,1,0,0)^T,\\\eta_2=(1,-2,0,1,0)^T,\\\eta_3=(5,-6,0,0,1)^T,\end{cases}
+    $$
+
+    原方程组的通解为 $x=\eta+k_1\eta_1+k_2\eta_2+k_3\eta_3$, 其中 $k_1,\,k_2,\,k_3$ 为任意常数.
+</Solution>
+
+## 五 (14 分)
+
+### (1)
+
+已知矩阵 $A=\left(\begin{matrix}1&-1&0\\0&1&-1\\-1&0&1\end{matrix}\right)$, 求矩阵 $X$, 满足 $AX=2X+A$.
+
+<Solution>
+    由 $AX=2X+A$ 可得 $(A-2E)X=A$, 于是有 $X=(A-2E)^{-1}A$.
+
+    $$
+    \left(A-2E\mid A\right)=\left(\begin{matrix}-1&-1&0&1&-1&0\\0&-1&-1&0&1&-1\\-1&0&-1&-1&0&1\end{matrix}\right)
+    \rightarrow
+    \left(\begin{matrix}1&0&0&0&1&-1\\0&1&0&-1&0&1\\0&0&1&1&-1&0\end{matrix}\right)
+    $$
+
+    由此得 $X=\left(\begin{matrix}0&1&-1\\-1&0&1\\1&-1&0\end{matrix}\right)$.
+</Solution>
+
+### (2)
+
+已知 $n$ 维非零向量 $\beta=(a,0,\ldots,0,a)^T$, $B=E-\beta\beta^T$, $D=E+\frac1a\beta\beta^T$, 其中 $E$ 为单位矩阵, 若 $B$ 与 $D$ 互为逆矩阵, 求 $a$.
+
+<Solution>
+    $BD=(E-\beta\beta^T)\left(E+\frac1a\beta\beta^T\right)=E-\beta\beta^T+\frac1a\beta\beta^T-\frac1a\beta\beta^T\beta\beta^T=E+\left(-1-2a+\frac1a\right)\beta\beta^T=E$
+
+    所以 $0=2a^2+a-1=(2a-1)(a+1)$,
+
+    解得 $a=-1$ 或 $a=\frac12$.
+</Solution>
+
+## 六 (12 分)
+
+已知矩阵 $A$ 满足: 对任意的 $x_1,x_2,x_3$, $A\left(\begin{matrix}x_1\\x_2\\x_3\end{matrix}\right)=\left(\begin{matrix}x_1+2x_2+2x_3\\x_2+2x_1+2x_3\\x_3+2x_1+2x_2\end{matrix}\right)$.
+
+1. 求 $A$.
+
+    <Solution>
+        由题设可知 $A=\left(\begin{matrix}1&2&2\\2&1&2\\2&2&1\end{matrix}\right)$
+    </Solution>
+
+2. 判断是否存在可逆矩阵 $P$ 与对角矩阵 $\Lambda$, 使得 $P^{-1}AP=\Lambda$. 如果存在, 求出 $P$ 与 $\Lambda$.
+
+    <Solution>
+        $A$ 的特征多项式为 $\left|\lambda E-A\right|=\left|\begin{matrix}\lambda-1&-2&-2\\-2&\lambda-1&-2\\-2&-2&\lambda-1\end{matrix}\right|=(\lambda+1)^2(\lambda-5)$
+
+        解得特征值为 $\lambda_1=\lambda_2=-1,\,\lambda_3=5$.
+
+        特征向量为 $(1,0,-1)^T,\,(0,1,-1)^T,\,(1,1,1)^T$.
+
+        令 $P=\left(\begin{matrix}1&0&1\\0&1&1\\-1&-1&-1\end{matrix}\right)$, $\Lambda=\left(\begin{matrix}-1&0&0\\0&-1&0\\0&0&5\end{matrix}\right)$, 则 $P^{-1}AP=\Lambda$.
+    </Solution>
+
+## 七 (8 分)
+
+已知 $A$ 为 $n$ 阶正交矩阵, $\left|A\right|=-1$. 求证 $-1$ 是矩阵 $A$ 的特征值.
+
+<Solution>
+    因为 $A$ 为 $n$ 阶正交矩阵, 所以 $A^TA=E$.
+
+    再由 $\left|A\right|=-1$ 可得 $\left|E+A\right|=\left|A^TA+A\right|=\left|(A^T+E)A\right|=\left|A^T+E\right|\left|A\right|=-\left|A^T+E\right|=-\left|(A+E)^T\right|=-\left|A+E\right|$.
+
+    所以 $\left|E+A\right|=0$, 即 $\left|-E-A\right|=0$.
+
+    所以 $-1$ 是矩阵 $A$ 的特征值.
+</Solution>
