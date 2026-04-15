@@ -57,7 +57,7 @@ const schoolText=frontmatter.学院?.length?frontmatter.学院.join("、"):"未�
 		</div>
 		<div class="grid grid-cols-[4.5rem_minmax(0,1fr)] gap-3 px-4 py-3">
 			<dt class="font-medium text-slate-500 dark:text-slate-400">来源</dt>
-			<dd class="m-0 min-w-0 break-words text-slate-800 dark:text-slate-100">{frontmatter.来源?<a href={`https://byrdocs.org/?c=test&q=${frontmatter.来源}`}>BYR Docs 文件</a>:"暂无"}</dd>
+			<dd class="m-0 min-w-0 break-words text-slate-800 dark:text-slate-100">{frontmatter.来源?<a href={`https://byrdocs.org/?c=test&q=${frontmatter.来源}`} target="_blank">BYR Docs 文件</a>:"暂无"}</dd>
 		</div>
 		<div class="grid grid-cols-[4.5rem_minmax(0,1fr)] gap-3 px-4 py-3">
 			<dt class="font-medium text-slate-500 dark:text-slate-400">答案完成度</dt>
