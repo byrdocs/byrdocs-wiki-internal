@@ -895,20 +895,20 @@ html.dark .exam-toc-mobile-backdrop {
     display: block;
     bottom: 0;
     left: 0;
-    opacity: 0;
-    pointer-events: none;
     position: fixed;
-    top: 5rem;
-    transform: translateX(-100%);
-    transition:
-      opacity 0.22s ease,
-      transform 0.22s ease;
-    width: var(--exam-sidebar-width-expanded, clamp(20rem, 22vw, 26rem));
+    top: calc(4.75rem + 1px);
+    pointer-events: none;
+    transform: translateX(
+      calc(-1 * var(--exam-sidebar-width-expanded, clamp(20rem, 22vw, 26rem)))
+    );
+    transition: transform 0.22s ease;
+    width: calc(
+      var(--exam-sidebar-width-expanded, clamp(20rem, 22vw, 26rem)) +
+        var(--exam-sidebar-trigger-width, 2.75rem)
+    );
     z-index: 35;
   }
   html[data-exam-toc-desktop="expanded"] .exam-toc-shell {
-    opacity: 1;
-    pointer-events: auto;
     transform: translateX(0);
   }
   .exam-toc-panel {
@@ -919,6 +919,18 @@ html.dark .exam-toc-mobile-backdrop {
     box-shadow: 12px 0 32px rgb(15 23 42 / 0.08);
     height: 100%;
     max-height: none;
+    pointer-events: auto;
+    width: var(--exam-sidebar-width-expanded, clamp(20rem, 22vw, 26rem));
+  }
+  .exam-toc-shell[data-collapsed="true"] .exam-toc-panel {
+    border-right-color: transparent;
+    box-shadow: none;
+  }
+  .exam-toc-desktop-trigger {
+    left: var(--exam-sidebar-width-expanded, clamp(20rem, 22vw, 26rem));
+    pointer-events: auto;
+    position: absolute;
+    top: 1rem;
   }
   .exam-toc-nav {
     height: 100%;

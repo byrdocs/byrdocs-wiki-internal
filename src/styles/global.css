@@ -54,12 +54,10 @@
   :where(.layout-shell) {
     --exam-sidebar-gap-expanded: 1.75rem;
     --exam-sidebar-width-expanded: clamp(20rem, 22vw, 26rem);
+    --exam-sidebar-trigger-width: 2.75rem;
   }
   :where(.layout-shell .layout-container) {
     max-width: 72rem;
-  }
-  :where(.exam-toc-desktop-trigger) {
-    display: none;
   }
   :where(.exam-toc-desktop-trigger[data-state="expanded"]) {
     background: rgb(226 232 240 / 0.75);
@@ -72,14 +70,6 @@
     color: rgb(248 250 252 / 0.98);
   }
   @media (min-width: 1680px) {
-    :where(.layout-shell[data-has-exam-toc="true"] .exam-toc-desktop-trigger) {
-      display: inline-flex;
-      left: 0;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 2;
-    }
     :where(.layout-shell[data-has-exam-toc="true"] main.layout-container) {
       left: 0;
       position: relative;

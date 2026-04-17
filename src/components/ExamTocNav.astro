@@ -5,11 +5,14 @@ const {
   navId,
   items = [],
   class: className,
+  variant = "desktop",
 } = Astro.props as {
   navId: string;
   items?: TocItem[];
   class?: string;
+  variant?: "desktop" | "mobile";
 };
+const hasCollapsibleBranches = variant === "mobile";
 ---
 
 <nav class:list={["exam-toc-nav", className]} id={navId} aria-label="试题目录">
@@ -23,10 +26,16 @@ const {
             data-slug={section.heading.slug}
             data-path={sectionPath}
             data-depth={section.heading.depth}
-            data-expanded={section.children.length > 0 ? "false" : undefined}
+            data-expanded={
+              section.children.length > 0
+                ? hasCollapsibleBranches
+                  ? "false"
+                  : "true"
+                : undefined
+            }
           >
             <div class="exam-toc-row">
-              {section.children.length > 0 ? (
+              {section.children.length > 0 && hasCollapsibleBranches ? (
                 <button
                   class="exam-toc-branch-toggle"
                   type="button"
@@ -46,9 +55,9 @@ const {
                     <path d="m9 18 6-6-6-6" />
                   </svg>
                 </button>
-              ) : (
+              ) : hasCollapsibleBranches ? (
                 <span class="exam-toc-branch-spacer" aria-hidden="true"></span>
-              )}
+              ) : null}
               <a
                 class="exam-toc-link exam-toc-link-level-1"
                 href={`#${section.heading.slug}`}

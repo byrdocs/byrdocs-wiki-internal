@@ -16,8 +16,30 @@ const hasToc = tocItems.length > 0;
     <>
       <aside class="exam-toc-shell" id="examTocShell" data-collapsed="false">
         <div class="exam-toc-panel">
-          <ExamTocNav items={tocItems} navId="examTocNav" />
+          <ExamTocNav items={tocItems} navId="examTocNav" variant="desktop" />
         </div>
+        <button
+          class="exam-toc-desktop-trigger inline-flex h-11 w-11 items-center justify-center rounded-r-xl border border-slate-200 border-l-0 bg-white text-slate-500 shadow-sm transition hover:border-slate-300 hover:text-slate-700 dark:border-slate-800 dark:border-l-0 dark:bg-slate-900 dark:text-slate-400 dark:hover:border-slate-700 dark:hover:text-slate-200"
+          id="examTocDesktopToggle"
+          type="button"
+          aria-label="展开目录侧边栏"
+          aria-expanded="true"
+        >
+          <svg
+            aria-hidden="true"
+            class="h-5 w-5"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M4 6h16" />
+            <path d="M4 12h16" />
+            <path d="M4 18h16" />
+          </svg>
+        </button>
       </aside>
 
       <div class="exam-toc-mobile" id="examTocMobile" data-open="false">
@@ -35,6 +57,7 @@ const hasToc = tocItems.length > 0;
             items={tocItems}
             navId="examTocMobileNav"
             class="exam-toc-nav-mobile"
+            variant="mobile"
           />
         </div>
       </div>
@@ -63,13 +86,19 @@ const hasToc = tocItems.length > 0;
     ).filter(function(link) {
       return link instanceof HTMLAnchorElement;
     });
-    var tocItems = Array.from(
-      document.querySelectorAll(".exam-toc-item[data-slug]"),
+    var desktopItems = Array.from(
+      tocShell?.querySelectorAll(".exam-toc-item[data-slug]") || [],
     ).filter(function(item) {
       return item instanceof HTMLElement;
     });
-    var branchButtons = Array.from(
-      document.querySelectorAll(".exam-toc-branch-toggle[data-branch-toggle]"),
+    var mobileItems = Array.from(
+      mobileRoot?.querySelectorAll(".exam-toc-item[data-slug]") || [],
+    ).filter(function(item) {
+      return item instanceof HTMLElement;
+    });
+    var mobileBranchButtons = Array.from(
+      mobileRoot?.querySelectorAll(".exam-toc-branch-toggle[data-branch-toggle]") ||
+        [],
     ).filter(function(button) {
       return button instanceof HTMLButtonElement;
     });
@@ -97,8 +126,8 @@ const hasToc = tocItems.length > 0;
       }
     };
 
-    var setBranchExpanded = function(slug, expanded) {
-      tocItems.forEach(function(item) {
+    var setBranchExpanded = function(items, buttons, slug, expanded) {
+      items.forEach(function(item) {
         if (
           !(item instanceof HTMLElement) ||
           item.dataset.slug !== slug ||
@@ -110,7 +139,7 @@ const hasToc = tocItems.length > 0;
         item.dataset.expanded = expanded ? "true" : "false";
       });
 
-      branchButtons.forEach(function(button) {
+      buttons.forEach(function(button) {
         if (
           !(button instanceof HTMLButtonElement) ||
           button.dataset.branchToggle !== slug
@@ -121,14 +150,32 @@ const hasToc = tocItems.length > 0;
         button.setAttribute("aria-expanded", String(expanded));
       });
     };
+    var setAllDesktopBranchesExpanded = function() {
+      desktopItems.forEach(function(item) {
+        if (
+          !(item instanceof HTMLElement) ||
+          item.querySelector(".exam-toc-children") === null
+        ) {
+          return;
+        }
+
+        item.dataset.expanded = "true";
+      });
+    };
 
     syncDesktopVisibility();
     setMobileOpen(false);
+    setAllDesktopBranchesExpanded();
 
-    tocItems.forEach(function(item) {
+    mobileItems.forEach(function(item) {
       if (!(item instanceof HTMLElement) || !item.dataset.slug)
         return;
-      setBranchExpanded(item.dataset.slug, item.dataset.expanded === "true");
+      setBranchExpanded(
+        mobileItems,
+        mobileBranchButtons,
+        item.dataset.slug,
+        item.dataset.expanded === "true",
+      );
     });
     window.addEventListener("examtocdesktopchange", syncDesktopVisibility);
 
@@ -161,7 +208,7 @@ const hasToc = tocItems.length > 0;
         setMobileOpen(false);
     });
 
-    branchButtons.forEach(function(button) {
+    mobileBranchButtons.forEach(function(button) {
       if (!(button instanceof HTMLButtonElement))
         return;
 
@@ -173,7 +220,7 @@ const hasToc = tocItems.length > 0;
         if (!slug)
           return;
 
-        var matchingItem = tocItems.find(function(item) {
+        var matchingItem = mobileItems.find(function(item) {
           return (
             item instanceof HTMLElement &&
             item.dataset.slug === slug &&
@@ -182,7 +229,12 @@ const hasToc = tocItems.length > 0;
         });
 
         var nextExpanded = matchingItem?.dataset.expanded !== "true";
-        setBranchExpanded(slug, nextExpanded);
+        setBranchExpanded(
+          mobileItems,
+          mobileBranchButtons,
+          slug,
+          nextExpanded,
+        );
       });
     });
 
@@ -246,20 +298,7 @@ const hasToc = tocItems.length > 0;
           link.removeAttribute("aria-current");
       });
 
-      tocItems.forEach(function(item) {
-        if (
-          !(item instanceof HTMLElement) ||
-          !item.dataset.slug ||
-          item.querySelector(".exam-toc-children") === null
-        ) {
-          return;
-        }
-
-        setBranchExpanded(
-          item.dataset.slug,
-          activePath.indexOf(item.dataset.slug) >= 0,
-        );
-      });
+      setAllDesktopBranchesExpanded();
 
       if (activeSlug !== lastActiveSlug) {
         tocLinks.forEach(function(link) {
