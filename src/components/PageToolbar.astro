@@ -7,29 +7,75 @@ const { editHref } = Astro.props;
     <div
       class="floating-toolbar"
       id="pageToolbar"
+      data-expanded="false"
     >
-      <button
-        class="floating-toolbar-control cursor-pointer transition-opacity active:scale-95"
-        id="pageBackToTop"
-        type="button"
-        aria-label="回到顶部"
-        data-tooltip="回到顶部"
+      <div
+        class="floating-toolbar-actions"
+        id="pageToolbarActions"
       >
-        <svg aria-hidden="true" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M18 15l-6-6-6 6" />
+        <button
+          class="floating-toolbar-control cursor-pointer transition-opacity active:scale-95"
+          id="pageBackToTop"
+          type="button"
+          aria-label="回到顶部"
+          data-tooltip="回到顶部"
+          data-toolbar-action
+        >
+          <svg aria-hidden="true" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 15l-6-6-6 6" />
+          </svg>
+        </button>
+        <a
+          class="no-underline floating-toolbar-control active:scale-95"
+          href={editHref}
+          aria-label="在 GitHub 上编辑"
+          data-tooltip="在 GitHub 上编辑"
+          data-toolbar-action
+        >
+          <svg aria-hidden="true" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 20h9" />
+            <path d="m16.5 3.5 4 4L8 20l-5 1 1-5 12.5-12.5Z" />
+          </svg>
+        </a>
+      </div>
+      <button
+        class="floating-toolbar-control floating-toolbar-toggle cursor-pointer active:scale-95"
+        id="pageToolbarToggle"
+        type="button"
+        aria-label="展开工具栏"
+        aria-expanded="false"
+        aria-controls="pageToolbarActions"
+        data-tooltip="展开工具栏"
+      >
+        <svg
+          aria-hidden="true"
+          class="h-5 w-5"
+          data-toolbar-toggle-icon="open"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M12 5v14" />
+          <path d="M5 12h14" />
+        </svg>
+        <svg
+          aria-hidden="true"
+          class="h-5 w-5"
+          data-toolbar-toggle-icon="close"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="m18 6-12 12" />
+          <path d="M6 6l12 12" />
         </svg>
       </button>
-      <a
-        class="no-underline floating-toolbar-control active:scale-95"
-        href={editHref}
-        aria-label="在 GitHub 上编辑"
-        data-tooltip="在 GitHub 上编辑"
-      >
-        <svg aria-hidden="true" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 20h9" />
-          <path d="m16.5 3.5 4 4L8 20l-5 1 1-5 12.5-12.5Z" />
-        </svg>
-      </a>
     </div>
   )
 }
@@ -52,7 +98,43 @@ const { editHref } = Astro.props;
 </style>
 
 <script is:inline>
+  var pageToolbar = document.getElementById("pageToolbar");
+  var pageToolbarToggle = document.getElementById("pageToolbarToggle");
   var pageBackToTop = document.getElementById("pageBackToTop");
+  var setPageToolbarExpanded = function(expanded) {
+    if (!(pageToolbar instanceof HTMLElement)) return;
+    pageToolbar.dataset.expanded = expanded ? "true" : "false";
+    if (pageToolbarToggle instanceof HTMLButtonElement) {
+      pageToolbarToggle.setAttribute("aria-expanded", String(expanded));
+      pageToolbarToggle.setAttribute(
+        "aria-label",
+        expanded ? "收起工具栏" : "展开工具栏",
+      );
+      pageToolbarToggle.dataset.tooltip = expanded ? "收起工具栏" : "展开工具栏";
+    }
+  };
+
+  setPageToolbarExpanded(false);
+  pageToolbarToggle?.addEventListener("click", function(event) {
+    event.stopPropagation();
+    setPageToolbarExpanded(pageToolbar?.dataset.expanded !== "true");
+  });
+  pageToolbar?.querySelectorAll("[data-toolbar-action]").forEach(function(control) {
+    control.addEventListener("click", function() {
+      setPageToolbarExpanded(false);
+    });
+  });
+  document.addEventListener("click", function(event) {
+    if (!(pageToolbar instanceof HTMLElement) || pageToolbar.dataset.expanded !== "true")
+      return;
+    if (pageToolbar.contains(event.target))
+      return;
+    setPageToolbarExpanded(false);
+  });
+  document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape")
+      setPageToolbarExpanded(false);
+  });
 
   var updatePageBackToTopVisibility = function() {
     if (!pageBackToTop) return;

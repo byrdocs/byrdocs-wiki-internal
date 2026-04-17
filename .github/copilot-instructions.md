@@ -4,7 +4,7 @@ Write all review summaries, findings, suggestions, and comments in Chinese.
 
 Treat [src/others/guide.mdx](../src/others/guide.mdx) as the source of truth for content rules, and use [src/others/test.mdx](../src/others/test.mdx) as a concrete example of valid exam MDX usage.
 
-For exam files under `exams/`, check that the structure follows the guide: exams without assets should be a single `exams/<试卷名>.mdx` file, while exams with assets should use `exams/<试卷名>/index.mdx` plus sibling asset files in the same directory. Pay special attention to file names following the `学年开始-学年结束-学期-科目-阶段（备注）` convention.
+For exam files under `exams/`, check that every exam uses the directory layout `exams/<试卷名>/index.mdx`. Any related image or audio assets should live as sibling files in that same directory. Pay special attention to file names following the `学年开始-学年结束-学期-科目-阶段（备注）` convention.
 
 For any exam MDX file, check that frontmatter keys and values match the guide. Pay special attention to `时间` format, `科目` using the official Chinese full name, `阶段` being `期中` or `期末`, and `类型` being `本科` or `研究生`.
 

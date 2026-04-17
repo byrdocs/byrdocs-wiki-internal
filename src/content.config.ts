@@ -1,6 +1,8 @@
 import { glob } from "astro/loaders";
 import { defineCollection } from "astro:content";
 import { z } from "astro/zod";
+import { validateExamDirectories } from "./utils/examDirectories";
+
 const SCHOOLS = [
     "人工智能学院",
     "人文学院",
@@ -22,11 +24,14 @@ const SCHOOLS = [
     "马克思主义学院",
 ] as const;
 const timePattern = /^(\d{4})-(\d{4})学年第[一二]学期$/;
+
+validateExamDirectories();
+
 const exams = defineCollection({
     loader: glob({
-        pattern: ["*/index.mdx", "*.mdx"],
+        pattern: "*/index.mdx",
         base: "./exams",
-        generateId: ({ entry }) => entry.replace(/(?:\/index)?\.mdx$/, ""),
+        generateId: ({ entry }) => entry.replace(/\/index\.mdx$/, ""),
     }),
     schema: z.object({
         时间: z.string()

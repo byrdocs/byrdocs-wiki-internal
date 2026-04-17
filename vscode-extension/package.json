@@ -1,0 +1,152 @@
+{
+  "name": "byrdocs-wiki-vscode",
+  "displayName": "BYR Docs Wiki Tools",
+  "description": "Workspace-specific authoring tools for the byrdocs-wiki repository.",
+  "version": "0.1.1",
+  "publisher": "byrdocs",
+  "license": "MIT",
+  "icon": "media/icon.png",
+  "keywords": [
+    "byrdocs",
+    "wiki",
+    "mdx",
+    "astro",
+    "exam"
+  ],
+  "galleryBanner": {
+    "color": "#0f766e",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/byrdocs/byrdocs-wiki-internal.git"
+  },
+  "homepage": "https://github.com/byrdocs/byrdocs-wiki-internal",
+  "bugs": {
+    "url": "https://github.com/byrdocs/byrdocs-wiki-internal/issues"
+  },
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "files": [
+    "dist/**",
+    "media/**",
+    "LICENSE",
+    "README.md",
+    "package.json"
+  ],
+  "categories": [
+    "Other"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:byrdocsWiki.previewExamPage",
+    "onCommand:byrdocsWiki.showCreateExamPage"
+  ],
+  "scripts": {
+    "build": "tsc -p ./tsconfig.json",
+    "check": "tsc -p ./tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "typescript": "^6.0.2"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "byrdocsWiki.previewExamPage",
+        "title": "预览试题页面",
+        "category": "BYR Docs Wiki",
+        "icon": "$(open-preview)"
+      },
+      {
+        "command": "byrdocsWiki.showCreateExamPage",
+        "title": "新建试题页面",
+        "category": "BYR Docs Wiki",
+        "icon": "$(add)"
+      },
+      {
+        "command": "byrdocsWiki.toggleChoiceCorrectness",
+        "title": "切换选项正误",
+        "category": "BYR Docs Wiki"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "byrdocsWiki.previewExamPage",
+        "key": "ctrl+k v",
+        "mac": "cmd+k v",
+        "when": "byrdocsWiki.enabled && editorTextFocus && resourceFilename == index.mdx"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "byrdocsWiki.previewExamPage",
+          "when": "byrdocsWiki.enabled"
+        },
+        {
+          "command": "byrdocsWiki.showCreateExamPage",
+          "when": "byrdocsWiki.enabled"
+        },
+        {
+          "command": "byrdocsWiki.toggleChoiceCorrectness",
+          "when": "false"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "byrdocsWiki.previewExamPage",
+          "when": "byrdocsWiki.enabled && resourceFilename == index.mdx",
+          "group": "navigation@10"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "byrdocsWiki.previewExamPage",
+          "when": "byrdocsWiki.enabled && resourceFilename == index.mdx",
+          "group": "navigation@10"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "byrdocsWiki.previewExamPage",
+          "when": "byrdocsWiki.enabled && resourceFilename == index.mdx",
+          "group": "navigation@10"
+        },
+        {
+          "command": "byrdocsWiki.showCreateExamPage",
+          "when": "byrdocsWiki.enabled",
+          "group": "navigation@11"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "byrdocsWiki.showCreateExamPage",
+          "when": "byrdocsWiki.enabled && view == byrdocsWiki.createExamPageView",
+          "group": "navigation"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "byrdocsWiki",
+          "title": "BYR Docs Wiki",
+          "icon": "media/byrdocs-wiki.svg"
+        }
+      ]
+    },
+    "views": {
+      "byrdocsWiki": [
+        {
+          "id": "byrdocsWiki.createExamPageView",
+          "name": "新建试题页面",
+          "type": "webview",
+          "when": "byrdocsWiki.enabled"
+        }
+      ]
+    }
+  }
+}

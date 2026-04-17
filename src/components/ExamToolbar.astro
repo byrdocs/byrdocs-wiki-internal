@@ -5,95 +5,145 @@ const { editHref, showTocToggle = false } = Astro.props;
 <div
   class="floating-toolbar"
   id="examToolbar"
+  data-expanded="false"
 >
-
-  <button
-    class="floating-toolbar-control cursor-pointer transition-opacity active:scale-95"
-    id="backToTop"
-    type="button"
-    aria-label="回到顶部"
-    data-tooltip="回到顶部"
+  <div
+    class="floating-toolbar-actions"
+    id="examToolbarActions"
   >
-    <svg aria-hidden="true" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-      <path d="M18 15l-6-6-6 6"></path>
-    </svg>
-  </button>
-  {
-    showTocToggle && (
-      <button
-        class="floating-toolbar-control exam-toolbar-toc-toggle cursor-pointer active:scale-95"
-        id="examTocMobileToggle"
-        type="button"
-        aria-label="显示目录"
-        aria-expanded="false"
-        data-tooltip="目录"
-      >
-        <svg
-          aria-hidden="true"
-          class="h-5 w-5"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
+    <button
+      class="floating-toolbar-control cursor-pointer transition-opacity active:scale-95"
+      id="backToTop"
+      type="button"
+      aria-label="回到顶部"
+      data-tooltip="回到顶部"
+      data-toolbar-action
+    >
+      <svg aria-hidden="true" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+        <path d="M18 15l-6-6-6 6"></path>
+      </svg>
+    </button>
+    {
+      showTocToggle && (
+        <button
+          class="floating-toolbar-control exam-toolbar-toc-toggle cursor-pointer active:scale-95"
+          id="examTocMobileToggle"
+          type="button"
+          aria-label="显示目录"
+          aria-expanded="false"
+          data-tooltip="目录"
+          data-toolbar-action
         >
-          <path d="M9 6h10"></path>
-          <path d="M9 12h10"></path>
-          <path d="M9 18h10"></path>
-          <circle cx="5" cy="6" r="1" fill="currentColor" stroke="none"></circle>
-          <circle cx="5" cy="12" r="1" fill="currentColor" stroke="none"></circle>
-          <circle cx="5" cy="18" r="1" fill="currentColor" stroke="none"></circle>
-        </svg>
-      </button>
-    )
-  }
-  {
-    editHref && (
-      <a
-        class="no-underline floating-toolbar-control active:scale-95"
-        href={editHref}
-        aria-label="在 GitHub 上编辑"
-        data-tooltip="在 GitHub 上编辑"
-      >
-        <svg aria-hidden="true" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-          <path d="M12 20h9"></path>
-          <path d="m16.5 3.5 4 4L8 20l-5 1 1-5 12.5-12.5Z"></path>
-        </svg>
-      </a>
-    )
-  }
+          <svg
+            aria-hidden="true"
+            class="h-5 w-5"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          >
+            <path d="M9 6h10"></path>
+            <path d="M9 12h10"></path>
+            <path d="M9 18h10"></path>
+            <circle cx="5" cy="6" r="1" fill="currentColor" stroke="none"></circle>
+            <circle cx="5" cy="12" r="1" fill="currentColor" stroke="none"></circle>
+            <circle cx="5" cy="18" r="1" fill="currentColor" stroke="none"></circle>
+          </svg>
+        </button>
+      )
+    }
+    {
+      editHref && (
+        <a
+          class="no-underline floating-toolbar-control active:scale-95"
+          href={editHref}
+          aria-label="在 GitHub 上编辑"
+          data-tooltip="在 GitHub 上编辑"
+          data-toolbar-action
+        >
+          <svg aria-hidden="true" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+            <path d="M12 20h9"></path>
+            <path d="m16.5 3.5 4 4L8 20l-5 1 1-5 12.5-12.5Z"></path>
+          </svg>
+        </a>
+      )
+    }
+    <button
+      class="floating-toolbar-control cursor-pointer active:scale-95"
+      id="examPrint"
+      type="button"
+      aria-label="打印试卷"
+      data-tooltip="打印试卷"
+      data-toolbar-action
+    >
+      <svg aria-hidden="true" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8">
+        <polyline points="6 9 6 2 18 2 18 9"></polyline>
+        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+        <rect x="6" y="14" width="12" height="8"></rect>
+      </svg>
+    </button>
+    <button
+      class="floating-toolbar-control cursor-pointer active:scale-95 disabled:cursor-default disabled:opacity-50"
+      id="examAnswersToggle"
+      type="button"
+      aria-label="显示全部答案"
+      aria-pressed="false"
+      data-tooltip="显示全部答案"
+      data-toolbar-action
+    >
+      <svg aria-hidden="true" class="h-5 w-5" data-exam-toggle-icon="show" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8">
+        <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6Z"></path>
+        <circle cx="12" cy="12" r="3"></circle>
+      </svg>
+      <svg aria-hidden="true" class="h-5 w-5" data-exam-toggle-icon="hide" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8">
+        <path d="M3 3l18 18"></path>
+        <path d="M10.6 10.7a2 2 0 0 0 2.7 2.7"></path>
+        <path d="M9.4 5.6A10.7 10.7 0 0 1 12 5.2c6.4 0 10 6 10 6a17.7 17.7 0 0 1-4.1 4.6"></path>
+        <path d="M6.2 6.3C3.7 8 2 10.8 2 10.8s3.6 6 10 6c1.2 0 2.4-.2 3.4-.6"></path>
+      </svg>
+    </button>
+  </div>
   <button
-    class="floating-toolbar-control cursor-pointer active:scale-95"
-    id="examPrint"
+    class="floating-toolbar-control floating-toolbar-toggle cursor-pointer active:scale-95"
+    id="examToolbarToggle"
     type="button"
-    aria-label="打印试卷"
-    data-tooltip="打印试卷"
+    aria-label="展开工具栏"
+    aria-expanded="false"
+    aria-controls="examToolbarActions"
+    data-tooltip="展开工具栏"
   >
-    <svg aria-hidden="true" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8">
-      <polyline points="6 9 6 2 18 2 18 9"></polyline>
-      <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
-      <rect x="6" y="14" width="12" height="8"></rect>
+    <svg
+      aria-hidden="true"
+      class="h-5 w-5"
+      data-toolbar-toggle-icon="open"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+    >
+      <path d="M12 5v14"></path>
+      <path d="M5 12h14"></path>
     </svg>
-  </button>
-  <button
-    class="floating-toolbar-control cursor-pointer active:scale-95 disabled:cursor-default disabled:opacity-50"
-    id="examAnswersToggle"
-    type="button"
-    aria-label="显示全部答案"
-    aria-pressed="false"
-    data-tooltip="显示全部答案"
-  >
-    <svg aria-hidden="true" class="h-5 w-5" data-exam-toggle-icon="show" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8">
-      <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6Z"></path>
-      <circle cx="12" cy="12" r="3"></circle>
-    </svg>
-    <svg aria-hidden="true" class="h-5 w-5" data-exam-toggle-icon="hide" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8">
-      <path d="M3 3l18 18"></path>
-      <path d="M10.6 10.7a2 2 0 0 0 2.7 2.7"></path>
-      <path d="M9.4 5.6A10.7 10.7 0 0 1 12 5.2c6.4 0 10 6 10 6a17.7 17.7 0 0 1-4.1 4.6"></path>
-      <path d="M6.2 6.3C3.7 8 2 10.8 2 10.8s3.6 6 10 6c1.2 0 2.4-.2 3.4-.6"></path>
+    <svg
+      aria-hidden="true"
+      class="h-5 w-5"
+      data-toolbar-toggle-icon="close"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+    >
+      <path d="m18 6-12 12"></path>
+      <path d="M6 6l12 12"></path>
     </svg>
   </button>
 </div>
@@ -203,9 +253,48 @@ const { editHref, showTocToggle = false } = Astro.props;
 </style>
 
 <script is:inline>
+  var examToolbar = document.getElementById("examToolbar");
+  var examToolbarToggle = document.getElementById("examToolbarToggle");
   var examAnswersToggle = document.getElementById("examAnswersToggle");
   var backToTop = document.getElementById("backToTop");
   var examPrint = document.getElementById("examPrint");
+  var setExamToolbarExpanded = function(expanded) {
+    if (!(examToolbar instanceof HTMLElement)) return;
+    examToolbar.dataset.expanded = expanded ? "true" : "false";
+    if (examToolbarToggle instanceof HTMLButtonElement) {
+      examToolbarToggle.setAttribute("aria-expanded", String(expanded));
+      examToolbarToggle.setAttribute(
+        "aria-label",
+        expanded ? "收起工具栏" : "展开工具栏",
+      );
+      examToolbarToggle.dataset.tooltip = expanded ? "收起工具栏" : "展开工具栏";
+    }
+  };
+  var toggleExamToolbarExpanded = function() {
+    setExamToolbarExpanded(examToolbar?.dataset.expanded !== "true");
+  };
+
+  setExamToolbarExpanded(false);
+  examToolbarToggle?.addEventListener("click", function(event) {
+    event.stopPropagation();
+    toggleExamToolbarExpanded();
+  });
+  examToolbar?.querySelectorAll("[data-toolbar-action]").forEach(function(control) {
+    control.addEventListener("click", function() {
+      setExamToolbarExpanded(false);
+    });
+  });
+  document.addEventListener("click", function(event) {
+    if (!(examToolbar instanceof HTMLElement) || examToolbar.dataset.expanded !== "true")
+      return;
+    if (examToolbar.contains(event.target))
+      return;
+    setExamToolbarExpanded(false);
+  });
+  document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape")
+      setExamToolbarExpanded(false);
+  });
 
   // Back to top
   var updateBackToTopVisibility = function() {

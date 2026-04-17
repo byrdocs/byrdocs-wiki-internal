@@ -1,11 +1,22 @@
 {
   "version": "0.2.0",
   "configurations": [
+    // {
+    //   "command": "./node_modules/.bin/astro dev",
+    //   "name": "Development server",
+    //   "request": "launch",
+    //   "type": "node-terminal"
+    // },
     {
-      "command": "./node_modules/.bin/astro dev",
-      "name": "Development server",
+      "name": "Debug BYR Docs Wiki Extension",
+      "type": "extensionHost",
       "request": "launch",
-      "type": "node-terminal"
+      "runtimeExecutable": "${execPath}",
+      "args": [
+        "--extensionDevelopmentPath=${workspaceFolder}/vscode-extension",
+        "--folder-uri=${workspaceFolder}"
+      ],
+      "outFiles": ["${workspaceFolder}/vscode-extension/dist/**/*.js"]
     }
   ]
 }

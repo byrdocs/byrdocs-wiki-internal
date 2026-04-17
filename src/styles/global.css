@@ -114,7 +114,10 @@
     @apply mt-8 mb-4 text-xl font-semibold tracking-tight text-slate-950 dark:text-white;
   }
   :where(.floating-toolbar) {
-    @apply fixed bottom-6 right-4 z-50 flex flex-col gap-2 sm:bottom-8 sm:right-6;
+    @apply fixed right-4 bottom-6 z-50 flex flex-col items-end sm:right-6 sm:bottom-8;
+  }
+  :where(.floating-toolbar-actions) {
+    @apply flex flex-col gap-2;
   }
   :where(.floating-toolbar-control) {
     @apply relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 no-underline shadow-md dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300;
@@ -158,11 +161,66 @@
     outline: 2px solid rgb(59 130 246 / 0.45);
     outline-offset: 2px;
   }
+  :where(.floating-toolbar-toggle) {
+    display: none;
+  }
+  :where(.floating-toolbar-toggle [data-toolbar-toggle-icon]) {
+    position: absolute;
+    transition:
+      opacity 0.18s ease,
+      transform 0.18s ease;
+  }
+  :where(.floating-toolbar-toggle [data-toolbar-toggle-icon="open"]) {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  :where(.floating-toolbar-toggle [data-toolbar-toggle-icon="close"]) {
+    opacity: 0;
+    transform: scale(0.72) rotate(-90deg);
+  }
+  :where(.floating-toolbar[data-expanded="true"] .floating-toolbar-toggle [data-toolbar-toggle-icon="open"]) {
+    opacity: 0;
+    transform: scale(0.72) rotate(90deg);
+  }
+  :where(.floating-toolbar[data-expanded="true"] .floating-toolbar-toggle [data-toolbar-toggle-icon="close"]) {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
   .dark :where(.floating-toolbar-control)::before {
     border-color: rgb(51 65 85 / 0.95);
     background: rgb(15 23 42 / 0.96);
     color: rgb(226 232 240 / 0.96);
     box-shadow: 0 12px 28px rgb(2 6 23 / 0.32);
+  }
+  @media (max-width: 639px) {
+    :where(.floating-toolbar-toggle) {
+      display: inline-flex;
+    }
+    :where(.floating-toolbar-actions) {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(0.5rem) scale(0.96);
+      transform-origin: bottom right;
+      visibility: hidden;
+      transition:
+        max-height 0.18s ease,
+        opacity 0.18s ease,
+        transform 0.18s ease,
+        visibility 0s linear 0.18s;
+    }
+    :where(.floating-toolbar[data-expanded="true"] .floating-toolbar-actions) {
+      max-height: 24rem;
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+      visibility: visible;
+      transition-delay: 0s;
+    }
+    :where(.floating-toolbar[data-expanded="true"] .floating-toolbar-toggle) {
+      margin-top: 0.5rem;
+    }
   }
   @media (hover: none) {
     :where(.floating-toolbar-control)::before {

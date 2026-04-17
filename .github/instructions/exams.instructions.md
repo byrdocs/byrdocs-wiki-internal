@@ -6,7 +6,7 @@ Review these files against the exam editing rules in [src/others/guide.mdx](../.
 
 Write all review summaries, findings, suggestions, and comments in Chinese.
 
-Check whether the exam structure is correct. Exams without assets should use `exams/<试卷名>.mdx`. Exams with assets should use `exams/<试卷名>/index.mdx` and keep the related image or audio files in that same directory. Files under `public/` should not be introduced for exam assets.
+Check whether the exam structure is correct. Every exam should use `exams/<试卷名>/index.mdx` and keep any related image or audio files in that same directory. Files under `public/` should not be introduced for exam assets.
 
 Check whether the exam filename or directory name is precise, unique, and uses the repository naming convention.
 

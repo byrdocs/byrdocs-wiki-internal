@@ -1,7 +1,8 @@
 import { readdir, readFile } from "node:fs/promises";
-import { join, resolve, extname } from "node:path";
+import { join, extname } from "node:path";
 import { statSync, createReadStream } from "node:fs";
 import type { IncomingMessage, ServerResponse } from "node:http";
+import { examsDir, getExamDirectories } from "../utils/examDirectories";
 
 const ASSET_EXTENSIONS = new Set([".svg", ".png", ".jpg", ".jpeg", ".webp", ".gif", ".mp3", ".wav"]);
 
@@ -17,7 +18,6 @@ const MIME_TYPES: Record<string, string> = {
 };
 
 export default function viteExamAssets() {
-    const examsDir = resolve("exams");
     let isBuild = false;
     return {
         name: "exam-assets",
@@ -26,16 +26,13 @@ export default function viteExamAssets() {
         },
         async buildStart(this: { emitFile(file: { type: "asset"; fileName: string; source: Buffer }): string }) {
             if (!isBuild) return;
-            const examDirs = await readdir(examsDir, { withFileTypes: true });
-            for (const entry of examDirs) {
-                if (!entry.isDirectory()) continue;
-                const examDir = join(examsDir, entry.name);
+            for (const { name, path: examDir } of getExamDirectories()) {
                 const files = await readdir(examDir);
                 for (const file of files) {
                     if (ASSET_EXTENSIONS.has(extname(file).toLowerCase())) {
                         this.emitFile({
                             type: "asset",
-                            fileName: `exam/${entry.name}/${file}`,
+                            fileName: `exam/${name}/${file}`,
                             source: await readFile(join(examDir, file)),
                         });
                     }
