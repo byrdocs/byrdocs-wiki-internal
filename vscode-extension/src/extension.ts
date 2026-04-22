@@ -365,13 +365,9 @@ async function ensureMdxWordWrapForWikiWorkspaces(): Promise<void> {
         "",
         workspaceFolder.uri,
       );
-      const rawMdxConfiguration = configuration.get<unknown>("[mdx]");
-      const mdxConfiguration =
-        rawMdxConfiguration &&
-        typeof rawMdxConfiguration === "object" &&
-        !Array.isArray(rawMdxConfiguration)
-          ? (rawMdxConfiguration as Record<string, unknown>)
-          : {};
+      const mdxConfiguration = toConfigurationRecord(
+        configuration.get<unknown>("[mdx]"),
+      );
       if (mdxConfiguration["editor.wordWrap"] === "on") {
         continue;
       }
@@ -390,4 +386,11 @@ async function ensureMdxWordWrapForWikiWorkspaces(): Promise<void> {
       logOutput("set mdx wordWrap failed", workspaceFolder.uri, message);
     }
   }
+}
+
+function toConfigurationRecord(value: unknown): Record<string, unknown> {
+  if (value && typeof value === "object" && !Array.isArray(value)) {
+    return value as Record<string, unknown>;
+  }
+  return {};
 }
