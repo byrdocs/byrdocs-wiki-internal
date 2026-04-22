@@ -144,9 +144,7 @@ export function activate(context: vscode.ExtensionContext): void {
         scheduleExamListRefresh("text document saved", document.uri);
       }
       if (path.basename(document.fileName) === "package.json") {
-        void refreshEnabledContext().then(() =>
-          ensureMdxWordWrapForWikiWorkspaces(),
-        );
+        void refreshEnabledContext();
       }
     }),
     vscode.workspace.onDidCreateFiles((event) => {
@@ -199,7 +197,6 @@ export function activate(context: vscode.ExtensionContext): void {
     }),
     vscode.workspace.onDidChangeWorkspaceFolders(() => {
       void refreshEnabledContext();
-      void ensureMdxWordWrapForWikiWorkspaces();
       resetExamIndexWatchers();
       createExamPageViewProvider.refresh();
       refreshAllOpenFigureDiagnostics(figureDiagnosticCollection);
@@ -215,7 +212,6 @@ export function activate(context: vscode.ExtensionContext): void {
 
   logOutput("activate");
   void refreshEnabledContext();
-  void ensureMdxWordWrapForWikiWorkspaces();
   refreshAllOpenFigureDiagnostics(figureDiagnosticCollection);
 }
 
@@ -358,39 +354,4 @@ function describeExamResourceMatch(match: {
   return "ignored";
 }
 
-async function ensureMdxWordWrapForWikiWorkspaces(): Promise<void> {
-  for (const workspaceFolder of getWikiWorkspaceFolders()) {
-    try {
-      const configuration = vscode.workspace.getConfiguration(
-        "",
-        workspaceFolder.uri,
-      );
-      const mdxConfiguration = toConfigurationRecord(
-        configuration.get<unknown>("[mdx]"),
-      );
-      if (mdxConfiguration["editor.wordWrap"] === "on") {
-        continue;
-      }
 
-      await configuration.update(
-        "[mdx]",
-        {
-          ...mdxConfiguration,
-          "editor.wordWrap": "on",
-        },
-        vscode.ConfigurationTarget.WorkspaceFolder,
-      );
-      logOutput("set mdx wordWrap", workspaceFolder.uri);
-    } catch (error) {
-      const message = error instanceof Error ? error.message : String(error);
-      logOutput("set mdx wordWrap failed", workspaceFolder.uri, message);
-    }
-  }
-}
-
-function toConfigurationRecord(value: unknown): Record<string, unknown> {
-  if (value && typeof value === "object" && !Array.isArray(value)) {
-    return value as Record<string, unknown>;
-  }
-  return {};
-}
