@@ -353,5 +353,3 @@ function describeExamResourceMatch(match: {
   }
   return "ignored";
 }
-
-
