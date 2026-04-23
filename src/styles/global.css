@@ -308,6 +308,15 @@
   :where(.wiki-content blockquote) {
     @apply my-4 rounded-r-xl border-l-4 border-slate-300 bg-slate-100/80 px-4 py-3 text-slate-700 dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-200;
   }
+  :where(.wiki-content .katex-display) {
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
+  :where(.wiki-content .katex-display > .katex) {
+    min-width: max-content;
+  }
   :where(.wiki-content table) {
     @apply w-full border-collapse border border-slate-200 text-sm shadow-sm dark:border-slate-800;
   }
