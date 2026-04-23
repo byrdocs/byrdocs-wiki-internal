@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg baseProfile="full" height="700" version="1.1" width="410" xmlns="http://www.w3.org/2000/svg"
+     xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs/>
+    <!-- Grid Cell Outlines (Removed Fill) -->
+    <rect fill="white" height="50" stroke="black" width="50" x="80" y="80"/> <!-- Original white, no X -->
+    <rect fill="white" height="50" stroke="black" width="50" x="80" y="130"/>
+    <rect fill="white" height="50" stroke="black" width="50" x="130" y="130"/>
+    <rect fill="white" height="50" stroke="black" width="50" x="80" y="180"/>
+    <rect fill="white" height="50" stroke="black" width="50" x="130" y="180"/>
+    <rect fill="white" height="50" stroke="black" width="50" x="180" y="180"/>
+    <rect fill="white" height="50" stroke="black" width="50" x="80" y="230"/>
+    <rect fill="white" height="50" stroke="black" width="50" x="130" y="230"/>
+    <rect fill="white" height="50" stroke="black" width="50" x="180" y="230"/>
+    <rect fill="white" height="50" stroke="black" width="50" x="230" y="230"/>
+    <rect fill="white" height="50" stroke="black" width="50" x="80" y="280"/>
+    <rect fill="white" height="50" stroke="black" width="50" x="130" y="280"/>
+    <rect fill="white" height="50" stroke="black" width="50" x="180" y="280"/>
+    <rect fill="white" height="50" stroke="black" width="50" x="230" y="280"/>
+    <rect fill="white" height="50" stroke="black" width="50" x="280" y="280"/> <!-- Original white, no X -->
+    <rect fill="white" height="50" stroke="black" width="50" x="80" y="330"/>
+    <rect fill="white" height="50" stroke="black" width="50" x="130" y="330"/>
+    <rect fill="white" height="50" stroke="black" width="50" x="180" y="330"/>
+    <rect fill="white" height="50" stroke="black" width="50" x="230" y="330"/>
+    <rect fill="white" height="50" stroke="black" width="50" x="280" y="330"/> <!-- Original white, no X -->
+    <rect fill="white" height="50" stroke="black" width="50" x="330" y="330"/> <!-- Original white, no X -->
+
+    <!-- "X" Marks (Colored) -->
+    <!-- Calculated center: x + 25, y + 25 -->
+    <!-- No X for original white cells -->
+    <text x="105" y="160" text-anchor="middle" alignment-baseline="middle" font-size="40" fill="#0000FF">X</text> <!-- Blue X -->
+    <text x="155" y="160" text-anchor="middle" alignment-baseline="middle" font-size="40" fill="#0000FF">X</text> <!-- Blue X -->
+    <text x="105" y="210" text-anchor="middle" alignment-baseline="middle" font-size="40" fill="#0000FF">X</text> <!-- Blue X -->
+    <text x="155" y="210" text-anchor="middle" alignment-baseline="middle" font-size="40" fill="#0000FF">X</text> <!-- Blue X -->
+    <text x="205" y="210" text-anchor="middle" alignment-baseline="middle" font-size="40" fill="#00FF00">X</text> <!-- Green X -->
+    <text x="105" y="260" text-anchor="middle" alignment-baseline="middle" font-size="40" fill="#FF0000">X</text> <!-- Red X -->
+    <text x="155" y="260" text-anchor="middle" alignment-baseline="middle" font-size="40" fill="#FF0000">X</text> <!-- Red X -->
+    <text x="205" y="260" text-anchor="middle" alignment-baseline="middle" font-size="40" fill="#FF0000">X</text> <!-- Red X -->
+    <text x="255" y="260" text-anchor="middle" alignment-baseline="middle" font-size="40" fill="#FF0000">X</text> <!-- Red X -->
+    <text x="105" y="310" text-anchor="middle" alignment-baseline="middle" font-size="40" fill="#FF0000">X</text> <!-- Red X -->
+    <text x="155" y="310" text-anchor="middle" alignment-baseline="middle" font-size="40" fill="#FF0000">X</text> <!-- Red X -->
+    <text x="205" y="310" text-anchor="middle" alignment-baseline="middle" font-size="40" fill="#FF0000">X</text> <!-- Red X -->
+    <text x="255" y="310" text-anchor="middle" alignment-baseline="middle" font-size="40" fill="#FF0000">X</text> <!-- Red X -->
+    <!-- No X for x=280, y=280 (white) -->
+    <text x="105" y="360" text-anchor="middle" alignment-baseline="middle" font-size="40" fill="#FF0000">X</text> <!-- Red X -->
+    <text x="155" y="360" text-anchor="middle" alignment-baseline="middle" font-size="40" fill="#FF0000">X</text> <!-- Red X -->
+    <text x="205" y="360" text-anchor="middle" alignment-baseline="middle" font-size="40" fill="#FF0000">X</text> <!-- Red X -->
+    <text x="255" y="360" text-anchor="middle" alignment-baseline="middle" font-size="40" fill="#FF0000">X</text> <!-- Red X -->
+    <!-- No X for x=280, y=330 (white) -->
+    <!-- No X for x=330, y=330 (white) -->
+
+    <!-- Vertical Labels (Unchanged Position) -->
+    <text alignment-baseline="middle" fill="black" font-size="20" text-anchor="middle" x="55.0" y="105.0">2</text>
+    <text alignment-baseline="middle" fill="black" font-size="20" text-anchor="middle" x="55.0" y="155.0">3</text>
+    <text alignment-baseline="middle" fill="black" font-size="20" text-anchor="middle" x="55.0" y="205.0">4</text>
+    <text alignment-baseline="middle" fill="black" font-size="20" text-anchor="middle" x="55.0" y="255.0">5</text>
+    <text alignment-baseline="middle" fill="black" font-size="20" text-anchor="middle" x="55.0" y="305.0">6</text>
+    <text alignment-baseline="middle" fill="black" font-size="20" text-anchor="middle" x="55.0" y="355.0">7</text>
+
+    <!-- Horizontal Labels (Moved Below Grid) -->
+    <!-- Grid ends at y=330+50 = 380. Placing labels at y=395 -->
+    <text alignment-baseline="middle" fill="black" font-size="20" text-anchor="middle" x="105.0" y="395">1</text>
+    <text alignment-baseline="middle" fill="black" font-size="20" text-anchor="middle" x="155.0" y="395">2</text>
+    <text alignment-baseline="middle" fill="black" font-size="20" text-anchor="middle" x="205.0" y="395">3</text>
+    <text alignment-baseline="middle" fill="black" font-size="20" text-anchor="middle" x="255.0" y="395">4</text>
+    <text alignment-baseline="middle" fill="black" font-size="20" text-anchor="middle" x="305.0" y="395">5</text>
+    <text alignment-baseline="middle" fill="black" font-size="20" text-anchor="middle" x="355.0" y="395">6</text>
+</svg>

@@ -738,6 +738,10 @@ import byrdocsPreviewSyncPlugin from ${JSON.stringify(
 
 const config = originalConfig || {};
 const viteConfig = config.vite || {};
+const devToolbarConfig =
+  config.devToolbar && typeof config.devToolbar === "object"
+    ? config.devToolbar
+    : {};
 const vitePlugins = Array.isArray(viteConfig.plugins)
   ? viteConfig.plugins
   : viteConfig.plugins
@@ -746,6 +750,10 @@ const vitePlugins = Array.isArray(viteConfig.plugins)
 
 export default {
   ...config,
+  devToolbar: {
+    ...devToolbarConfig,
+    enabled: false,
+  },
   vite: {
     ...viteConfig,
     plugins: [...vitePlugins, byrdocsPreviewSyncPlugin()],

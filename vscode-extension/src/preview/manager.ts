@@ -2,6 +2,9 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 import * as vscode from "vscode";
 import {
+  PREVIEW_SERVER_HOST,
+  PREVIEW_SERVER_PORT_SEARCH_LIMIT,
+  PREVIEW_SERVER_START_PORT,
   PREVIEW_TERMINAL_NAME,
   SERVER_DETECTION_TIMEOUT_MS,
   SERVER_PING_INTERVAL_MS,
@@ -24,6 +27,7 @@ import { getCommandTargetUri, getWikiWorkspaceFolderForUri } from "../workspace"
 import { appendPathToUri, getAdjacentPreviewViewColumn, getAdjacentSourceViewColumn, pickClosestViewColumn } from "./layout";
 import { renderPreviewPanelHtml } from "./panelHtml";
 import {
+  findAvailableLocalServerBaseUri,
   parseServerBaseUriFromTerminalOutput,
   pingServer,
   waitForServerUri,
@@ -334,7 +338,23 @@ export class ExamPreviewManager {
     this.externalBaseUri = null;
     this.serverOriginParsePromise = null;
     this.waitForServerPromise = null;
-    const previewCommand = await this.buildPreviewCommand(workspaceFolder);
+    const previewServerBaseUri = await findAvailableLocalServerBaseUri(
+      PREVIEW_SERVER_HOST,
+      PREVIEW_SERVER_START_PORT,
+      PREVIEW_SERVER_PORT_SEARCH_LIMIT,
+    );
+    if (!previewServerBaseUri) {
+      this.statusDetail = "Failed to allocate preview port";
+      await this.updatePanel("starting");
+      return;
+    }
+
+    this.localServerBaseUri = previewServerBaseUri;
+    this.serverOriginParsePromise = Promise.resolve(previewServerBaseUri);
+    const previewCommand = await this.buildPreviewCommand(
+      workspaceFolder,
+      previewServerBaseUri,
+    );
     for (const terminal of vscode.window.terminals) {
       if (terminal.name === PREVIEW_TERMINAL_NAME) {
         terminal.dispose();
@@ -358,18 +378,14 @@ export class ExamPreviewManager {
       this.statusDetail = "终端未就绪";
       this.terminal.sendText(previewCommand);
       this.terminal.show(true);
-      this.serverOriginParsePromise = Promise.resolve(null);
       await this.updatePanel("starting");
       return;
     }
 
     this.statusDetail = "启动开发服务器";
     await this.updatePanel("starting");
-    const execution = shellIntegration.executeCommand(previewCommand);
+    shellIntegration.executeCommand(previewCommand);
     this.terminal.show(true);
-    this.serverOriginParsePromise = this.captureServerOriginFromExecution(
-      execution,
-    );
   }
 
   private async tryReconnectServer(baseUri: vscode.Uri): Promise<boolean> {
@@ -479,17 +495,21 @@ export class ExamPreviewManager {
 
   private async buildPreviewCommand(
     workspaceFolder: vscode.WorkspaceFolder,
+    baseUri: vscode.Uri,
   ): Promise<string> {
+    const serverUrl = new URL(baseUri.toString());
+    const host = serverUrl.hostname;
+    const port = serverUrl.port || "4321";
     const previewConfigPath = await this.ensurePreviewSyncRuntime(workspaceFolder);
     if (!previewConfigPath) {
-      return "pnpm i && pnpm dev";
+      return `pnpm i && pnpm exec astro dev --host ${host} --port ${port} --strictPort`;
     }
 
     const relativeConfigPath = path.relative(
       workspaceFolder.uri.fsPath,
       previewConfigPath,
     );
-    return `pnpm i && pnpm exec astro --config ${relativeConfigPath} dev`;
+    return `pnpm i && pnpm exec astro --config ${JSON.stringify(relativeConfigPath)} dev --host ${host} --port ${port} --strictPort`;
   }
 
   private async ensurePreviewSyncRuntime(

@@ -1,0 +1,284 @@
+---
+时间: 2024-2025学年第二学期
+科目: 形式语言与自动机
+阶段: 期中
+类型: 本科
+答案完成度: 完整
+学院:
+- 计算机学院
+---
+
+## 1. (15分)
+
+构造文法能够产生下列语言，并指明文法类型。
+
+1. $L_1=\{a^n b^{m+1} \mid m, n \geq 0\}$
+<Solution>
+    设文法 $G_1 = (N_1, \Sigma_1, P_1, S)$，其中
+
+    $N_1 = \{S, B\}$
+
+    $\Sigma_1 = \{a, b\}$
+
+    $P_1$ 包含以下产生式：
+
+    1. $S \to aS$
+    2. $S \to bB$
+    3. $S \to b$
+    4. $B \to bB$
+    5. $B \to b$
+
+    语言 $L_1$ 是正则语言。（产生式可有多种答案，此处仅给出其中一种）
+</Solution>
+
+1. $L_2=\{ w \mid w \text{ 由字符 } \{0, 1\} \text{ 构成，且 0 和 1 的个数相等}\}$
+<Solution>
+    设文法 $G_2 = (N_2, \Sigma_2, P_2, S)$，其中
+
+    $N_2 = \{S\}$
+
+    $\Sigma_2 = \{0, 1\}$
+
+    $P_2$ 包含以下产生式：
+
+    1. $S \to \varepsilon$
+    2. $S \to 0S1$
+    3. $S \to 1S0$
+    4. $S \to SS$
+
+    语言 $L_2$ 是上下文无关语言。
+</Solution>
+
+## 2. （15分）
+
+已知右线性文法 G = (\{S, A\}, \{0, 1\}, P, S) 其中 P: S—>0A, A—> 1A | 0S | 1，构造与之等价的有限自动机，并将其转化为确定的有限自动机，并采用格局的方法写出 01001 的识别过程。
+
+<Solution>
+    <Figure src="第2题-不确定自动机.svg">
+        自动机
+    </Figure>
+
+    <Figure src="第2题-确定自动机.svg">
+        确定自动机
+    </Figure>
+
+    $$
+    (\{S\}, 01001) \vdash (\{A\}, 1001) \vdash (\{A,B\}, 001) \vdash (\{S\}, 01) \vdash (\{A\}, 1) \vdash (\{A,B\}, \varepsilon)
+    $$
+</Solution>
+
+## 3. （6分）
+
+已知右线性文法 G, 用正则表达式表示文法所产生的语言。
+
+$$
+G=(\{S, A, B\}, \{0,1\}, P,S)
+$$
+
+生成式 $P$ 如下:
+
+$$
+S\to0A \quad S\to1B \quad S\to1
+$$
+
+$$
+A\to1A \quad A\to0
+$$
+
+$$
+B\to1S
+$$
+
+<Solution>
+    $$
+    L(G) = (11)^*(01^*0 + 1)
+    $$
+</Solution>
+
+## 4. （10分）
+
+使用泵浦引理，证明集合 $\{ a^k b^k c \mid k \geq 1\}$ 不是正则集。
+
+<Solution>
+    假设集合 $L = \{ a^kb^kc \mid k \geq 1 \}$ 是正则的。根据泵浦引理，存在一个泵浦长度 p $\geq$ 1，使得任何字符串 w $\in$ L 且 $|w| \geq p$，都可以被分解为 $w = xyz$，满足以下条件：
+
+    $|xy| \leq p$
+
+    $|y| \geq 1$
+
+    对于所有 $i \geq 0$，$xy^iz \in L$
+
+    选择字符串 $w = a^pb^pc$。显然 $w \in L$ 且 $|w| = 2p + 1 \geq p$。
+
+    由于 $|xy| \leq p$ 且 w 以 $a^p$ 开头，所以子串 xy 必定只包含 a。又因为 $|y| \geq 1$，所以 y 必须是 $a^j$ 的形式，其中 $1 \leq j \leq p$。
+
+    因此，$x = a^m$，$y = a^j$，$z = a^{(p-m-j)}b^pc$，其中 $m+j \leq p$。
+
+    现在考虑 $i = 0$ 的情况，即泵浦串 $xy^0z = xz$。
+
+    $xz = a^m a^{(p-m-j)}b^pc = a^{(p-j)}b^pc$。
+
+    由于 $j \geq 1$，所以 $p-j < p$。因此，在字符串 xz 中，a 的数量 $(p-j)$ 不等于 b 的数量 $(p)$。
+
+    所以，$xz \notin L$。
+
+    这与泵浦引理的条件 (3) 相矛盾。因此，最初的假设是错误的。
+
+    故集合 $\{ a^kb^kc \mid k \geq 1 \}$ 不是正则集。
+</Solution>
+
+## 5. （10分）
+
+<Figure src="题图5.svg" float>
+    第五题图
+</Figure>
+
+采用填表法化简下面的自动机，求出最简自动机。
+
+<Solution>
+    <Figure src="第5题-填表法.svg">
+        填表法
+    </Figure>
+
+    状态1与2等价，状态5、6、7相互等价。
+
+    $$
+    \begin{array}{llll}
+    \text{状态} & \text{输入 'a'} & \text{输入 'b'} \\
+    \hline
+    \{1,2\} & \{5,6,7\} & \{3\} \\
+    \{3\} & \{1,2\} & \{5,6,7\}  \\
+    \{4\} & \{4\} & \{5,6,7\}  \\
+    \{5,6,7\} & \{4\} & \{1,2\} \\
+    \end{array}
+    $$
+
+    <Figure src="第5题-最简自动机.svg">
+        自动机
+    </Figure>
+</Solution>
+
+## 6. （20分）
+
+将下面的ε-NFA 转换为 DFA，并给出右线性文法。
+
+<table border="1" style="border-collapse: collapse;">
+    <tr><th></th><th>ε</th><th>a</th><th>b</th></tr>
+    <tr><td>-&gt;q0</td><td>\{q1\}</td><td>\{q2\}</td><td>Φ</td></tr>
+    <tr><td>q1</td><td>Φ</td><td>\{q1\}</td><td>\{q1,q2\}</td></tr>
+    <tr><td>*q2</td><td>Φ</td><td>\{q0\}</td><td>Φ</td></tr>
+</table>
+
+<Solution>
+    $\varepsilon$-closure(q0) = $\{q0, q1\}$
+
+    $\varepsilon$-closure(q1) = $\{q1\}$
+
+    $\varepsilon$-closure(q2) = $\{q2\}$
+
+    $A = \varepsilon$-closure(q0) = $\{q0, q1\}$
+
+    $B = \{q1, q2\}$
+
+    状态 A 不包含 q2，不是接受状态。
+    状态 B 包含 q2，是接受状态。
+
+    $$
+    \begin{array}{|c|c|c|}
+    \hline
+            & a & b \\
+    \hline
+    \rightarrow A & B & B \\
+    \hline
+    *B      & A & B \\
+    \hline
+    \end{array}
+    $$
+
+    $G = (V, \Sigma, S, P)$
+
+    $V = \{A, B\}$
+
+    $\Sigma = \{a, b\}$
+
+    $S = A$
+
+    $P:$
+
+    1. $A \to a B$
+    2. $A \to b B$
+    3. $B \to a A$
+    4. $B \to b B$
+    5. $B \to \varepsilon$
+</Solution>
+
+## 7. （20分）
+
+设计有限自动机，米兰机和摩尔机，输入是 a, b 组成的串，要求 能够识别字符串 $a^n b$($n>0$)。
+
+<Solution>
+    <Figure src="第7题-有限自动机.svg" float>
+        有限自动机
+    </Figure>
+
+    有限自动机
+
+    $$
+    \begin{array}{|c|c|c|}
+    \hline
+    \text{当前状态} & \text{输入 a} & \text{输入 b} \\
+    \hline
+    \rightarrow q_0 & q_1 & q_{\text{dead}} \\
+    \hline
+    q_1 & q_1 & q_2 \\
+    \hline
+    *q_2 & q_{\text{dead}} & q_{\text{dead}} \\
+    \hline
+    q_{\text{dead}} & q_{\text{dead}} & q_{\text{dead}} \\
+    \hline
+    \end{array}
+    $$
+
+    <Figure src="第7题-米兰机.svg" float>
+        米兰机
+    </Figure>
+
+    米兰机
+
+    $$
+    \begin{array}{|c|c|c|}
+    \hline
+    \text{当前状态} & \text{输入 a} & \text{输入 b} \\
+    \hline
+    \rightarrow q_0 & q_1 / 0 & q_{\text{dead}} / 0 \\
+    \hline
+    q_1 & q_1 / 0 & q_2 / 1 \\
+    \hline
+    q_2 & q_{\text{dead}} / 0 & q_{\text{dead}} / 0 \\
+    \hline
+    q_{\text{dead}} & q_{\text{dead}} / 0 & q_{\text{dead}} / 0 \\
+    \hline
+    \end{array}
+    $$
+
+    <Figure src="第7题-摩尔机.svg" float>
+        摩尔机
+    </Figure>
+    摩尔机
+
+    $$
+    \begin{array}{|c|c|c|c|}
+    \hline
+    \text{当前状态} & \text{输入 a} & \text{输入 b} & \text{输出 g(q)} \\
+    \hline
+    \rightarrow q_0 & q_1 & q_{\text{dead}} & 0 \\
+    \hline
+    q_1 & q_1 & q_2 & 0 \\
+    \hline
+    q_2 & q_{\text{dead}} & q_{\text{dead}} & 1 \\
+    \hline
+    q_{\text{dead}} & q_{\text{dead}} & q_{\text{dead}} & 0 \\
+    \hline
+    \end{array}
+    $$
+</Solution>

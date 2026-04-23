@@ -1,23 +1,30 @@
 ---
-const { src, float = false, alt, background } = Astro.props;
+import { posix as pathPosix } from "node:path";
+
+const { src, float = false, alt, transparent = false } = Astro.props;
 const hasCaption = Astro.slots.has("default");
 const isFloat = float === true || float === "true" || float === "";
+const isTransparent =
+  transparent === true || transparent === "true" || transparent === "";
 const isSvg = /\.svg(?:$|[?#])/i.test(src);
 const caption = hasCaption ? await Astro.slots.render("default") : undefined;
 const imageAlt = alt ?? (hasCaption ? "题图" : src);
-const imageBackground =
-  background === true || background === ""
-    ? "white"
-    : typeof background === "string" && background.trim()
-      ? background.trim()
-      : undefined;
-const figureStyle = imageBackground
-  ? `--exam-figure-background: ${imageBackground};`
-  : undefined;
+const imageBackground = isTransparent ? "transparent" : "white";
+const figureStyle = `--exam-figure-background: ${imageBackground};`;
 const pathname = Astro.url.pathname.replace(/\/$/, "");
-const imageSrc = pathname.startsWith("/exam/")
-  ? `${pathname}/${src}`
-  : `/${src}`;
+const routeDirectory = pathname ? `${pathname}/` : "/";
+const isAbsoluteSource =
+  /^(?:[a-z]+:)?\/\//i.test(src) ||
+  src.startsWith("/") ||
+  src.startsWith("data:");
+const resolvedRelativeSource = pathPosix.normalize(
+  pathPosix.join(routeDirectory, src),
+);
+const imageSrc = isAbsoluteSource
+  ? src
+  : resolvedRelativeSource.startsWith("/public/")
+    ? resolvedRelativeSource.slice("/public".length)
+    : resolvedRelativeSource;
 ---
 
 <figure

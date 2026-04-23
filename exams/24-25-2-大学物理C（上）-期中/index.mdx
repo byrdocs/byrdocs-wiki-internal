@@ -1,0 +1,198 @@
+---
+时间: 2024-2025学年第二学期
+科目: 大学物理C（上）
+阶段: 期中
+类型: 本科
+答案完成度: 完整
+学院:
+- 人工智能学院
+---
+
+## 一 (20 分)
+
+<Figure src="题图1.svg" float>
+    第1题图
+</Figure>
+
+如图，一滑块质量为 $m$, 在水平桌面上以速率 $v_0$ 向右滑行, 在原点 $x=0$ 处与一劲度系数为 $k$ 的轻弹簧相碰, 并开始受到摩擦力的作用. 设摩擦力系数可变, 为 $\mu=bx$ ($b$ 为一小的常数). 求从碰撞开始到滑块第一次静止,
+
+1. 经过的时间;
+<Solution>
+    在从碰撞开始到滑块第一次静止期间，物块同时受到弹力 $F_\text{弹}=-kx$ 和摩擦力 $f=-\mu mg=-bmgx$ 的作用，所以
+
+    $$
+    m\frac{\mathrm d^2x}{\mathrm dt^2}=-(k+bmg)x
+    $$
+</Solution>
+2. 滑块滑过的距离;
+<Solution>
+    解这个微分方程，并代入 $x(0)=0,\;x'(0)=v_0$ 得到
+
+    $$
+    x(t)=\frac{v_0\sqrt m}{\sqrt{k+bmg}}\sin\left(\sqrt{\frac{k+bmg}m}t\right)
+    $$
+
+    所以 $\sqrt{\frac{k+bmg}m}t_1=\frac\pi2$，即经过的时间 $t_1=\frac{\pi\sqrt m}{2\sqrt{k+bmg}}$。
+
+    滑块滑过的距离就是 $x_1=\frac{v_0\sqrt m}{\sqrt{k+bmg}}$。
+</Solution>
+3. 摩擦力所做的功.
+<Solution>
+    摩擦力所做的功为 $\int_0^{x_1}f\,\mathrm dx=\int_0^{\frac{v_0\sqrt m}{\sqrt{k+bmg}}} -bmgx\,\mathrm dx=-\frac{bm^2gv_0^2}{2(k+bmg)}$。
+</Solution>
+
+## 二(20 分)
+
+<Figure src="题图2.svg" float>
+    第2题图
+</Figure>
+
+如图, 有一根长度为 $l$, 质量线密度为 $\lambda$ 的匀质软绳. 开始时, 绳子的两端 $A$ 和 $B$ 一起悬挂在固定点上. 然后, 让 $B$ 端从悬挂点自由下落. 以 $A$ 端处为原点, 竖直向下为正方向, 求当 $B$ 端下落高度为 $x$ (且 $x<l$) 时,
+
+1. 整条绳子的质心位置;
+
+<Solution>
+    整条绳子的质量为 $\int_0^l\lambda\,\mathrm ds=\lambda l$。
+
+    绳子已经下落 $x$ 时，最低点的位置是 $\frac{l+x}2$。
+
+    因此绳子质心的位置是
+
+    $$
+    \frac{\int_0^{\frac{l+x}2}\lambda s\,\mathrm ds+\int_x^\frac{l+x}2\lambda s\,\mathrm ds}{\lambda l}=\frac{l^2+2lx-x^2}{4l}
+    $$
+</Solution>
+
+2. 绳子质心的加速度;
+
+<Solution>
+    绳子的自由端是自由落体的，所以下落 $x$ 后，自由端的速度为 $\sqrt{2gx}$。
+
+    自由端的质量是 $\frac{\lambda(l-x)}2$，所以质心的速度为 $\frac{(l-x)\sqrt{2gx}}{2l}$，
+
+    因此质心的加速度是 $\frac{\mathrm dv}{\mathrm dt}=v\frac{\mathrm dv}{\mathrm dx}=\frac{g(l-x)(l-3x)}{4l^2}$。
+</Solution>
+
+3. 悬挂点给 $A$ 端绳的拉力大小.
+
+<Solution>
+    整段绳子只受到两个外力：悬挂点的拉力和重力。二者共同作用，形成质心加速度 $\frac{g(l-x)(l-3x)}{4l^2}$。
+
+    因此有方程 $\lambda l\frac{g(l-x)(l-3x)}{4l^2}=\lambda lg-F$，
+
+    解得 $F=\lambda g\frac{3l^2+4lx-3x^2}{4l}$。
+</Solution>
+
+## 三(20 分)
+
+<Figure src="题图3.svg" float>
+    第3题图
+</Figure>
+
+如图, 一半径为 $R$, 内侧光滑的半球面固定在地面上, 开口水平且朝上. 一小滑块在半球面内侧最高点处获得沿球面大小为 $v_0$ 的非零水平速度. 求滑块在整个运动过程中可能达到的最大速率.
+
+<Solution>
+    根据能量守恒定律，滑块达到最大速率的状态就是滑块下落高度最大的状态。
+
+    首先把滑块的运动速度分解成两个方向：一个是横截面内沿着圆环切向的水平速度 $v_h$，一个是纵截面内沿截面切向的速度 $v_t$。
+
+    滑块下落高度最大时，应满足 $v_t=0$，这时滑块不会再继续下落。此时滑块的全部速率都在 $v_h$ 上，所以我们需要分析 $v_h$ 的变化。
+
+    在整个过程中，滑块只受到两个力：竖直向下的重力和指向球心的支持力。指向球心的支持力又可以分解为竖直向上的力和指向横截面圆心的力。这些力要么与 $v_h$ 所在平面正交，要么指向 $v_h$ 的横截面圆心，所以横截面上的角动量 $L_z$ 守恒。
+
+    所以根据能量守恒和水平方向角动量守恒，有
+
+    $$
+    \begin{cases}
+    L_z=mRv_0=m\sqrt{R^2-h^2}v_h\\
+    mgh=\frac{mv_h^2}2-\frac{mv_0^2}2
+    \end{cases}
+    $$
+
+    解此方程组，得到 $v_h=\sqrt{\frac{v_0^2+\sqrt{16g^2R^2+v_0^4}}{2}}$，这就是滑块能达到的最大速率。
+</Solution>
+
+## 四(20 分)
+
+<Figure src="题图4.svg" float>
+    第4题图
+</Figure>
+
+如图, 一平面简谐波沿 $x$ 轴正方向传播到界面 $B$ 处发生反射并形成波节, $O$ 为坐标原点, $OB$ 距离 $L=0.7\,\mathrm m$, 入射波波长 $\lambda=1\,\mathrm m$, 入射波在 $O$ 点处质元的振动方程为 $y_O=0.05\cos(100\pi t)\,\mathrm m$, 其中时间单位为秒, 长度单位为米. 求:
+
+1. 入射波的方程;
+
+<Solution>
+    角波数 $k=\frac{2\pi}\lambda=2\pi$，而 O 点处质元振动方程为 $0.05\cos(100\pi t)\,\mathrm m$。
+
+    因此入射波的方程为 $0.05\cos(100\pi t-2\pi x)\,\mathrm m$。
+</Solution>
+
+2. 反射波的方程;
+
+<Solution>
+    入射波在 B 点处的振动方程为 $0.05\cos(100\pi t-1.4\pi)\,\mathrm m$。
+
+    而入射波和反射波在 B 点处形成波节，也就是说反射波在 B 点处的振动方程为 $0.05\cos(100\pi t-1.4\pi+\pi)\,\mathrm m$。
+
+    那么反射波的方程为
+
+    $$
+    0.05\cos[100\pi t-0.4\pi+2\pi(x-0.7)]=0.05\cos(100\pi t+2\pi x-1.8\pi)\,\mathrm m
+    $$
+</Solution>
+
+3. 驻波的方程;
+
+<Solution>
+    驻波方程由入射波方程和反射波方程叠加得来，即：
+
+    $$
+    0.05\cos(100\pi t-2\pi x)+0.05\cos(100\pi t+2\pi x-1.8\pi)=0.1\cos(100\pi t-0.9\pi)\cos(0.9\pi-2\pi x)\,\mathrm m
+    $$
+</Solution>
+
+4. $OB$ 间 ($0\le x\le0.7\,\mathrm m$) 波节的位置;
+
+<Solution>
+    满足 $\cos(0.9\pi-2\pi x)=0$ 的位置就是波节的位置。
+
+    解这个方程，在 OB 之间的解有 $0.2\,\mathrm m,\;0.7\,\mathrm m$ 两个。
+</Solution>
+
+5. 距 $O$ 点 $0.45\,\mathrm m$ 处质点的振幅.
+
+<Solution>
+    距 O 点 $0.45\,\mathrm m$ 处有两个点：
+
+    在 $x=0.45\,\mathrm m$ 处，振幅大小是 $0.1\cos(0.9\pi-2\pi\times 0.45)=0.1\,\mathrm m$；
+
+    在 $x=-0.45\,\mathrm m$ 处，振幅大小是 $0.1\cos(0.9\pi-2\pi\times(-0.45))=0.1\cos(1.8\pi)\,\mathrm m$。
+</Solution>
+
+## 五(20 分)
+
+<Figure src="题图5.svg" float>
+    第5题图
+</Figure>
+
+如图, 在 $xy$ 平面上有一半径为 $r$ 的细圆环, 其圆心在坐标原点 $O$ 上. 圆环所带电荷的线密度为 $\lambda=A\sin\phi$, 其中 $A$ 为正常量, $\phi$ 为半径与 $x$ 轴正方向的夹角. 求圆心 $O$ 处的电场强度.
+
+<Solution>
+    在圆环上，$\mathrm dq=A\sin\phi\,\mathrm dl=Ar\sin\phi\,\mathrm d\phi$。
+
+    圆心 O 处的电场强度可以通过定积分求得：
+
+    $$
+    \begin{align*}
+    \overrightarrow E={}&\int_Q\frac{-\overrightarrow e_r}{4\pi\varepsilon_0r^2}\,\mathrm dq\\
+    ={}&\int_{-\pi}^\pi\frac{-A\overrightarrow e_r\sin\phi}{4\pi\varepsilon_0r}\,\mathrm d\phi
+    \end{align*}
+    $$
+
+    又因为 $\overrightarrow e_r=\overrightarrow e_x\cos\phi+\overrightarrow e_y\sin\phi$，所以上式可化为
+
+    $$
+    \overrightarrow E=-\int_{-\pi}^\pi\overrightarrow e_x\frac{\cos\phi\sin\phi}{4\pi\varepsilon_0r}\,\mathrm d\phi-\int_{-\pi}^\pi\overrightarrow e_y\frac{\sin{}^2\phi}{4\pi\varepsilon_0r}\,\mathrm d\phi=-\frac{\overrightarrow e_y}{8\pi\varepsilon_0r}
+    $$
+</Solution>

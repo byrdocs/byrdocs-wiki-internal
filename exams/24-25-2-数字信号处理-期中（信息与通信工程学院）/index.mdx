@@ -1,0 +1,165 @@
+---
+时间: 2024-2025学年第二学期
+阶段: 期中
+学院:
+- 信息与通信工程学院
+答案完成度: 完整可靠
+科目: 数字信号处理
+类型: 本科
+---
+
+## 一、填空
+
+1. 信号 $x(t)=\cos{7\pi t}$ 经过理想系统采样，若采样频率 $\Omega_s=10\pi\text{rad/s}$，则采样信号 x(n)= <Blank>$\cos\frac{7\pi n}{5}$</Blank> ，周期为 <Blank>$10$</Blank> 。若该采样信号经截止频率为 $\Omega_c=5\pi\text{rad/s}$ 的低通滤波器还原，则输出信号的模拟角频率为 <Blank>$3\pi$</Blank> rad/s。
+
+2. 离散系统输入信号为 $x(n)$ 时，输出信号为 $y(n)=x^2(n)-1$；该系统 <Blank>不是</Blank> 线性系统， <Blank>是</Blank> 稳定系统。（填是或不是）
+
+3. 假设某稳定LTI系统的 $H(z)=\frac{1}{(1-3z^{-1})(1+0.5z^{-1})}$，$H(z)$ 的收敛域为 <Blank>$0.5< \left\vert z \right\vert <3$</Blank> ，该系统是否为因果系统 <Blank>否</Blank> 。
+
+4. 对离散序列 $x(n)$ 做 $N=1024$ 离散傅里叶变换，得到 $X(k)=DFT\{x(n)\}$；若采样频率 $f_s=2048\text{Hz}$，那么 $k=500$ 时，对应的模拟频率为 <Blank>$1000$</Blank> Hz。
+
+5. 给定离散序列 $x(n)=\{1,2,3,4\}$，则 $x((1-n))_5R_5(n)=$ <Blank>$\{2,1,0,4,3\}$</Blank> 。
+
+6. 相比直接计算一个序列的N点DFT，用FFT算法计算DFT所需的复数乘法的次数为 <Blank>$\frac{N}{2}\log_2N$</Blank> 。
+
+## 二、
+
+### 1.
+设序列 $x(n),y(n)$ 的傅里叶变换分别为 $X(\mathrm e^{j\omega}),Y(\mathrm e^{j\omega})$，证明
+
+$$
+\sum_{n=-\infty}^\infty{x(n)y^*(n)}=\frac{1}{2\pi}{\int_{-\pi}^{\pi} X(\mathrm e^{j\omega})Y^*(e^{j\omega})}d\omega
+$$
+
+<Solution>
+    $$
+    \begin{align*}
+    &\sum_{n=-\infty}^\infty{x(n)y^*(n)}\\
+    =&\sum_{n=-\infty}^\infty{\left [  \frac{1}{2\pi}\int_{-\pi}^{\pi} X(\mathrm e^{j\omega})e^{j\omega n}d\omega\right ]y^*(n)}\\
+    =&\frac{1}{2\pi}\int_{-\pi}^{\pi} X(\mathrm e^{j\omega})\sum_{n=-\infty}^\infty \left[y^*(n)\mathrm e^{j\omega n}\right]d\omega\\
+    =&\frac{1}{2\pi}\int_{-\pi}^{\pi} X(\mathrm e^{j\omega})\sum_{n=-\infty}^\infty \left[y(n)\mathrm e^{-j\omega n}\right]^*d\omega\\
+    =&\frac{1}{2\pi}\int_{-\pi}^{\pi} {X(\mathrm e^{j\omega})Y^*(\mathrm e^{j\omega})}d\omega
+    \end{align*}
+    $$
+</Solution>
+
+### 2.
+考虑具有如下系统函数的因果线性时不变系统：
+
+$$
+H(z)=\frac{1-a^{-1}z^{-1}}{1-az^{-1}}
+$$
+
+1. 写出系统输入和输出满足的差分方程。
+<Solution>
+    $y(n)=x(n)-a^{-1}x(n-1)+ay(n-1)$
+</Solution>
+2. 若系统是稳定的，求a的取值范围。
+<Solution>
+    $|a|<1$
+</Solution>
+3. 设a=0.5，绘制零极点图，并标明收敛域。
+<Solution>
+    a=0.5, $|z|>0.5$
+</Solution>
+4. 求系统的单位冲击响应h(n)。
+<Solution>
+    $h(n)=a^nu(n)-a^{n-2}u(n-1)$
+</Solution>
+5. 证明该系统为全通系统。（即幅度频率响应 $|H(\mathrm e^{j\omega})|$ 是一个常数）
+<Solution>
+    $\left\vert H(\mathrm e^{j\omega}) \right\vert=\frac{1}{\left\vert a\right\vert}$
+</Solution>
+
+## 三、
+
+### 1.
+
+<Figure src="题图3.1.png" float>
+    题图3.1
+</Figure>
+
+$y_r(n)$ 为实数值序列，其离散时间傅里叶变换为 $Y_r(\mathrm e^{j\omega})$。如下图所示，$y(n)=y_r(n)+jy_i(n)$，设 $y(n)$、$y_i(n)$ 的离散时间傅里叶变换分别为 $Y(\mathrm e^{j\omega})$ 和 $Y_i(\mathrm e^{j\omega})$，线性时不变系统的频率响应为 $H(\mathrm e^{j\omega})$，
+
+（1）请用 $Y_r(\mathrm e^{j\omega})$ 和 $Y_i(\mathrm e^{j\omega})$ 表示 $Y(\mathrm e^{j\omega})$。
+
+<Solution>
+    $Y(\mathrm e^{j\omega})=Y_r(\mathrm e^{j\omega})[1+jH(\mathrm e^{j\omega})]$
+</Solution>
+
+（2）求 $H(\mathrm e^{j\omega})$，使得 $Y(\mathrm e^{j\omega}) = \begin{cases} Y_r(\mathrm e^{j\omega}), & -\pi<\omega\leqslant0 \\ 0, & 0<\omega\leqslant\pi \end{cases}$。
+
+<Solution>
+    $H(\mathrm e^{j\omega}) = \begin{cases} 0, &-\pi<\omega\leqslant0 \\ j, & 0<\omega\leqslant\pi \end{cases}$
+</Solution>
+
+### 2.
+
+已知某系统传输函数为 $H(z)=\frac{6-\frac{7}{2}z^{-1}}{(1+\frac{3}{4}z^{-1})(1-\frac{5}{4}z^{-1})}$，请讨论其可能的收敛域，针对每种收敛情况分别判断系统是否稳定，并求出对应的系统单位冲激响应。
+
+<Solution>
+    1. $\left\vert z \right\vert >5/4$，系统不稳定，$h(n)=4(-\frac{3}{4})^n u(n)+2(\frac{5}{4})^n u(n)$
+    2. $3/4<|z|<5/4$，系统稳定，$h(n)=4(-\frac{3}{4})^n u(n)-2(\frac{5}{4})^n u(-n-1)$
+    3. $|z|<3/4$，系统不稳定，$h(n)=-4(-\frac{3}{4})^n u(-n-1)-2(\frac{5}{4})^n u(-n-1)$
+</Solution>
+
+## 四、
+
+### 1.
+
+假设某线性时不变系统输入序列为 $x(n)=R_3(n)$，该系统单位冲激响应为 $h(n)=2\delta(n)+\delta(n-1)+3\delta(n-2)+2\delta(n-3)$,求：
+
+1. $x(n)$ 和 $h(n)$ 的循环卷积 $y_c(n)$，要求循环卷积长度 $L=4$。
+<Solution>
+    $\{7,5,6,6\}$
+</Solution>
+2. 说明 $y_c(n)$ 与线性卷积 $y(n)=x(n)*h(n)$ 哪些点上值相同，哪些点值不同。
+<Solution>
+    只有 $n=2, 3$ 点上的值相同
+</Solution>
+
+### 2.
+
+设 $x(n)=\{2,3,4,8,8,8,4,3,2\}$，$h(n)=\{-2,1,2\}$，利用重叠保留法计算 $y(n)=x(n)*h(n)$，每段输出长度 $N_1=3$。
+
+<Solution>
+    $y(n)=\{-4,-4,-1,-6,0,8,16,14,7,8,4\}$
+</Solution>
+
+## 五、
+
+### 1.
+
+有一频谱分析仪使用FFT处理器，其取样点数为2的整数次幂，且未采用任何数据处理措施。已知信号最高频率 $f_H\leqslant2\text{kHz}$，要求频率分辨率 $F_0\leqslant0.5\text{Hz}$，试确定以下参量：
+
+1. 最大时域取样间隔 $T_s$；
+
+<Solution>
+    $0.25\,\mathrm{ms}$
+</Solution>
+
+（2）最小记录时间（有效数据长度） $T_0$；
+
+<Solution>
+    $2\,\mathrm s$
+</Solution>
+
+（3）最小抽样点数 $N$。
+
+<Solution>
+    $N=8192$
+</Solution>
+
+### 2.
+
+已知两个4点实序列 $h(n)=\{2,1,0,1\}$，$g(n)=\{1,0,2,1\}$。请利用一次 $N=4$ 点的基2时域FFT计算这两个序列FFT结果，并画出4点FFT的流程图，给出每步计算结果。
+
+<Solution>
+    $z(n)=h(n)+jg(n)$
+
+    $Z(k)=\{4+4j,1-j,2j,3-j\}$
+
+    $H(k)=\{4,2,0,2\}$
+
+    $G(k)=\{4,-1+j,2,-1-j\}$
+</Solution>

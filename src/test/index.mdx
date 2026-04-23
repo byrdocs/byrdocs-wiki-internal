@@ -6,13 +6,15 @@
 答案完成度: 完整可靠
 ---
 
-当你阅读完[维基真题编辑者指引](/guide)后，你可以来自测一下自己是否很好地掌握了这些内容！
-
-## 选择题
-
-<Figure float src="favicon.svg" background="white">
+<Figure float src="favicon.svg">
     BYR Docs 维基真题
 </Figure>
+
+当你阅读完[维基真题编辑者指南](/guide)后，你可以来自测一下自己是否很好地掌握了这些内容！
+
+本自测题位于 [src/test](https://github.com/byrdocs/byrdocs-wiki-internal/blob/master/src/test)，你也可以阅读此自测题的源代码，更详细地了解我们的语法。
+
+## 选择题
 
 1. 本题是 <Slot />。
 
@@ -68,7 +70,7 @@
 
 <Choices multiple>
     <Option>item</Option>
-    <Option correct>background</Option>
+    <Option correct>transparent</Option>
     <Option correct>float</Option>
     <Option correct>src</Option>
     <Option>multiple</Option>
@@ -128,13 +130,13 @@
 
 <Choices multiple>
     <Option correct>当同一个简答题的各个小题间关系紧密时，应当使用有序列表来罗列各个小题。</Option>
-    <Option>当某道大题包含一个题图时，可以把整道大题截图放在附件目录下，再用 `Figure` 插入正文。</Option>
+    <Option>当某道大题包含一个题图时，可以把整道大题截图放在试题目录下，再用 `Figure` 插入正文。</Option>
     <Option>维基真题必须使用 `Choices` `Blank` `Answer` 等规范化组件编写题目，禁止私自使用其它组件、脚本和样式。</Option>
     <Option>维基真题是互助形式的网站。对于暂无答案的题目，可以留空等待后人填写答案，比如 `<Blank />` `<Solution />` 等。</Option>
 </Choices>
 
 <Solution>
-- B 项：只能把题图部分截图放在附件目录下。文本部分必须以 mdx 语言录入。
+- B 项：只能把题图部分截图放在试题目录下。文本部分必须以 mdx 语言录入 `index.mdx`。
 - C 项：本维基不存在 `Answer` 这一组件。
 - D 项：`Solution` 不可以留空，否则读者在点击之前不知道本题是没有答案的。如果这题没有答案，请勿使用 `Solution` 组件。
 </Solution>
@@ -176,18 +178,28 @@
 
 ### 3.
 
-某份试题有一张题图，与正文文件 `index.mdx` 放在同一个试题目录下，图片文件名为 `题图1.svg`。
+本自测题位于 [src/test/](https://github.com/byrdocs/byrdocs-wiki-internal/tree/master/src/test)，此目录有 [index.mdx](https://github.com/byrdocs/byrdocs-wiki-internal/blob/master/src/test/indx.mdx) 试题文件和 [favicon.svg](https://github.com/byrdocs/byrdocs-wiki-internal/blob/master/src/test/favicon.svg) 一张图片。回到试题页顶部，你可以看到这张插图。
 
-如果要使用维基组件定义这张图片（及图片标题），应当如何写？
+如果要使用维基组件定义这张插图（包括图片标题），应当如何写？
+
+这张 svg 是无背景的，但插图却有一个白色背景。如果要保持图片背景透明，又该如何写？
 
 <Solution>
 ```mdx
-<Figure float src="题图1.svg" background="white">
+<Figure float src="favicon.svg">
     BYR Docs 维基真题
 </Figure>
 ```
 
-其中 `float`、`src="题图1.svg"` 和 `background="white"` 的位置可以调换。若图片本身应保持透明，也可以改成 `background="transparent"`。
+其中 `float` 和 `src="favicon.svg"` 的位置可以调换。
+
+若要保持图片背景透明，应写为
+
+```mdx
+<Figure float src="题图1.svg" transparent>
+    BYR Docs 维基真题
+</Figure>
+```
 </Solution>
 
 ### 4.

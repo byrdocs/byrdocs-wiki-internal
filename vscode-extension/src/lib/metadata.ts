@@ -95,7 +95,7 @@ export const COMPONENTS = {
     kind: "either",
     file: "src/components/exam/Figure.astro",
     description:
-      "插入题图。`src` 通常填写当前试题目录中的相对文件名，可选旁置和背景色。",
+      "插入题图。`src` 通常填写当前试题目录中的相对文件名，可选旁置和透明背景。",
     snippets: [
       {
         label: "Figure",
@@ -119,12 +119,10 @@ export const COMPONENTS = {
         valueKind: "boolean-attr",
         description: "启用串文旁置布局。",
       },
-      background: {
-        type: "string",
-        valueKind: "enum",
-        values: ["white", "transparent"],
-        description:
-          "透明背景图片建议显式设置。常见值为 `white` 或 `transparent`，也可填写其他 CSS 颜色。",
+      transparent: {
+        type: "boolean",
+        valueKind: "boolean-attr",
+        description: "启用透明背景；缺省时使用白色背景。",
       },
       alt: {
         type: "string",

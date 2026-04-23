@@ -5,14 +5,13 @@ import { defineConfig } from "astro/config";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
 import remarkChoices from "./src/plugins/remarkChoices";
-import viteFigureBackground from "./src/plugins/viteFigureBackground";
 import viteExamAssets from "./src/plugins/viteExamAssets";
 
 type AstroConfig = Parameters<typeof defineConfig>[0];
 type AstroVitePlugins = NonNullable<NonNullable<AstroConfig["vite"]>["plugins"]>;
 
 // @tailwindcss/vite resolves to a distinct Vite type instance; normalize it here.
-const vitePlugins = [...tailwindcss(), viteFigureBackground(), viteExamAssets()] as unknown as AstroVitePlugins;
+const vitePlugins = [...tailwindcss(), viteExamAssets()] as unknown as AstroVitePlugins;
 
 // https://astro.build/config
 export default defineConfig({

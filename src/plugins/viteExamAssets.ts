@@ -1,5 +1,5 @@
 import { readdir, readFile } from "node:fs/promises";
-import { join, extname } from "node:path";
+import { join, extname, resolve } from "node:path";
 import { statSync, createReadStream } from "node:fs";
 import type { IncomingMessage, ServerResponse } from "node:http";
 import { examsDir, getExamDirectories } from "../utils/examDirectories";
@@ -17,8 +17,46 @@ const MIME_TYPES: Record<string, string> = {
     ".wav": "audio/wav",
 };
 
+const STATIC_PAGE_ASSET_DIRECTORIES = {
+    guide: resolve("src/guide"),
+    test: resolve("src/test"),
+} as const;
+
+type AssetDirectory = {
+    routePrefix: string;
+    fileSystemPath: string;
+};
+
+const collectStaticPageAssetDirectories = (): AssetDirectory[] =>
+    Object.entries(STATIC_PAGE_ASSET_DIRECTORIES).map(([routePrefix, fileSystemPath]) => ({
+        routePrefix,
+        fileSystemPath,
+    }));
+
+const isStaticRoutePrefix = (value: string): value is keyof typeof STATIC_PAGE_ASSET_DIRECTORIES =>
+    value in STATIC_PAGE_ASSET_DIRECTORIES;
+
+const listAssetFiles = async (directoryPath: string) => {
+    const entries = await readdir(directoryPath, { withFileTypes: true });
+    return entries
+        .filter((entry) => entry.isFile() && ASSET_EXTENSIONS.has(extname(entry.name).toLowerCase()))
+        .map((entry) => entry.name);
+};
+
+const streamAssetFile = (response: ServerResponse, filePath: string, extension: string) => {
+    const stat = statSync(filePath);
+    if (!stat.isFile()) return false;
+
+    response.setHeader("Content-Type", MIME_TYPES[extension] ?? "application/octet-stream");
+    response.setHeader("Cache-Control", "no-cache");
+    createReadStream(filePath).pipe(response);
+    return true;
+};
+
 export default function viteExamAssets() {
     let isBuild = false;
+    const staticAssetDirectories = collectStaticPageAssetDirectories();
+
     return {
         name: "exam-assets",
         config(_cfg: unknown, env: { command: string }) {
@@ -26,16 +64,26 @@ export default function viteExamAssets() {
         },
         async buildStart(this: { emitFile(file: { type: "asset"; fileName: string; source: Buffer }): string }) {
             if (!isBuild) return;
+
             for (const { name, path: examDir } of getExamDirectories()) {
-                const files = await readdir(examDir);
+                const files = await listAssetFiles(examDir);
                 for (const file of files) {
-                    if (ASSET_EXTENSIONS.has(extname(file).toLowerCase())) {
-                        this.emitFile({
-                            type: "asset",
-                            fileName: `exam/${name}/${file}`,
-                            source: await readFile(join(examDir, file)),
-                        });
-                    }
+                    this.emitFile({
+                        type: "asset",
+                        fileName: `exam/${name}/${file}`,
+                        source: await readFile(join(examDir, file)),
+                    });
+                }
+            }
+
+            for (const { routePrefix, fileSystemPath } of staticAssetDirectories) {
+                const files = await listAssetFiles(fileSystemPath);
+                for (const file of files) {
+                    this.emitFile({
+                        type: "asset",
+                        fileName: `${routePrefix}/${file}`,
+                        source: await readFile(join(fileSystemPath, file)),
+                    });
                 }
             }
         },
@@ -50,20 +98,31 @@ export default function viteExamAssets() {
                     return next();
                 }
                 const match = url.match(/^\/exam\/([^/]+)\/([^/]+)$/);
-                if (!match) return next();
-                const [, examName, filename] = match;
+                if (match) {
+                    const [, examName, filename] = match;
+                    const ext = extname(filename).toLowerCase();
+                    if (!ASSET_EXTENSIONS.has(ext)) return next();
+
+                    const filePath = join(examsDir, examName, filename);
+                    try {
+                        if (streamAssetFile(res, filePath, ext)) return;
+                    } catch { }
+                    return next();
+                }
+
+                const staticMatch = url.match(/^\/(guide|test)\/([^/]+)$/);
+                if (!staticMatch) return next();
+
+                const [, routePrefix, filename] = staticMatch;
                 const ext = extname(filename).toLowerCase();
                 if (!ASSET_EXTENSIONS.has(ext)) return next();
 
-                const filePath = join(examsDir, examName, filename);
+                if (!isStaticRoutePrefix(routePrefix)) return next();
+                const staticDirectory = STATIC_PAGE_ASSET_DIRECTORIES[routePrefix];
+
+                const filePath = join(staticDirectory, filename);
                 try {
-                    const stat = statSync(filePath);
-                    if (stat.isFile()) {
-                        res.setHeader("Content-Type", MIME_TYPES[ext] ?? "application/octet-stream");
-                        res.setHeader("Cache-Control", "no-cache");
-                        createReadStream(filePath).pipe(res);
-                        return;
-                    }
+                    if (streamAssetFile(res, filePath, ext)) return;
                 } catch { }
                 next();
             });

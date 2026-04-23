@@ -1,10 +1,14 @@
 ---
-import { Content, frontmatter } from "/src/others/test.mdx";
+import { Content, frontmatter } from "/src/test/index.mdx";
 import * as examComponents from "/src/components/exam";
 import ExamLayout from "/src/layouts/ExamLayout.astro";
+import { examFrontmatterSchema } from "/src/utils/examFrontmatter";
 import "/src/styles/exam.css";
+
+const editPath = "src/test/index.mdx";
+const parsedFrontmatter = examFrontmatterSchema.parse(frontmatter);
 ---
 
-<ExamLayout title="BYR Docs 维基真题编辑者自测" frontmatter={frontmatter} editPath="src/others/test.mdx">
+<ExamLayout title="BYR Docs 维基真题编辑者自测" frontmatter={parsedFrontmatter} editPath={editPath}>
   <Content components={examComponents} />
 </ExamLayout>

@@ -1,4 +1,5 @@
 import * as http from "node:http";
+import * as net from "node:net";
 import * as vscode from "vscode";
 
 export function stripAnsi(output: string): string {
@@ -221,4 +222,46 @@ export async function waitForServerUri(
   }
 
   return false;
+}
+
+export async function findAvailableLocalServerBaseUri(
+  hostname: string,
+  startPort: number,
+  attempts: number,
+): Promise<vscode.Uri | null> {
+  for (let offset = 0; offset < attempts; offset += 1) {
+    const port = startPort + offset;
+    if (await isPortAvailable(hostname, port)) {
+      return vscode.Uri.parse(`http://${hostname}:${port}`);
+    }
+  }
+
+  return null;
+}
+
+async function isPortAvailable(
+  hostname: string,
+  port: number,
+): Promise<boolean> {
+  return new Promise((resolve) => {
+    const server = net.createServer();
+
+    const cleanup = (): void => {
+      server.removeAllListeners();
+    };
+
+    server.once("error", () => {
+      cleanup();
+      resolve(false);
+    });
+
+    server.once("listening", () => {
+      server.close(() => {
+        cleanup();
+        resolve(true);
+      });
+    });
+
+    server.listen(port, hostname);
+  });
 }

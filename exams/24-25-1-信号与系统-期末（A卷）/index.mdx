@@ -1,0 +1,340 @@
+---
+时间: 2024-2025学年第一学期
+科目: 信号与系统
+类型: 本科
+阶段: 期末
+学院:
+- 未来学院
+- 数字媒体与设计艺术学院
+- 信息与通信工程学院
+---
+
+## 一、填空题（每空2分，共20分）
+
+1. 已知离散信号 $x[n]$ 的双边 $z$ 变换为 $X(z)$，序列 $x_1[n]$ 的双边 $z$ 变换为 $z^{2025}X(z)$，则 $x_1[n]$ 用 $x[n]$ 可以表示为 <Blank>$x[n+2025]$</Blank>。
+
+2. $H(z)=\frac z{z-0.8}$, 有 <Blank>低通</Blank> 滤波特性.
+
+3. 信号 $2tu(t)$ 的拉普拉斯变换为 <Blank>$\frac 2{s^2}$</Blank>（不必注明收敛域）。
+
+<Solution>
+    解析：$tu(t)$为斜变信号；
+
+    根据公式 $\mathcal{L} (tu(t))=\frac 1{s^2}$，可得 $\mathcal{L} (2tu(t))=\frac 2{s^2}$
+</Solution>
+
+4. $F(s)=\frac{s+3}{s^2+2s+1}$, 则 $s$ 的收敛域为 <Blank>$\operatorname{Re}\{s\}>-1$</Blank>.
+
+<Solution>
+    解析：$\frac{s+3}{s^2+2s+1}$ 的极点为 $-1$；
+
+    对其做拉普拉斯逆变换，得 $(1+2t)e^{-t}u(t)$，为因果信号。
+
+    因此收敛域为 $\operatorname{Re}\{s\}>-1$
+</Solution>
+
+5. $x(t)=\operatorname{Sa}(\omega_0t)$, 它的频带宽度为 <Blank>$\omega_0$</Blank>.
+
+6. 序列 $x[n]=3\cdot(0.6)^nu[n]+2u[n]$ 的终值 $x[\infty]$ 为 <Blank>$2$</Blank>。
+
+<Solution>
+    解析：$n\to+\infty$ 时 $3\cdot(0.6)^nu[n]$ 趋于 0，$2u[n]$ 值为 2，故答案为 2。
+</Solution>
+
+7. 信号 $x(t)$ 的拉普拉斯变换为 $X(s)=\frac{2s+1}{s(s+2)}$，$\operatorname{Re}\{s\}>0$，则 $x(0^+)= $<Blank>$2$</Blank>。
+
+<Solution>
+    解析：根据初值定理，$x(0^+)=\lim_{s \to +\infty}sX(s)=2$
+</Solution>
+
+8. 某系统的单位冲激响应为 $h(t)=\mathrm e^{-t}u(t)$，则其系统函数 $H(s)$ 为 <Blank>$\frac 1{s+1}$</Blank>。
+
+9. 已知 $X(z)=\frac1{z-1}$，收敛域为 $\left|z\right|>1$，原序列为 <Blank>$u[n-1]$ 或 $u[n]-\delta[n]$</Blank>。
+
+10. 已知能量信号 $x(t)$ 的自相关函数为 $R(\tau)=\int_{-\infty}^{+\infty}x(t)\cdot x^*(t-\tau)\,\mathrm dt$，则 $\int_{-\infty}^{+\infty}\left|x(t)\right|^2\,\mathrm dt=$ <Blank>$R(0)$</Blank>。
+
+## 二、选择题（每题2分，共20分）
+
+<Figure src="题图2.1.svg" float>
+    第2.1题图
+</Figure>
+
+1. 一个半波整流系统，输入为正弦信号 $f(t)=\sin t$，波形如题图 (a) 所示，输出信号 $f_o(t)$ 的波形如题图 (b) 所示，则该系统是否属于失真系统？
+
+<Choices>
+    + 失真系统
+    - 非失真系统
+    - 无法判断
+</Choices>
+
+2. 已知某线性时不变因果离散系统的系统函数为 $H(z)=\frac z{z-0.8}$，则该系统具有 <Slot /> 滤波特性。
+
+<Choices>
+    + 低通
+    - 高通
+    - 带通
+    - 带阻
+</Choices>
+
+3. 已知因果信号 $f(t)$ 的拉普拉斯变换为 $F(s)=\frac{s+3}{s^2+3s+2}$，则 $F(s)$ 的收敛域为 <Slot />。
+
+<Choices>
+    - $-2<\sigma<-1$
+    + $\sigma>-1$
+    - $\sigma<-2$
+    - 无法确定
+</Choices>
+
+4. 下列哪个系统可以实现对输入信号 $x(t)=\cos(3t)+\cos(2t)$ 的无失真传输？
+
+<Choices>
+    - 微分器
+    - 积分器
+    + 延时器
+    - 以上答案都不对
+</Choices>
+
+5. 信号 $x(t)=\operatorname{Sa}(\omega_0t)$ 的频带宽度为 <Slot /> $\mathrm{rad/s}$。
+
+<Choices>
+    - $\frac\pi{\omega_0}$
+    - $\frac{2\pi}{\omega_0}$
+    - $\frac{\omega_0}2$
+    + $\omega_0$
+</Choices>
+
+<Figure src="题图2.6.svg" float>
+    第2.6题图
+</Figure>
+
+6. 如题图所示周期信号，基波周期为 $T$，下面描述不正确的是 <Slot />。
+
+<Choices>
+    - 该信号的直流分量为0.5
+    - 该信号包含第2025次谐波分量
+    + 该信号仅包含正弦函数分量
+    - 以上答案都不对
+</Choices>
+
+<Solution>
+    解析：还应含有直流分量。若只含正弦，则应为奇函数，但题图是非奇非偶的。
+</Solution>
+
+<Figure src="题图2.7.svg" float>
+    第2.7题图
+</Figure>
+
+7. 某理想低通滤波器的频率响应特性如题图所示，信号 $\sin(t)+\cos(2t)$ 经过该系统的稳态响应为 <Slot />。
+
+<Choices>
+    - $\sin(t)+\cos(2t)$
+    + $\sin(t)$
+    - $\cos(2t)$
+    - 以上答案都不对
+</Choices>
+
+<Figure src="题图2.8.svg" float>
+    第2.8题图
+</Figure>
+
+8. 已知某离散系统的方框图如题图所示，则该系统是 <Slot />
+
+<Choices>
+    - 因果，不稳定的
+    + 因果，稳定的
+    - 非因果，不稳定的
+    - 非因果，稳定的
+</Choices>
+
+9. 若某基带信号 $f(t)$ 的奈奎斯特采样频率为 $f_s$，则信号 $g(t)=f(t-1)$ 的奈奎斯特采样频率为 <Slot />。
+
+<Choices>
+    - $\frac12f_s$
+    + $f_s$
+    - $2f_s$
+    - $4f_s$
+</Choices>
+
+10. 信号 $\cos(t)$ 的希尔伯特变换为 <Slot />。
+
+<Choices>
+    - $\cos(t)$
+    - $-\cos(t)$
+    + $\sin(t)$
+    - $-\sin(t)$
+</Choices>
+
+## 三、（10分）
+
+<Figure src="题图3.svg" float>
+    第3题图
+</Figure>
+
+匹配滤波器在目标检测、模式识别、信号增强等方面具有广泛的应用，其基本原理是通过比较输入信号与参考信号之间的相似度来实现信号的匹配和检测。题图是信号 $f(t)$ 的波形图，可以将与该信号对应的匹配滤波器的单位冲激响应设置为 $h(t)=f[-(t-t_0)]$。
+
+1. 请画出 $h(t)$ 的图形。
+
+<Solution>
+    <Figure src="筨案3.1.svg" />
+</Solution>
+
+2. 若 $f(t)$ 的傅里叶变换为 $F(\omega)$，利用 $F(\omega)$ 表示 $h(t)$ 的傅里叶变换 $H(\omega)$。
+
+<Solution>
+    $H(\omega)=F(-\omega)\mathrm e^{-\mathrm j \omega t_0}$
+</Solution>
+
+3. 将 $f(t)$ 加入系统，求 $t=t_0$ 时系统的零状态响应值。
+
+<Solution>
+    输出信号可以表示为 $y(t)=f(t)*h(t)$；当 $t=t_0$ 时系统的输出为 $y(t)=\int_0^{t_0}f^2(t)\,\mathrm dt=2.5t_0$。
+</Solution>
+
+## 四、（4分）
+
+已知因果信号 $f(t)$ 的拉普拉斯变换为 $F(s)=\frac{1-3\mathrm e^{-2s}}{s+1}$，求 $f(t)$。
+
+<Solution>
+    $\frac1{s+1}$ 的拉普拉斯反变换为 $f_1(t)=\mathrm e^{-t}u(t)$。
+
+    利用拉普拉斯变换的线性时移性质，可得 $f(t)=f_1(t)-3f_1(t-2)=\mathrm e^{-t}u(t)-3\mathrm e^{-(t-2)}u(t-2)$
+</Solution>
+
+## 五、（8分）
+
+<Figure src="题图5.svg" float>
+    第5题图
+</Figure>
+
+已知模拟某连续因果系统的信号流图如题图所示，其中 $x(t)$ 为输入信号，$y(t)$ 为输出信号。求系统函数 $H(s)$，并画出系统的零极点图。
+
+<Solution>
+    环路增益：$L_1=-3s^{-1},L_2=-2s^{-2}$
+
+    前向增益：$g_1=-s^{-2},g_2=s^{-1}$
+
+    对应的代数余因子：$\Delta_1=1,\Delta_2=1$
+
+    系统函数为：
+
+    $$
+    \begin{align*}
+    H={}&\frac{g_1\Delta_1+g_2\Delta_2}{1-(L_1+L_2)}\\
+    ={}&\frac{s^{-1}-s^{-2} }{1+3s^{-1}+2s^{-2} }\\
+    ={}&\frac{s-1}{s^2+3s+2}\\
+    ={}&\frac{s-1}{(s+2)(s+1)}\\
+    ={}&\frac3{s+2}-\frac2{s+1}
+    \end{align*}
+    $$
+
+    该系统的零点为 $1$，极点为 $-1$ 和 $-2$。
+
+    <Figure src="筨案5.svg" />
+</Solution>
+
+## 六、（10分）
+
+已知描述某因果系统的差分方程为 $y[n]=0.5x[n]+x[n-1]+0.5x[n-2]$，其中 $x[n]$ 为输入序列，$y[n]$ 为输出序列。
+
+1. 求该系统的系统函数 $H(z)$。
+
+<Solution>
+    对系统差分方程两边取 $z$ 变换，得 $Y(z)=0.5X(z)+z^{-1}X(z)+z^{-2}0.5X(z)$
+
+    系统函数为 $H(z)=\frac{Y(z)}{X(z)}=0.5+z^{-1}+0.5z^{-2},|z|>0$
+</Solution>
+
+2. 写出该系统的频率响应特性，画出系统的幅频特性曲线（数字角频率的取值范围为 $-2\pi<\Omega<2\pi$），并求当 $x[n]=\cos\left(\frac\pi2n\right)$ 时系统的稳态响应。
+
+<Solution>
+    系统的频率响应特性为 $H(\mathrm e^{\mathrm j\Omega})=H(z)\mid_{z=\mathrm e^{\mathrm j\Omega} }=0.5+\mathrm e^{-\mathrm j\Omega}+0.5\mathrm e^{-2\mathrm j\Omega}$
+
+    求系统的幅频特性
+
+    $$
+    \begin{align*}
+    H(\mathrm e^{\mathrm j\Omega})={}&0.5(1+\mathrm e^{-2\mathrm j\Omega})+\mathrm e^{-\mathrm j\Omega}\\
+    ={}&0.5\mathrm e^{-\mathrm j\Omega}(\mathrm e^{\mathrm j\Omega}+\mathrm e^{-\mathrm j\Omega})+\mathrm e^{-\mathrm j\Omega}\\
+    ={}&\mathrm e^{-\mathrm j\Omega}(1+\cos\Omega)
+    \end{align*}
+    $$
+
+    系统的幅频特性为 $\left|H(\mathrm e^{\mathrm j\Omega})\right|=1+\cos\Omega$，其幅频特性如图所示：
+
+    <Figure src="筨案6.svg" />
+
+    当 $x[n]=\cos\left(\frac\pi2n\right)$ 时，系统的频响特性为 $\mathrm e^{-\mathrm j\frac\pi2}$，幅度响应为 $1$，相频特性为 $-\frac\pi2$，故稳态应为 $y_{ss}[n]=\sin\left(\frac\pi2n\right)$，也可以将输入代入原差分方程，得到 $y_{ss}[n]=0.5\cos\left(\frac\pi2n\right)+\cos\left[\frac\pi2(n-1)\right]+0.5\cos\left[\frac\pi2(n-2)\right]=\sin\left(\frac\pi2n\right)$
+</Solution>
+
+## 七、（10分）
+
+<Figure src="题图7.svg" float>
+    第7题图
+</Figure>
+
+已知信号 $f(t)$ 的傅里叶变换为 $F(\omega)$，$f(t)$ 的频谱如题图所示。
+
+1. 用 $F(\omega)$ 表示 $f(t)\cos(20t)$ 的傅里叶变换，并画出幅度谱图。
+
+<Solution>
+    $f(t)\cos(20t)=f(t)\frac12\left(\mathrm e^{\mathrm j20t}+\mathrm e^{-\mathrm j20t}\right)$
+
+    <Figure src="筨案7.svg" />
+</Solution>
+
+2. 若对 $f(2t)$ 进行等时间间隔抽样，根据奈奎斯特抽样定理，抽样频率应如何选择。
+
+<Solution>
+    根据傅里叶变换的尺度变换性质，可得 $f(2t)$ 的最高角频率为 $20\,\mathrm{rad/s}$，因此抽样频率应大于 $40\,\mathrm{rad/s}$，或大于 $\frac{20}\pi\,\mathrm{Hz}$。
+</Solution>
+
+## 八、（10分）
+
+当描述某连续线性时不变因果系统的激励为 $x(t)=\mathrm e^{-t}u(t)$ 时，系统的零状态响应为 $y_{zs}(t)=\left(3\mathrm e^{-t}-4\mathrm e^{-2t}+\mathrm e^{-3t}\right)u(t)$。
+
+1. 求 $y_{zs}(t)$ 的拉普拉斯变换 $Y(s)$，并注明收敛域。
+
+<Solution>
+    $y_{zs}(t)$ 的拉普拉斯变换为 $Y_{zs}(s)=\frac3{s+1}-\frac4{s+2}+\frac1{s+3}$，收敛域为 $\sigma>-1$。
+</Solution>
+
+2. 求该系统的系统函数 $H(s)$，并注明收敛域。
+
+<Solution>
+    信号 $x(t)=\mathrm e^{-t}u(t)$ 的拉普拉斯变换为 $X(s)=\frac1{s+1}$，系统函数为 $H(s)=\frac{Y(s)}{X(s)}=\frac{2s+8}{(s+2)(s+3)}$，收敛域为 $\sigma>-2$。
+</Solution>
+
+3. 求系统频率响应特性。
+
+<Solution>
+    因为系统的收敛域包括虚轴，故系统的频率响应为 $H(\mathrm j\omega)=H(s)\mid_{s=\mathrm j\omega}=\frac{2\mathrm j\omega+8}{(\mathrm j\omega+2)(\mathrm j\omega+3)}$
+</Solution>
+
+## 九、计算机实践题（8分）
+
+<Figure src="题图9.svg" float>
+    第9题图
+</Figure>
+
+巴特活斯滤波器是五种简单且易于实现的因果系统，它的幅度响应在通带内非常平坦，在截止频率附近迅速衰减，它的相位响应在通带内接近线性，因此适用于需要良好频率选择性的应用场景。对于连续的高通型和低通型巴特活斯滤波器，其所有极点均分布在一个以原点为圆心的圆上，圆的半径就是截止角频率（单位为 $\mathrm{rad/s}$）。利用 MATLAB 或 Python 代码描述一个连续巴特活斯滤波器的系统函数 $H(s)$，并绘制零极点图，可以得到题图。图中没有零点，所有极点均为一阶极点（2对共轭极点）。
+
+1. 试定性判断该滤波器是低通型还是高通型，截止角频率是多少？
+
+<Solution>
+    低通型；截止频率为 $100\,\mathrm{rad/s}$
+</Solution>
+
+2. 题图所示系统，其单位冲激响应的波形最可能是 <Slot />
+
+<Choices>
+    + 衰减振荡
+    - 等幅振荡
+    - 增幅振荡
+    - 以上答案都不对
+</Choices>
+
+3. 请判断该系统的稳定性。
+
+<Solution>
+    因为极点都在 $s$ 左半平面，故系统是稳定的。
+</Solution>

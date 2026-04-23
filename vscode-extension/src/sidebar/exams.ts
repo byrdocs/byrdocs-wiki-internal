@@ -245,9 +245,13 @@ export function formatAcademicYearLabel(startYear: number): string {
 }
 
 export function getAcademicYearStartOptions(): number[] {
-  const currentYear = new Date().getFullYear();
+  const now = new Date();
+  const currentYear = now.getFullYear();
+  const currentMonth = now.getMonth() + 1; // 1-indexed
+  // The next academic year (starting in September) is only available from August onwards
+  const maxStartYear = currentMonth >= 8 ? currentYear : currentYear - 1;
   const options: number[] = [];
-  for (let year = currentYear; year >= 2020; year -= 1) {
+  for (let year = maxStartYear; year >= 2020; year -= 1) {
     options.push(year);
   }
   return options;

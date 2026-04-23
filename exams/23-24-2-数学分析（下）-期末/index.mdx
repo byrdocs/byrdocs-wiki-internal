@@ -1,0 +1,199 @@
+---
+时间: 2023-2024学年第二学期
+科目: 数学分析（下）
+阶段: 期末
+类型: 本科
+学院:
+- 信息与通信工程学院
+答案完成度: 完整可靠
+---
+
+## 一、填空题（本大题共 10 小题，每小题 3 分，共 30 分）
+
+1. 级数 $\sum_{n=1}^{\infty}\frac{\ln_{}{n} }{\sqrt{n} }$ 的敛散性为 <Blank>发散</Blank>（收敛或发散）.
+
+2. 幂级数 $\sum_{n=1}^{\infty}(\sqrt{n+1}-\sqrt{n})2^nx^{2n}$ 的收敛区间为 <Blank>$\left(-\frac1{\sqrt2},\frac1{\sqrt2}\right)$</Blank>.
+
+3. 已知 $f(x,y)=\left\{\begin{matrix}
+ \frac{\ln{(1+xy)}}{xy}  &,xy\ne 0 \\
+  x&,xy=0
+\end{matrix}\right.\;\;,$ 则 $f_y(1,0)=$ <Blank>$-\frac12$</Blank>.
+
+4. 已知函数 $z=z(x,y)$ 由方程 $xy+z+e^{xz}=1$ 所确定，则 $\left.dz\right\rvert_{(1,0)}=$ <Blank>$-\frac12\,\mathrm dy$</Blank>.
+
+5. 曲面 $z=\arctan\frac{y}{x}$ 在点 $(1,1,\frac{\pi}{4})$ 处的切平面方程为 <Blank>$xx-y+2z=\frac\pi2$</Blank>.
+
+6. 点 $(0,0)$ 是函数 $f(x,y)=(1+\mathrm e^y)\cos x-y\mathrm e^y$ 的 <Blank>极大</Blank> 值点.
+
+7. 已知平面区域 $D$ 由曲线 $y=x^3$ 与直线 $x=1,y=-1$ 围成，则 $\iint_{D}^{}[1+xy\mathrm e^{\left |x\right |+\left |y\right |}]\mathrm dx\mathrm dy=$ <Blank>$2$</Blank>.
+
+8. 已知 $D$ 是第一象限中曲线 $y=\sqrt{1-x^2}$ 与直线 $x+y=1,y=x,y=\sqrt{3}x$ 围成的平面区域，$f(t)$ 连续，将二重积分 $\iint_{D}^{}f(x^2+y^2)d\sigma$ 化为极坐标系下的累次积分为 <Blank>$\int_{\frac\pi4}^{\frac\pi3}\mathrm d\theta\int_{\frac1{\cos\theta+\sin\theta}}^1f(\rho^2)\rho\,\mathrm d\rho$</Blank>.
+
+9. 设闭曲线 $C$ 为 $\left |x\right |+\left |y\right |=1$，则 $\oint_{C}^{}(\left |x\right |+y)\mathrm ds=$ <Blank>$2\sqrt2$</Blank>.
+
+10. 已知 $C$ 为不经过原点的光滑曲线，从 $A(1,0)$ 到 $B(3,4)$，则 $\int_{C}^{}\frac{x\mathrm dx+y\mathrm dy}{\sqrt{x^2+y^2}}$ <Blank>$4$</Blank>.
+
+## 二、（10 分）
+
+设 $f(x)$ 有二阶连续导数，$z=z(x,y)=f(r)$ 满足方程 $\frac{\partial^2z}{\partial x^2}+\frac{\partial^2z}{\partial y^2}=0$，其中 $r=\sqrt{x^2+y^2}$。若 $f(1)=0$, $f'(1)=1$，求 $z=z(x,y)$ 的表达式。
+
+<Solution>
+    $\frac{\partial z}{\partial x}=f'(r)\frac xr$, $\frac{\partial z}{\partial y}=f'(r)\frac yr$, $\frac{\partial^2z}{\partial x^2}=f''(r)\frac{x^2}{r^2}+f'(r)\left(\frac1r-\frac{x^2}{r^3}\right)$, $\frac{\partial^2z}{\partial y^2}=f''(r)\frac{y^2}{r^2}+f'(r)\left(\frac1r-\frac{y^2}{r^3}\right)$，
+
+    于是 $\frac{\partial^2z}{\partial x^2}+\frac{\partial^2z}{\partial y^2}=f''(r)\frac{x^2+y^2}{r^2}+f'(r)\left(\frac2r-\frac{x^2+y^2}{r^3}\right)=f''(r)+\frac1rf'(r)$，
+
+    所以 $f(r)$ 满足的微分方程为 $f''(r)+\frac1rf'(r)=0$。
+
+    解方程得 $f'(r)=C_1\mathrm e^{-\int\frac1r\,\mathrm dr}=\frac{C_1}r$, $f(r)=C_1\ln r+C_2$。
+
+    由 $f(1)=0,\,f'(1)=1$ 得 $C_1=1,\,C_2=0$。于是 $z=\ln\sqrt{x^2+y^2}$。
+</Solution>
+
+## 三、（12 分）
+
+### 1.
+
+计算累次积分 $\int_1^2\mathrm dy\int_{\sqrt y}^y\mathrm e^{\frac yx}\mathrm dx+\int_2^4\mathrm dy\int_{\sqrt y}^2\mathrm e^\frac yx\mathrm dx$。
+
+<Solution>
+    交换积分次序
+
+    $$
+    \begin{align*}
+    \int_1^2\mathrm dy\int_{\sqrt y}^y\mathrm e^{\frac yx}\mathrm dx+\int_2^4\mathrm dy\int_{\sqrt y}^2\mathrm e^{\frac yx}\mathrm dx={}&\int_1^2\mathrm dx\int_x^{x^2}\mathrm e^{\frac yx}\mathrm dy\\
+    ={}&\int_1^2\left[\left.x\mathrm e^{\frac yx}\right|_x^{x^2}\right]\,\mathrm dx\\
+    ={}&\int_1^2\left(x\mathrm e^x-\mathrm ex\right)\,\mathrm dx\\
+    ={}&\left.\left[(x-1)\mathrm e^x-\frac{\mathrm ex^2}2\right]\right|_1^2=\mathrm e^2-\frac{3\mathrm e}2
+    \end{align*}
+    $$
+</Solution>
+
+### 2.
+
+已知 $\Omega$ 是由圆锥面 $z=\sqrt{x^2+y^2}$ 和上半球面 $z=\sqrt{1-x^2-y^2}$ 围成的闭区域，计算三重积分 $\iiint_\Omega z(x^2+y^2)\,\mathrm dx\mathrm dy\mathrm dz$。
+
+<Solution>
+    $$
+    \begin{align}
+    \iiint_\Omega z(x^2+y^2)\,\mathrm dx\mathrm dy\mathrm dz={}&\int_0^{2\pi}\mathrm d\theta\int_0^{\frac\pi4}\mathrm d\varphi\int_0^1r\cos\varphi\cdot r^2\sin{}^2\varphi\cdot r^2\sin\varphi\,\mathrm dr\\
+    ={}&\int_0^{2\pi}\mathrm d\theta\int_0^{\frac\pi4}\sin^3\varphi\cos\varphi\,\mathrm d\varphi\int_0^1r^5\mathrm dr\\
+    ={}&\frac\pi3\int_0^{\frac\pi4}\sin{}^3\varphi\,\mathrm d\varphi=\left.\frac\pi{12}\sin{}^4\varphi\right|_0^{\frac\pi4}=\frac\pi{48}
+    \end{align}
+    $$
+</Solution>
+
+## 四、（10 分）
+
+设 $a,\,b$ 为实数，函数 $z=ax^2+by^2+2$ 在点 $(3,4)$ 的方向导数中，沿方向 $\overrightarrow l=-3\overrightarrow i-4\overrightarrow j$ 的方向导数最大，最大值为 $10$.
+
+1. 求 $a,\,b$ 的值；
+
+<Solution>
+    函数 $z=ax^2+by^2+2$ 在点 $(3,4)$ 处的梯度为
+
+    $\nabla z(3,4)=(6a,8b)$
+
+    由可微函数沿着梯度方向的方向导数最大，且最大值为梯度的模，有
+
+    $\frac{6a}{-3}=\frac{8b}{-4}\;(a<0,b<0),\;\sqrt{36a^2+64b^2}=10$
+
+得 $a=b=-1$。
+</Solution>
+
+2. 求曲面 $S:\,z=ax^2+by^2+2\;(z\ge0)$ 的面积。
+
+<Solution>
+    曲面 $S:\;z=2-x^2-y^2\;(z\ge0)$，其在 $xOy$ 面上的投影区域为 $D:\;x^2+y^2\le2$，$S$ 的面积为
+
+    $$
+    \begin{align}
+    \iint_D\sqrt{1+z_x^2+z_y^2}\,\mathrm dx\mathrm dy={}&\iint_D\sqrt{1+4x^2+4y^2}\,\mathrm dx\mathrm dy\\
+    ={}&\int_0^{2\pi}\mathrm d\theta\int_0^{\sqrt2}\sqrt{1+4\rho^2}\rho\,\mathrm d\rho=\frac{13\pi}3
+    \end{align}
+    $$
+</Solution>
+
+## 五、（12 分）
+
+设 $C$ 是以原点 $O(0,0,0)$ 为起点，椭球面 $\frac{x^2}{a^2}+\frac{y^2}{b^2}+\frac{z^2}{c^2}=1$ 上第一卦限内的点 $(x_0,y_0,z_0)$ 为终点的有向直线段，问当 $x_0,y_0,z_0$ 为何值时，曲线积分 $I=\int_C yz\,\mathrm dx+zx\,\mathrm dy+xy\,\mathrm dz$ 的值最大，并求出最大值。
+
+<Solution>
+    从原点 $O(0,0,0)$ 到点 $(x_0,y_0,z_0)$ 的直线段方程为 $C:\;\begin{cases}
+    x=x_0t\\
+    y=y_0t\\
+    z=z_0t
+    \end{cases},\;t:\;0\rightarrow 1$，则
+
+    $I=\int_C yz\,\mathrm dx+zx\,\mathrm dy+xy\,\mathrm dz=\int_0^13x_0y_0z_0t^2\mathrm dt=x_0y_0z_0$
+
+    构造拉格朗日函数 $L(x_0,y_0,z_0,\lambda)=x_0y_0z_0+\lambda\left(\frac{x_0^2}{a^2}+\frac{y_0^2}{b^2}+\frac{z_0^2}{c^2}-1\right)$
+
+    令 $\begin{cases}
+    L_\xi=y_0z_0+2\lambda\frac{x_0}{a^2}=0\\
+    L_\eta=x_0z_0+2\lambda\frac{y_0}{b^2}=0\\
+    L_\zeta=x_0y_0+2\lambda\frac{z_0}{c^2}=0\\
+    L_\lambda=\frac{x_0^2}{a^2}+\frac{y_0^2}{b^2}+\frac{z_0^2}{c^2}-1=0
+    \end{cases}$
+
+    解得唯一可能的条件极值点 $(x_0,y_0,z_0)=\left(\frac{a}{\sqrt{3}},\frac{b}{\sqrt{3}},\frac{c}{\sqrt{3}}\right)$。
+
+    由实际问题一定存在最大值，所以，当 $x_0=\frac{a}{\sqrt{3}},\;y_0=\frac{b}{\sqrt{3}},\;z_0=\frac{c}{\sqrt{3}}$ 时，$I$ 的值最大，最大值为 $\frac{\sqrt 3abc}{9}$。
+</Solution>
+
+## 六、（10 分）
+
+设 $C$ 是圆周 $(x-a)^2+(y-a)^2=1$ 的边界曲线，逆时针方向，$f(x)$ 为大于零的连续函数，证明：$\oint_C\left[\mathrm e^x\cos y-\frac y{f(x)}\right]\,\mathrm dx+\left[xf(y)-\mathrm e^x\sin y\right]\,\mathrm dy\ge2\pi$。
+
+<Solution>
+    记 $P(x,y)=\mathrm e^x\cos y-\frac y{f(x)}$, $Q(x,y)=xf(y)-\mathrm e^x\sin y$，
+
+    $Q_x=f(y)-\mathrm e^x\sin y$, $P_y=-\mathrm e^x\sin y-\frac1{f(x)}$，
+
+    由格林公式，
+
+    $\oint_CP\,\mathrm dx+Q\,\mathrm dy=\iint_D\left(f(y)+\frac1{f(x)}\right)\,\mathrm dx\mathrm dy$
+
+    其中 $D:\;(x-a)^2+(y-a)^2\le1$，因为 $D$ 具有轮换对称性，所以
+
+    $\iint_D\frac1{f(x)}\,\mathrm dx\mathrm dy=\iint_D\frac1{f(y)}\,\mathrm dx\mathrm dy$
+
+    从而 $\iint_Df(y)\,\mathrm dx\mathrm dy+\iint_D\frac1{f(x)}\,\mathrm dx\mathrm dy=\iint_D\left(f(y)+\frac1{f(y)}\right)\,\mathrm dx\mathrm dy\ge\iint_D2\sqrt{f(y)\cdot\frac1{f(y)}}\,\mathrm dx\mathrm dy=2\pi$，
+
+    故 $\oint_C\left[\mathrm e^x\cos y-\frac y{f(x)}\right]\,\mathrm dx+\left[xf(y)-\mathrm e^x\sin y\right]\,\mathrm dy\ge2\pi$。
+</Solution>
+
+## 七、（10 分）
+
+已知 $S$ 是上半球面 $z=\sqrt{a^2-x^2-y^2}\;(a>0)$ 的上侧，计算曲面积分 $I=\iint_Sax\,\mathrm dy\mathrm dz-3ay\,\mathrm dz\mathrm dx+(z+a)^2\mathrm dx\mathrm dy$
+
+<Solution>
+    补面 $S_1:\;z=0,x^2+y^2\le a^2$ 下侧，则 $S+S_1$ 为闭球面外侧。
+
+    由高斯公式
+
+    $$
+    \begin{align*}
+    \oiint_{S+S_1}ax\,\mathrm dy\mathrm dz-3ay\,\mathrm dz\mathrm dx+(z+a)^2\mathrm dx\mathrm dy={}&\iiint_\Omega2z\,\mathrm dx\mathrm dy\mathrm dz\\
+    ={}&2\int_0^az\,\mathrm dz\iint_{x^2+y^2\le a^2-z^2}\mathrm dx\mathrm dy\\
+    ={}&2\pi\int_0^az(a^2-z^2)\,\mathrm dz=\frac\pi2a^4
+    \end{align*}
+    $$
+
+    $$
+    \iint_{S_1}ax\,\mathrm dy\mathrm dz-3ay\,\mathrm dz\mathrm dx+(z+a)^2\,\mathrm dx\mathrm dy=\iint_{S_1}a^2\mathrm dx\mathrm dy=-\iint_{x^2+y^2\le a^2}a^2\,\mathrm dx\mathrm dy=-\pi a^4
+    $$
+
+    故 $I=\oiint_{S+S_1}ax\,\mathrm dy\mathrm dz-\iint_{S_1}ax\,\mathrm dy\mathrm dz=\frac32\pi a^4$。
+</Solution>
+
+## 八、（6 分）
+
+已知 $a_n>0$，且 $\lim_{n\rightarrow\infty}\frac{-\ln a_n}{\ln n}=q$，证明：若 $q>1$，则级数 $\sum_{n=1}^\infty a_n$ 收敛。
+
+<Solution>
+    若 $q>1$，则对 $\varepsilon=\frac{q-1}2>0$，存在正整数 $N$，当 $n>N$ 时，有
+
+    $\frac{-\ln a_n}{\ln n}>q-\varepsilon=\frac{q+1}2$
+
+    从而，$a_n<\frac1{n^{\frac{q+1}2}}$，而 $\frac{q+1}2>1$，级数 $\sum_{n=1}^\infty\frac1{n^\frac{q+1}2}$ 收敛，由比较审敛法，可知 $\sum_{n=1}^\infty a_n$ 收敛。
+</Solution>

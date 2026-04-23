@@ -30,7 +30,6 @@ const SCHOOL_NAMES = [
 
 const SCHOOL_SET = new Set(SCHOOL_NAMES);
 const AUDIO_EXTENSIONS = new Set([".mp3", ".wav", ".ogg", ".m4a"]);
-const IMAGE_BACKGROUND_EXTENSIONS = new Set([".svg", ".png"]);
 const BLOCK_TOKEN_PATTERN = /^(?:[-*] |\d+\. )?@@BYR_BLOCK_(\d+)@@$/;
 const BLANK_TOKEN = "@@BYR_BLANK@@";
 const PARAM_TOKEN = "@@BYR_PARAM@@";
@@ -370,17 +369,13 @@ function registerFile(context, fileTitle) {
 }
 
 function renderFigureComponent(fileName, caption, { float }) {
-    const extension = extname(fileName).toLowerCase();
-    const background = IMAGE_BACKGROUND_EXTENSIONS.has(extension)
-        ? ' background="white"'
-        : "";
     const floatAttr = float ? " float" : "";
 
     if (!caption)
-        return `<Figure src="${fileName}"${floatAttr}${background} />`;
+        return `<Figure src="${fileName}"${floatAttr} />`;
 
     return [
-        `<Figure src="${fileName}"${floatAttr}${background}>`,
+        `<Figure src="${fileName}"${floatAttr}>`,
         indentBlock(caption, 4),
         "</Figure>",
     ].join("\n");

@@ -1,0 +1,283 @@
+---
+时间: 2023-2024学年第二学期
+科目: 软件工程
+阶段: 期末
+类型: 本科
+学院:
+- 人工智能学院
+来源: 39b8d267330f3e621d4a051192cbf113
+答案完成度: 残缺
+---
+
+## 一、填空题（10题，每题1分，共10分）
+
+1. 敏捷开发中，个体与交互重于过程与工具，可工作的软件重于面面俱到的 <Blank>文档</Blank>，客户合作重于合同谈判，响应变化重于遵循计划。
+
+2. 软件需求分析阶段需要编制两份说明文档，分别是用户需求说明书和 <Blank>软件需求规格说明书</Blank>。
+
+3. 用例模型由四个部分构成：用例图、用例说明、系统顺序图和 <Blank>操作契约</Blank>。
+
+4. 软件的概要设计主要进行两项设计活动，分别是 <Blank>系统结构设计</Blank> 和数据设计。
+
+5. 面向对象设计中交互图的主要任务是确定 <Blank>软件对象</Blank> 并为其分配功能。
+
+6. 源程序文档化主要体现在为代码进行 <Blank>序言性注释</Blank> 和功能性注释。
+
+7. 测试用例由测试的 <Blank>测试输入数据</Blank> 和 <Blank>对应的预期输出结果</Blank> 构成。
+
+8. 开发计划由以下三个部分构成：<Blank>时间安排</Blank>，<Blank>资源分配</Blank> 和责任人。
+
+## 二、判断题（10题，每题1分，共10分）
+
+1. 软件工程起源于解决程序设计不能解决的问题。<Blank>对</Blank>
+
+2. 极限编程的功能需求是通过用例的方式进行描述。<Blank>错</Blank>
+
+3. 需求调研过程中需要了解当前业务系统是如何处理业务请求的细节。<Blank>错</Blank>
+
+4. UML 交互图中对象 A 给对象 B 发送了一条同步消息 M，则对象 A 具有功能 M。<Blank>错</Blank>
+
+<Solution>
+应是对象 B 具有处理消息 M 的功能。
+</Solution>
+
+5. UML 交互图中一个对象实例不可以给自己发送消息。<Blank>错</Blank>
+
+<Solution>
+对象通过自发一条消息表示对自身或对本对象其他操作的调用，这种消息称为**自返消息**。
+</Solution>
+
+6. 软件的概要设计的包括系统的界面设计和数据设计。<Blank>对</Blank>
+
+7. 模块的内聚描述的是类之间关系的紧密程度。<Blank>错</Blank>
+
+<Solution>
+内聚是**模块**功能强度的度量，用于表示一个模块**内部各元素**彼此结合的紧密程度。耦合是**模块之间**连接紧密程度的度量。
+</Solution>
+
+8. 系统的确认测试表示要通过基于需求分析规格说明书的测试用例。<Blank>对</Blank>
+
+9. 控制器层的对象应该实现系统事件的请求逻辑。<Blank>对</Blank>
+
+10. 软件交付用户之后就不再需要进行软件测试活动了。<Blank>错</Blank>
+
+## 三、选择题（单选题每题1分，多选题每题2分，共10分）
+
+1. 本学期的课程作业采用的是以下哪一项生命周期模型 <Slot />
+
+<Choices>
+    - 增量模型
+    + 极限编程
+    - 演化模型
+    - UP模型
+</Choices>
+
+2. 下面哪一项不属于操作契约中后置条件所需规定的内容 <Slot />
+
+<Choices>
+    - 对象被创建或者消除
+    - 对象之间的“关联”被创建或者消除
+    + 对象中的功能被定义
+    - 对象的属性值被修改
+</Choices>
+
+3. 下面哪一项属于领域模型的范畴 <Slot />
+
+<Choices>
+    - 用例图
+    - 系统顺序图
+    + 活动图
+    - 操作契约
+</Choices>
+
+4. 面向对象的概要设计需要用到以下哪几项 UML 的图 <Slot />
+
+<Choices multiple>
+    + 用例图
+    + 交互图
+    + 类图
+    + 系统顺序图
+</Choices>
+
+<Solution>
+    面向对象概要设计的主要工作就是，基于面向对象需求分析中产生的用例（**用例图**）、领域模型（**类图**）、系统顺序图（**顺序图**）以及操作契约，进行系统动态结构设计（产生**交互图**）和系统静态结构设计（产生**类图**）。
+</Solution>
+
+5. 以下哪种情况违反了单一职责原则？ <Slot />
+
+<Choices>
+    + 一个用户类，包含用户信息的获取、用户密码的加密以及用户订单的查询功能
+    - 一个形状类，只负责计算形状的面积
+    - 一个文件读取类，只负责从文件中读取数据并返回
+    - 一个日志记录类，只负责将系统日志记录到文件中
+</Choices>
+
+6. 面向对象的设计原则中哪一项描述的是模块的耦合性？<Slot />
+
+<Choices>
+    + 迪米特法则
+    - 开闭原则
+    - 单一原则
+    - 组合/聚合复用
+</Choices>
+
+<Solution>
+    **迪米特法则**即最少知识原则，强调一个对象应当尽可能少的了解其他对象，即减少模块之间的关系。该表述强调低耦合。
+
+    **单一职责原则**强调一个类应该有且只有一个引起它变化的原因。该表述符合功能内聚的特征。
+
+    **开闭原则**强调对扩展开放，对修改封闭；**组合/聚合复用原则**强调组合优于继承。二者均强调可复用性和可维护性。
+</Solution>
+
+7. 以下哪种情况最有可能违反迪米特法则？<Slot />
+
+<Choices>
+    - 一个工具类，它提供了多个静态方法，供其他类调用
+    - 一个模块中的类，它只和同一模块内的其他相关类进行通信
+    + 一个类通过层层调用其他类的方法，最终访问到一个和它没有直接关联的底层类的方法
+    - 一个类实现了一个接口，并且只和接口中定义的方法进行交互
+</Choices>
+
+8. 某程序使用等价类划分构造测试用例，其中有效等价类有3个，无效等价类有4个，请问最少需要设计多少组测试数据 <Slot />
+
+<Choices>
+    - 7组
+    + 5组
+    - 4组
+    - 11组
+</Choices>
+
+9. 以下哪一项方法可以有效降低测试用例的数量 <Slot />
+
+<Choices>
+    - 因果图
+    - 基本路径测试
+    - 边界值分析
+    + 等价类划分
+</Choices>
+
+<Solution>
+    因果图：考虑输入条件之间的制约关系，去除不可能输入条件组合对应的测试用例。该技术可减少有限多个测试用例。
+
+    基本路径测试：通过程序控制流图选取基本路径设计测试用例。该技术的测试用例个数是固定的，应等于对应程序段的环路复杂度。
+
+    边界值分析：选取等价类中的边界值作为测试用例。该技术提高了测试用例的效率，但反而增加了测试用例的个数。
+
+    等价类划分：通过划分等价类、编号、覆盖等步骤，将测试用例从无穷多个可能的取值组合转换为有限多个等价类的排列组合。**该技术将测试用例个数从无穷多个变为有限多个，极大地减少了测试用例的个数。该技术是最直接、最根本地减少测试用例数量的方法。**
+</Solution>
+
+## 四、简答题（共5题，每题3分，共计15分）
+
+1. 请描述软件工程产生的历史背景及作用。
+
+<Solution>
+    背景：20世纪60年代后，随着计算机软件应用领域增多，软件规模不断扩大，软件系统功能多，逻辑复杂，不断扩充，从而导致许多系统开发出现了不良的后果。
+
+    作用：运用工程化的原则和方法，组织软件开发解决软件危机。
+</Solution>
+
+2. 请给出除了极限编程之外你认为最适合课程作业的1种生命周期模型，并给出理由。
+
+3. 请给出领域模型的作用，并描述业务流程使用哪一种UML图形表示。
+
+4. 软件的概要设计有哪几个主要活动？课程作业2要求完成哪几个用例的设计？
+
+<Solution>
+    - 系统结构设计
+    - 处理方式设计
+    - 数据设计
+    - 可靠性设计
+    - 界面设计
+</Solution>
+
+5. 分别从使用者和开发者的角度描述软件测试的目的。
+
+<Solution>
+    使用者：通过软件测试暴露软件中的错误的缺陷，以考虑是否可接受该软件产品。
+
+    开发者：希望测试成为表明软件产品中不存在错误，验证该软件已正确地实现了用户的要求，确立人们对软件质量的信心。
+</Solution>
+
+## 五、应用题（2题，共25分）
+
+### 1（10分）
+
+已知某程序代码如下：
+
+```python
+def discount(role, price, date):
+    if role == 1:
+        return price * 0.8
+    elif role == 2 and date == '0910':
+        return price * 0.8
+    elif price >= 200:
+        return price * 0.85
+    elif role == 2:
+        return price * 0.9
+    return price
+```
+
+要求：
+
+1. 给出程序控制流图，注意复合条件的分支结构。（4分）
+2. 用基本路径法计算控制流图的环路复杂度。（4分）
+3. 给出必须覆盖的基本路径集。（2分）
+
+### 2（15分）
+
+黑盒测试用例，已知条件如下：
+
+<table border="1" style="border-collapse: collapse;">
+    <tr> <td>房间号</td> <td>初始温度</td> <td>模式</td> </tr>
+    <tr> <td>R1</td> <td>32</td> <td rowspan="4">制冷</td> </tr>
+    <tr> <td>R2</td> <td>28</td> </tr>
+    <tr> <td>R3</td> <td>28</td> </tr>
+    <tr> <td>R4</td> <td>35</td> </tr>
+    <tr> <td>计费费率</td> <td colspan="2"> 1元/1度（温度）</td> </tr>
+    <tr> <td rowspan="3"> 风速 </td> <td>H 高速</td> <td>1度/1分钟</td> </tr>
+    <tr> <td>M 中速（缺省）</td> <td>1度/2分钟</td> </tr>
+    <tr> <td>L 低速</td> <td>1度/3分钟</td> </tr>
+</table>
+
+现有房间4个：R1, R2, R3, R4；服务资源只有3个，需要进行调度：优先级调度和时间片调度相结合，如果等待队列与服务队列的优先级相同时启动时间片：每2分钟调度一次，规定服务队列中序号小的首先被调度出去。请填写下表中10分钟（每一行代表1分钟间隔）每个房间的数据以及服务队列和等待队列的信息。
+
+CT=当前室温；TT=目标温度；FS=风速；Fee=费用；
+
+O=开机；H=高速风；C=关机；
+
+数字=表示目标温度。
+
+<table border="1" style="border-collapse: collapse;">
+    <tr> <td rowspan="2">R1</td> <td rowspan="2">R2</td> <td rowspan="2">R3</td> <td rowspan="2">R4</td> <td colspan="4" style="text-align:center">R1</td> <td colspan="4" style="text-align:center">R2</td> <td colspan="4" style="text-align:center">R3</td> <td colspan="4" style="text-align:center">R4</td> <td colspan="3" style="text-align:center">服务队列</td> <td style="text-align:center">等待</td> </tr>
+    <tr> <td>CT</td> <td>TT</td> <td>FS</td> <td>Fee</td> <td>CT</td> <td>TT</td> <td>FS</td> <td>Fee</td> <td>CT</td> <td>TT</td> <td>FS</td> <td>Fee</td> <td>CT</td> <td>TT</td> <td>FS</td> <td>Fee</td> <td colspan="4">以下单元格填入房间号</td> </tr>
+    <tr> <td>O</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+    <tr> <td>18</td> <td>O</td> <td></td> <td>O</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+    <tr> <td></td> <td></td> <td>O,H</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+    <tr> <td></td> <td>19</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+    <tr> <td></td> <td></td> <td></td> <td>22</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+    <tr> <td></td> <td></td> <td></td> <td>H</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+    <tr style="height:1.5em"> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+    <tr> <td></td> <td>H</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+    <tr> <td>H</td> <td>O</td> <td>C</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+    <tr> <td>22</td> <td>C</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+    <tr> <td>C</td> <td></td> <td></td> <td>C</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+</table>
+
+## 六、综合题（5个问题，总共30分）
+
+学生和老师在校医院大厅使用自助挂号机进行挂号的流程如下：
+
+1. 将一卡通放置在挂号机的识别器上；
+2. 选择挂号；
+3. 选择问诊的科室（假定科室分为内科、外科、耳鼻喉科等）；
+4. 扫描二维码进行支付；
+5. 获取挂号单；
+6. 完成一次挂号。
+
+挂号单具有以下信息：病人姓名，科室，挂号时间，挂号的队列号。
+
+1. 请问为了完成一次挂号，病人与系统之间一共进行了多少次交互？（3分）
+2. 挂号单对象实例在哪一个环节被创建？（3分）
+3. 挂号的队列号请问在上述流程中哪一个步骤中产生？（5分）
+4. 请给出第2和第3条指令的操作契约，请你给出该消息对应的交互图。（7分）
+5. 如果系统的架构有 GUI、控制器层和应用逻辑层，请给出第3条指令对应的交互图：确定控制对象以及应用逻辑层的软件对象。（12分）
