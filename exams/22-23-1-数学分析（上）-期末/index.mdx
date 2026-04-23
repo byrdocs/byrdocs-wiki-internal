@@ -17,11 +17,11 @@
 
 <Solution>
     $$
-    \begin{align}
+    \begin{align*}
     \lim_{x\rightarrow0}\frac{\mathrm{e}^x-\cos x-x}{\left(1+2x^2\right)^\frac13-1}
     ={}&\lim_{x\rightarrow0}\frac{1+x+\frac{x^2}{2}-1+\frac{x^2}2-x+o(x^2)}{1+\frac23x^2-1+o(x^2)}\\
     ={}&\frac32
-    \end{align}
+    \end{align*}
     $$
 </Solution>
 
@@ -31,13 +31,13 @@
 
 <Solution>
     $$
-    \begin{align}
+    \begin{align*}
     {}&\int\frac{\arctan x}{x^3}\,\mathrm{d}x\\
     ={}&-\frac12\int\arctan x\,\mathrm{d}\frac1{x^2}\\
     ={}&-\frac1{2x^2}\arctan x+\frac12\int\frac{\mathrm dx}{x^2(x^2+1)}\\
     ={}&-\frac1{2x^2}\arctan x+\frac12\int\frac{\mathrm dx}{x^2}-\frac12\int\frac{\mathrm dx}{x^2+1}\\
     ={}&-\frac1{2x^2}\arctan x-\frac1{2x}-\frac12\arctan x+C
-    \end{align}
+    \end{align*}
     $$
 </Solution>
 
@@ -61,12 +61,12 @@
     那么原式就等于
 
     $$
-    \begin{align}
+    \begin{align*}
     \int_{-1}^1\frac1{4-x^2}\,\mathrm dx
     ={}&\frac14\int_{-1}^1\frac{\mathrm dx}{2-x}+\frac14\int_{-1}^1\frac{\mathrm dx}{2+x}\\
     ={}&\frac14\left.\ln\frac{2+x}{2-x}\right|_{-1}^1\\
     ={}&\frac12\ln3
-    \end{align}
+    \end{align*}
     $$
 </Solution>
 
@@ -112,16 +112,19 @@
     而因为
 
     $$
-    \begin{align}
+    \begin{align*}
     \int_{(k-1)\pi}^{k\pi}x\sin x\,\mathrm{d}x
     ={}&-\int_{(k-1)\pi}^{k\pi}x\,\mathrm d\cos x\\
     ={}&-\left.x\cos x\right|_{(k-1)\pi}^{k\pi}+\int_{(k-1)\pi}^{k\pi}\cos x\,\mathrm dx\\
     ={}&-k\pi(-1)^k+(k-1)\pi(-1)^{k-1}\\
     ={}&(2k-1)\pi(-1)^{k-1}
-    \end{align}
+    \end{align*}
     $$
 
-    所以 $I=\sum_{k=1}^n(-1)^{k+1}(-1)^{k-1}(2k-1)\pi=n^2\pi$.
+    所以
+    $$
+    I=\sum_{k=1}^n(-1)^{k+1}(-1)^{k-1}(2k-1)\pi=n^2\pi
+    $$
 </Solution>
 
 ## 二 (10 分)
