@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="300" viewBox="0 0 1100 300" role="img" aria-labelledby="title desc">
+  <title id="title">控制系统结构图</title>
+  <desc id="desc">电位计输出给定信号至放大器，放大器驱动电动机，负载从上方作用于电动机；输出转速经测速发电机形成负反馈并接回放大器。</desc>
+  <defs>
+    <style>
+      .wire { fill: none; stroke: #17252b; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+      .block { fill: #fff; stroke: #17252b; stroke-width: 3; }
+      .label { fill: #17252b; font-family: "Noto Sans CJK SC", "Microsoft YaHei", "PingFang SC", Arial, sans-serif; font-size: 27px; }
+      .math { fill: #17252b; font-family: "Times New Roman", "STIX Two Text", serif; font-size: 25px; font-style: italic; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#17252b"/>
+    </marker>
+  </defs>
+
+  <rect id="background" width="1100" height="300" fill="#fff"/>
+
+  <g id="forward-path">
+    <rect class="block" x="25" y="105" width="180" height="70"/>
+    <text class="label" x="115" y="150" text-anchor="middle">电位计</text>
+
+    <line class="wire" x1="205" y1="140" x2="335" y2="140" marker-end="url(#arrow)"/>
+    <text class="math" x="270" y="119" text-anchor="middle">U<tspan baseline-shift="sub" font-size="16">r</tspan></text>
+
+    <rect class="block" x="335" y="105" width="170" height="70"/>
+    <text class="label" x="420" y="150" text-anchor="middle">放大器</text>
+
+    <line class="wire" x1="505" y1="140" x2="670" y2="140" marker-end="url(#arrow)"/>
+    <text class="math" x="587" y="119" text-anchor="middle">U<tspan baseline-shift="sub" font-size="16">a</tspan></text>
+
+    <rect class="block" x="670" y="100" width="170" height="80"/>
+    <text class="label" x="755" y="151" text-anchor="middle">电动机</text>
+
+    <line class="wire" x1="840" y1="140" x2="1050" y2="140" marker-end="url(#arrow)"/>
+    <text class="math" x="985" y="116" text-anchor="middle">ω</text>
+  </g>
+
+  <g id="load-input">
+    <rect class="block" x="670" y="18" width="170" height="55"/>
+    <text class="label" x="755" y="55" text-anchor="middle">负载</text>
+    <line class="wire" x1="755" y1="73" x2="755" y2="100" marker-end="url(#arrow)"/>
+  </g>
+
+  <g id="feedback-path">
+    <polyline class="wire" points="940,140 940,238 865,238"/>
+    <rect class="block" x="580" y="205" width="285" height="66"/>
+    <text class="label" x="722.5" y="248" text-anchor="middle">测速发电机</text>
+    <polyline class="wire" points="580,238 392,238 392,175" marker-end="url(#arrow)"/>
+    <text class="math" x="505" y="226" text-anchor="middle">U<tspan baseline-shift="sub" font-size="16">t</tspan></text>
+    <text class="label" x="420" y="207">−</text>
+  </g>
+</svg>

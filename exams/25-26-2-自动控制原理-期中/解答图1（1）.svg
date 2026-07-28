@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="300" viewBox="0 0 1000 300" role="img" aria-labelledby="title desc">
+  <title id="title">直流电机反馈系统方框图</title>
+  <desc id="desc">电位计给出的Ur经放大器形成Ua，驱动电动机并带动负载；电动机转速omega由测速发电机测量，反馈电压Uf从下方以负反馈接入放大器。</desc>
+  <defs>
+    <style>
+      .wire { fill: none; stroke: #17252b; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+      .block { fill: #fff; stroke: #17252b; stroke-width: 3; }
+      .label { fill: #17252b; font-family: "Noto Sans CJK SC", "Microsoft YaHei", "PingFang SC", Arial, sans-serif; font-size: 25px; }
+      .math { fill: #17252b; font-family: "Times New Roman", "STIX Two Text", serif; font-size: 25px; font-style: italic; }
+      .sign { fill: #17252b; font-family: "Times New Roman", serif; font-size: 25px; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#17252b"/>
+    </marker>
+  </defs>
+
+  <rect id="background" width="1000" height="300" fill="#fff"/>
+
+  <g id="forward-path">
+    <rect class="block" x="40" y="80" width="160" height="60"/>
+    <text class="label" x="120" y="119" text-anchor="middle">电位计</text>
+
+    <line class="wire" x1="200" y1="110" x2="280" y2="110" marker-end="url(#arrow)"/>
+    <text class="math" x="240" y="91" text-anchor="middle">U<tspan baseline-shift="sub" font-size="16">r</tspan></text>
+
+    <rect class="block" x="280" y="80" width="160" height="60"/>
+    <text class="label" x="360" y="119" text-anchor="middle">放大器</text>
+
+    <line class="wire" x1="440" y1="110" x2="520" y2="110" marker-end="url(#arrow)"/>
+    <text class="math" x="480" y="91" text-anchor="middle">U<tspan baseline-shift="sub" font-size="16">a</tspan></text>
+
+    <rect class="block" x="520" y="80" width="160" height="60"/>
+    <text class="label" x="600" y="119" text-anchor="middle">电动机</text>
+
+    <line class="wire" x1="680" y1="110" x2="830" y2="110" marker-end="url(#arrow)"/>
+    <circle cx="760" cy="110" r="4" fill="#17252b"/>
+    <text class="math" x="760" y="87" text-anchor="middle">ω</text>
+
+    <rect class="block" x="830" y="80" width="130" height="60"/>
+    <text class="label" x="895" y="119" text-anchor="middle">负载</text>
+  </g>
+
+  <g id="speed-feedback">
+    <polyline class="wire" points="760,110 760,230 720,230" marker-end="url(#arrow)"/>
+    <rect class="block" x="470" y="200" width="250" height="60"/>
+    <text class="label" x="595" y="239" text-anchor="middle">测速发电机</text>
+    <polyline class="wire" points="470,230 360,230 360,140" marker-end="url(#arrow)"/>
+    <text class="math" x="418" y="218" text-anchor="middle">U<tspan baseline-shift="sub" font-size="16">f</tspan></text>
+    <text class="sign" x="380" y="176">−</text>
+  </g>
+</svg>

@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="520" viewBox="0 0 1100 520" role="img" aria-labelledby="title desc">
+  <title id="title">控制系统信号流图</title>
+  <desc id="desc">输入R(s)经过E(s)节点后分成上下两路，分别通过G1(s)和G2(s)；两路之间有两条互不相连的交叉负增益支路，汇合后输出C(s)，并由汇合节点以增益负一反馈至E(s)。</desc>
+  <defs>
+    <style>
+      .branch { fill: none; stroke: #17252b; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round; }
+      .node { fill: #fff; stroke: #17252b; stroke-width: 2.8; }
+      .math { fill: #17252b; font-family: "Times New Roman", "STIX Two Text", serif; font-size: 28px; font-style: italic; }
+      .gain { fill: #17252b; font-family: "Times New Roman", "STIX Two Text", serif; font-size: 27px; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#17252b"/>
+    </marker>
+  </defs>
+
+  <rect id="background" width="1100" height="520" fill="#fff"/>
+
+  <g id="input-branch">
+    <line class="branch" x1="89" y1="235" x2="211" y2="235" marker-end="url(#arrow)"/>
+    <text class="gain" x="150" y="270" text-anchor="middle">1</text>
+
+    <line class="branch" x1="257" y1="220" x2="414" y2="102" marker-end="url(#arrow)"/>
+    <text class="gain" x="326" y="157" text-anchor="middle">1</text>
+
+    <line class="branch" x1="257" y1="250" x2="414" y2="318" marker-end="url(#arrow)"/>
+    <text class="gain" x="326" y="305" text-anchor="middle">1</text>
+  </g>
+
+  <g id="main-forward-paths">
+    <line class="branch" x1="459" y1="85" x2="661" y2="85" marker-end="url(#arrow)"/>
+    <text class="math" x="560" y="57" text-anchor="middle">G<tspan baseline-shift="sub" font-size="18">1</tspan>(s)</text>
+
+    <line class="branch" x1="459" y1="335" x2="661" y2="335" marker-end="url(#arrow)"/>
+    <text class="math" x="560" y="379" text-anchor="middle">G<tspan baseline-shift="sub" font-size="18">2</tspan>(s)</text>
+
+    <line class="branch" x1="704" y1="102" x2="838" y2="218" marker-end="url(#arrow)"/>
+    <text class="gain" x="771" y="142" text-anchor="middle">1</text>
+
+    <line class="branch" x1="704" y1="318" x2="838" y2="252" marker-end="url(#arrow)"/>
+    <text class="gain" x="783" y="300" text-anchor="middle">1</text>
+
+    <line class="branch" x1="884" y1="235" x2="996" y2="235" marker-end="url(#arrow)"/>
+    <text class="gain" x="940" y="270" text-anchor="middle">1</text>
+  </g>
+
+  <g id="cross-coupling-branches">
+    <line class="branch" x1="669" y1="318" x2="451" y2="102" marker-end="url(#arrow)"/>
+    <text class="gain" x="505" y="204" text-anchor="middle">−1</text>
+
+    <line class="branch" x1="669" y1="102" x2="451" y2="318" marker-end="url(#arrow)"/>
+    <text class="gain" x="615" y="204" text-anchor="middle">−1</text>
+  </g>
+
+  <g id="outer-feedback">
+    <path class="branch" d="M860 259 C850 430 760 475 560 475 C360 475 250 430 235 259" marker-end="url(#arrow)"/>
+    <text class="gain" x="560" y="457" text-anchor="middle">−1</text>
+  </g>
+
+  <g id="nodes">
+    <circle class="node" cx="65" cy="235" r="24"/>
+    <circle class="node" cx="235" cy="235" r="24"/>
+    <circle class="node" cx="435" cy="85" r="24"/>
+    <circle class="node" cx="685" cy="85" r="24"/>
+    <circle class="node" cx="435" cy="335" r="24"/>
+    <circle class="node" cx="685" cy="335" r="24"/>
+    <circle class="node" cx="860" cy="235" r="24"/>
+    <circle class="node" cx="1020" cy="235" r="24"/>
+  </g>
+
+  <g id="node-labels">
+    <text class="math" x="65" y="196" text-anchor="middle">R(s)</text>
+    <text class="math" x="235" y="196" text-anchor="middle">E(s)</text>
+    <text class="math" x="1020" y="196" text-anchor="middle">C(s)</text>
+  </g>
+</svg>

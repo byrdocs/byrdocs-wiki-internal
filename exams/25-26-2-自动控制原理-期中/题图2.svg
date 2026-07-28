@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="520" viewBox="0 0 1100 520" role="img" aria-labelledby="title desc">
+  <title id="title">含交叉反馈支路的控制系统结构图</title>
+  <desc id="desc">输入R(s)经外环负反馈形成E(s)，分为上下两路进入G1(s)和G2(s)。G1与G2的输出分别负反馈至另一通道的求和点，两条反馈线在中央交叉但不相连；两路输出相加后得到C(s)。</desc>
+  <defs>
+    <style>
+      .wire { fill: none; stroke: #17252b; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round; }
+      .block { fill: #fff; stroke: #17252b; stroke-width: 2.8; }
+      .math { fill: #17252b; font-family: "Times New Roman", "STIX Two Text", serif; font-size: 29px; font-style: italic; }
+      .sign { fill: #17252b; font-family: "Times New Roman", serif; font-size: 25px; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#17252b"/>
+    </marker>
+    <symbol id="summing-junction" viewBox="-18 -18 36 36">
+      <circle cx="0" cy="0" r="16" fill="#fff" stroke="#17252b" stroke-width="2.8"/>
+      <line x1="-8" y1="-8" x2="8" y2="8" stroke="#17252b" stroke-width="2"/>
+      <line x1="-8" y1="8" x2="8" y2="-8" stroke="#17252b" stroke-width="2"/>
+    </symbol>
+  </defs>
+
+  <rect id="background" width="1100" height="520" fill="#fff"/>
+
+  <g id="input-and-split">
+    <line class="wire" x1="25" y1="240" x2="119" y2="240" marker-end="url(#arrow)"/>
+    <use href="#summing-junction" x="117" y="222" width="36" height="36"/>
+    <line class="wire" x1="153" y1="240" x2="235" y2="240" marker-end="url(#arrow)"/>
+    <circle cx="235" cy="240" r="4" fill="#17252b"/>
+    <text class="math" x="67" y="218" text-anchor="middle">R(s)</text>
+    <text class="math" x="194" y="218" text-anchor="middle">E(s)</text>
+
+    <polyline class="wire" points="235,240 235,90 314,90" marker-end="url(#arrow)"/>
+    <polyline class="wire" points="235,240 235,378 314,378" marker-end="url(#arrow)"/>
+  </g>
+
+  <g id="upper-channel">
+    <use href="#summing-junction" x="312" y="72" width="36" height="36"/>
+    <line class="wire" x1="348" y1="90" x2="500" y2="90" marker-end="url(#arrow)"/>
+    <rect class="block" x="500" y="35" width="190" height="110"/>
+    <text class="math" x="595" y="101" text-anchor="middle">G<tspan baseline-shift="sub" font-size="19">1</tspan>(s)</text>
+
+    <polyline class="wire" points="690,90 850,90 850,224" marker-end="url(#arrow)"/>
+    <circle cx="755" cy="90" r="4" fill="#17252b"/>
+  </g>
+
+  <g id="lower-channel">
+    <use href="#summing-junction" x="312" y="360" width="36" height="36"/>
+    <line class="wire" x1="348" y1="378" x2="500" y2="378" marker-end="url(#arrow)"/>
+    <rect class="block" x="500" y="323" width="190" height="110"/>
+    <text class="math" x="595" y="389" text-anchor="middle">G<tspan baseline-shift="sub" font-size="19">2</tspan>(s)</text>
+
+    <polyline class="wire" points="690,378 850,378 850,256" marker-end="url(#arrow)"/>
+    <circle cx="760" cy="378" r="4" fill="#17252b"/>
+  </g>
+
+  <g id="cross-feedbacks">
+    <polyline class="wire" points="755,90 755,150 330,285 330,360" marker-end="url(#arrow)"/>
+    <text class="sign" x="344" y="334">−</text>
+
+    <polyline class="wire" points="760,378 760,270 330,160 330,108" marker-end="url(#arrow)"/>
+    <text class="sign" x="344" y="137">−</text>
+
+    <circle id="crossing-gap" cx="548" cy="215" r="7" fill="#fff"/>
+    <line class="wire" x1="563" y1="220" x2="533" y2="212"/>
+  </g>
+
+  <g id="output-summing">
+    <use href="#summing-junction" x="848" y="222" width="36" height="36"/>
+    <line class="wire" x1="884" y1="240" x2="1045" y2="240" marker-end="url(#arrow)"/>
+    <text class="math" x="965" y="218" text-anchor="middle">C(s)</text>
+    <circle cx="970" cy="240" r="4" fill="#17252b"/>
+  </g>
+
+  <g id="outer-feedback">
+    <polyline class="wire" points="970,240 970,475 135,475 135,258" marker-end="url(#arrow)"/>
+    <text class="sign" x="105" y="285">−</text>
+  </g>
+</svg>

@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="594" viewBox="0 0 2048 594" role="img" aria-labelledby="title desc">
+  <title id="title">卷积神经网络特征提取与分类结构</title>
+  <desc id="desc">手写数字依次经过卷积层、池化层、卷积层、池化层、全连接层和 SoftMax 输出层。四组特征图逐渐缩小，红框与连线表示局部感受野。</desc>
+  <defs>
+    <style>
+      .map {
+        stroke: #202020;
+        stroke-width: 2;
+      }
+      .map-white { fill: #fff; fill-opacity: 0.78; }
+      .map-blue { fill: #aebbf1; fill-opacity: 0.68; }
+      .map-purple { fill: #d18cf0; fill-opacity: 0.68; }
+      .projection {
+        fill: none;
+        stroke: #353535;
+        stroke-width: 1.35;
+        stroke-linecap: round;
+      }
+      .projection-dashed {
+        fill: none;
+        stroke: #888;
+        stroke-width: 1.2;
+        stroke-dasharray: 3 4;
+      }
+      .roi {
+        fill: none;
+        stroke: #f20d0d;
+        stroke-width: 4;
+      }
+      .heading {
+        fill: #111;
+        font-family: "Microsoft YaHei", "Noto Sans CJK SC", "PingFang SC", sans-serif;
+        font-size: 35px;
+        font-weight: 500;
+      }
+      .stage-label {
+        fill: #111;
+        font-family: "Microsoft YaHei", "Noto Sans CJK SC", "PingFang SC", sans-serif;
+        font-size: 32px;
+      }
+      .annotation-arrow {
+        fill: none;
+        stroke: #168fdb;
+        stroke-width: 3.5;
+      }
+    </style>
+    <marker id="blue-arrow" viewBox="0 0 10 10" refX="8.8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#168fdb"/>
+    </marker>
+  </defs>
+
+  <rect width="2048" height="594" fill="#fff"/>
+
+  <g id="input-digit">
+    <rect x="145" y="185" width="160" height="160" fill="#000"/>
+    <path d="M 258 211 L 211 211 L 199 247 L 234 249 C 258 250 270 264 267 283 C 264 307 238 325 207 317 C 195 314 185 309 178 303"
+          fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect id="input-roi" class="roi" x="231" y="271" width="54" height="54"/>
+  </g>
+
+  <g id="conv1-feature-maps">
+    <text class="heading" x="485" y="62" text-anchor="middle">特征图</text>
+    <rect class="map map-white" x="405" y="126" width="154" height="154"/>
+    <rect class="map map-blue" x="432" y="156" width="154" height="154"/>
+    <rect class="map map-white" x="459" y="186" width="154" height="154"/>
+    <rect class="map map-blue" x="486" y="216" width="154" height="154"/>
+    <rect id="conv1-roi" class="roi" x="565" y="238" width="40" height="40"/>
+  </g>
+
+  <g id="pool1-feature-maps">
+    <text class="heading" x="790" y="62" text-anchor="middle">特征图</text>
+    <rect class="map map-white" x="726" y="146" width="116" height="116"/>
+    <rect class="map map-purple" x="752" y="176" width="116" height="116"/>
+    <rect class="map map-white" x="778" y="206" width="116" height="116"/>
+    <rect class="map map-purple" x="804" y="236" width="116" height="116"/>
+    <rect id="pool1-roi" class="roi" x="878" y="260" width="28" height="28"/>
+  </g>
+
+  <g id="conv2-feature-maps">
+    <text class="heading" x="1038" y="62" text-anchor="middle">特征图</text>
+    <rect class="map map-white" x="980" y="86" width="116" height="116"/>
+    <rect class="map map-blue" x="1007" y="116" width="116" height="116"/>
+    <rect class="map map-white" x="1034" y="146" width="116" height="116"/>
+    <rect class="map map-blue" x="1061" y="176" width="116" height="116"/>
+    <rect class="map map-white" x="1088" y="206" width="116" height="116"/>
+    <rect class="map map-blue" x="1115" y="236" width="116" height="116"/>
+    <rect class="map map-white" x="1142" y="266" width="116" height="116"/>
+    <rect class="map map-blue" x="1169" y="296" width="116" height="116"/>
+    <rect id="conv2-roi" class="roi" x="1239" y="314" width="28" height="28"/>
+  </g>
+
+  <g id="pool2-feature-maps">
+    <text class="heading" x="1340" y="62" text-anchor="middle">特征图</text>
+    <rect class="map map-white" x="1288" y="106" width="76" height="76"/>
+    <rect class="map map-purple" x="1314" y="136" width="76" height="76"/>
+    <rect class="map map-white" x="1340" y="166" width="76" height="76"/>
+    <rect class="map map-purple" x="1366" y="196" width="76" height="76"/>
+    <rect class="map map-white" x="1392" y="226" width="76" height="76"/>
+    <rect class="map map-purple" x="1418" y="256" width="76" height="76"/>
+    <rect class="map map-white" x="1444" y="286" width="76" height="76"/>
+    <rect class="map map-purple" x="1470" y="316" width="76" height="76"/>
+  </g>
+
+  <g id="receptive-field-triangles" class="projection">
+    <line x1="285" y1="271" x2="578" y2="356"/>
+    <line x1="285" y1="325" x2="578" y2="356"/>
+
+    <line x1="605" y1="238" x2="852" y2="334"/>
+    <line x1="605" y1="278" x2="852" y2="334"/>
+
+    <line x1="906" y1="260" x2="1241" y2="395"/>
+    <line x1="906" y1="288" x2="1241" y2="395"/>
+
+    <line x1="1267" y1="314" x2="1512" y2="381"/>
+    <line x1="1267" y1="342" x2="1512" y2="381"/>
+  </g>
+
+  <g id="fully-connected-and-output">
+    <line class="projection-dashed" x1="1364" y1="106" x2="1554" y2="108"/>
+    <line class="projection-dashed" x1="1546" y1="392" x2="1736" y2="318"/>
+    <line class="projection" x1="1554" y1="108" x2="1736" y2="318"/>
+    <line class="projection-dashed" x1="1554" y1="108" x2="1738" y2="112"/>
+    <line class="projection" x1="1738" y1="112" x2="1836" y2="218"/>
+    <line class="projection" x1="1836" y1="218" x2="1736" y2="318"/>
+  </g>
+
+  <g id="stage-annotations">
+    <line class="annotation-arrow" x1="394" y1="448" x2="394" y2="340" marker-end="url(#blue-arrow)"/>
+    <text class="stage-label" x="394" y="500" text-anchor="middle">卷积层</text>
+
+    <line class="annotation-arrow" x1="705" y1="448" x2="705" y2="299" marker-end="url(#blue-arrow)"/>
+    <text class="stage-label" x="705" y="500" text-anchor="middle">池化层</text>
+
+    <line class="annotation-arrow" x1="1005" y1="448" x2="1005" y2="290" marker-end="url(#blue-arrow)"/>
+    <text class="stage-label" x="1005" y="500" text-anchor="middle">卷积层</text>
+
+    <line class="annotation-arrow" x1="1356" y1="448" x2="1356" y2="348" marker-end="url(#blue-arrow)"/>
+    <text class="stage-label" x="1356" y="500" text-anchor="middle">池化层</text>
+
+    <line class="annotation-arrow" x1="1645" y1="448" x2="1645" y2="350" marker-end="url(#blue-arrow)"/>
+    <text class="stage-label" x="1645" y="500" text-anchor="middle">全连接层</text>
+
+    <line class="annotation-arrow" x1="1795" y1="448" x2="1795" y2="262" marker-end="url(#blue-arrow)"/>
+    <text class="stage-label" x="1795" y="500" text-anchor="middle">输出层</text>
+    <text class="stage-label" x="1775" y="557" text-anchor="middle">（全连接层+SoftMax）</text>
+  </g>
+</svg>

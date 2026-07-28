@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="360" viewBox="0 0 1100 360" role="img" aria-labelledby="title desc">
+  <title id="title">含内外负反馈的控制系统结构图</title>
+  <desc id="desc">输入R(s)依次通过两个负反馈求和点、K除以s和一除以s环节得到C(s)。K除以s后的信号经b环节反馈到第二个求和点，输出C(s)反馈到第一个求和点。</desc>
+  <defs>
+    <style>
+      .wire { fill: none; stroke: #17252b; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+      .block { fill: #fff; stroke: #17252b; stroke-width: 3; }
+      .math { fill: #17252b; font-family: "Times New Roman", "STIX Two Text", serif; font-size: 29px; font-style: italic; }
+      .fraction { fill: #17252b; font-family: "Times New Roman", "STIX Two Text", serif; font-size: 27px; font-style: italic; }
+      .sign { fill: #17252b; font-family: "Times New Roman", serif; font-size: 25px; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#17252b"/>
+    </marker>
+  </defs>
+
+  <rect id="background" width="1100" height="360" fill="#fff"/>
+
+  <g id="forward-path">
+    <line class="wire" x1="30" y1="90" x2="140" y2="90" marker-end="url(#arrow)"/>
+    <text class="math" x="82" y="64" text-anchor="middle">R(s)</text>
+
+    <circle class="block" cx="170" cy="90" r="30"/>
+    <line class="wire" x1="153" y1="73" x2="187" y2="107"/>
+    <line class="wire" x1="153" y1="107" x2="187" y2="73"/>
+
+    <line class="wire" x1="200" y1="90" x2="270" y2="90" marker-end="url(#arrow)"/>
+
+    <circle class="block" cx="300" cy="90" r="30"/>
+    <line class="wire" x1="283" y1="73" x2="317" y2="107"/>
+    <line class="wire" x1="283" y1="107" x2="317" y2="73"/>
+
+    <line class="wire" x1="330" y1="90" x2="480" y2="90" marker-end="url(#arrow)"/>
+
+    <rect class="block" x="480" y="35" width="180" height="110"/>
+    <text class="fraction" x="570" y="78" text-anchor="middle">K</text>
+    <line class="wire" x1="540" y1="90" x2="600" y2="90"/>
+    <text class="fraction" x="570" y="120" text-anchor="middle">s</text>
+
+    <line class="wire" x1="660" y1="90" x2="760" y2="90" marker-end="url(#arrow)"/>
+    <circle cx="700" cy="90" r="4" fill="#17252b"/>
+
+    <rect class="block" x="760" y="35" width="160" height="110"/>
+    <text class="fraction" x="840" y="78" text-anchor="middle">1</text>
+    <line class="wire" x1="810" y1="90" x2="870" y2="90"/>
+    <text class="fraction" x="840" y="120" text-anchor="middle">s</text>
+
+    <line class="wire" x1="920" y1="90" x2="1060" y2="90" marker-end="url(#arrow)"/>
+    <circle cx="960" cy="90" r="4" fill="#17252b"/>
+    <text class="math" x="1007" y="64" text-anchor="middle">C(s)</text>
+  </g>
+
+  <g id="inner-feedback">
+    <polyline class="wire" points="700,90 700,235 630,235" marker-end="url(#arrow)"/>
+    <rect class="block" x="460" y="190" width="170" height="90"/>
+    <text class="math" x="545" y="247" text-anchor="middle">b</text>
+    <polyline class="wire" points="460,235 300,235 300,120" marker-end="url(#arrow)"/>
+    <text class="sign" x="320" y="156">−</text>
+  </g>
+
+  <g id="outer-feedback">
+    <polyline class="wire" points="960,90 960,320 170,320 170,120" marker-end="url(#arrow)"/>
+    <text class="sign" x="190" y="156">−</text>
+  </g>
+</svg>

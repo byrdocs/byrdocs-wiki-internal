@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="280" viewBox="0 0 1000 280" role="img" aria-labelledby="title desc">
+  <title id="title">二阶单位负反馈控制系统结构图</title>
+  <desc id="desc">输入R(s)进入负反馈求和点，前向通道依次通过十二K除以s加十二和一除以s两个环节，得到输出C(s)，输出以单位反馈返回求和点。</desc>
+  <defs>
+    <style>
+      .wire { fill: none; stroke: #17252b; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+      .block { fill: #fff; stroke: #17252b; stroke-width: 3; }
+      .math { fill: #17252b; font-family: "Times New Roman", "STIX Two Text", serif; font-size: 28px; font-style: italic; }
+      .fraction { fill: #17252b; font-family: "Times New Roman", "STIX Two Text", serif; font-size: 25px; }
+      .sign { fill: #17252b; font-family: "Times New Roman", serif; font-size: 25px; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#17252b"/>
+    </marker>
+  </defs>
+
+  <rect id="background" width="1000" height="280" fill="#fff"/>
+
+  <g id="summing-junction">
+    <line class="wire" x1="35" y1="100" x2="130" y2="100" marker-end="url(#arrow)"/>
+    <circle class="block" cx="160" cy="100" r="30"/>
+    <line class="wire" x1="143" y1="83" x2="177" y2="117"/>
+    <line class="wire" x1="143" y1="117" x2="177" y2="83"/>
+    <text class="math" x="78" y="75" text-anchor="middle">R(s)</text>
+  </g>
+
+  <g id="forward-path">
+    <line class="wire" x1="190" y1="100" x2="350" y2="100" marker-end="url(#arrow)"/>
+
+    <rect class="block" x="350" y="45" width="180" height="110"/>
+    <text class="fraction" x="440" y="88" text-anchor="middle">12K</text>
+    <line class="wire" x1="400" y1="100" x2="480" y2="100"/>
+    <text class="fraction" x="440" y="132" text-anchor="middle">s + 12</text>
+
+    <line class="wire" x1="530" y1="100" x2="620" y2="100" marker-end="url(#arrow)"/>
+
+    <rect class="block" x="620" y="45" width="150" height="110"/>
+    <text class="fraction" x="695" y="88" text-anchor="middle">1</text>
+    <line class="wire" x1="665" y1="100" x2="725" y2="100"/>
+    <text class="fraction" x="695" y="132" text-anchor="middle">s</text>
+
+    <line class="wire" x1="770" y1="100" x2="930" y2="100" marker-end="url(#arrow)"/>
+    <circle cx="830" cy="100" r="4" fill="#17252b"/>
+    <text class="math" x="875" y="75" text-anchor="middle">C(s)</text>
+  </g>
+
+  <g id="unity-feedback">
+    <polyline class="wire" points="830,100 830,235 160,235 160,130" marker-end="url(#arrow)"/>
+    <text class="sign" x="177" y="164">−</text>
+  </g>
+</svg>

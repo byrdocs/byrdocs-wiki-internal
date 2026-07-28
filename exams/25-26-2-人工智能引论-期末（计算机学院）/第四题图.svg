@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="650" viewBox="0 0 1800 650" role="img" aria-labelledby="title desc">
+  <title id="title">用户分群数据的肘部法则与轮廓系数</title>
+  <desc id="desc">两个并排折线图。左图显示 K 从 2 到 6 时 SSE 由约 520 降至 195；右图显示轮廓系数在 K 等于 4 时达到约 0.548 的最大值。</desc>
+  <defs>
+    <style>
+      .panel-border {
+        fill: none;
+        stroke: #202020;
+        stroke-width: 2.5;
+      }
+      .grid {
+        fill: none;
+        stroke: #a6a6a6;
+        stroke-width: 1.2;
+        stroke-dasharray: 4 7;
+      }
+      .series {
+        fill: none;
+        stroke: #1c1c1c;
+        stroke-width: 4;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .marker {
+        fill: #242424;
+        stroke: #111;
+        stroke-width: 1.5;
+      }
+      .title-text {
+        fill: #111;
+        font-family: "Microsoft YaHei", "Noto Sans CJK SC", "PingFang SC", sans-serif;
+        font-size: 30px;
+        font-weight: 700;
+      }
+      .axis-label {
+        fill: #111;
+        font-family: "Microsoft YaHei", "Noto Sans CJK SC", "PingFang SC", sans-serif;
+        font-size: 25px;
+        font-weight: 600;
+      }
+      .tick-label {
+        fill: #222;
+        font-family: Arial, "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+        font-size: 21px;
+      }
+      .tick {
+        stroke: #202020;
+        stroke-width: 2;
+      }
+    </style>
+  </defs>
+
+  <rect width="1800" height="650" fill="#fff"/>
+
+  <g id="sse-panel">
+    <text class="title-text" x="475" y="48" text-anchor="middle">用户分群数据：肘部法则（SSE）</text>
+
+    <g id="sse-grid" class="grid">
+      <line x1="100" y1="524" x2="850" y2="524"/>
+      <line x1="100" y1="458" x2="850" y2="458"/>
+      <line x1="100" y1="392" x2="850" y2="392"/>
+      <line x1="100" y1="326" x2="850" y2="326"/>
+      <line x1="100" y1="261" x2="850" y2="261"/>
+      <line x1="100" y1="195" x2="850" y2="195"/>
+      <line x1="100" y1="129" x2="850" y2="129"/>
+      <line x1="140" y1="90" x2="140" y2="550"/>
+      <line x1="310" y1="90" x2="310" y2="550"/>
+      <line x1="480" y1="90" x2="480" y2="550"/>
+      <line x1="650" y1="90" x2="650" y2="550"/>
+      <line x1="820" y1="90" x2="820" y2="550"/>
+    </g>
+
+    <rect class="panel-border" x="100" y="90" width="750" height="460"/>
+
+    <g id="sse-y-ticks">
+      <g transform="translate(100 524)"><line class="tick" x1="0" y1="0" x2="-10" y2="0"/><text class="tick-label" x="-18" y="7" text-anchor="end">200</text></g>
+      <g transform="translate(100 458)"><line class="tick" x1="0" y1="0" x2="-10" y2="0"/><text class="tick-label" x="-18" y="7" text-anchor="end">250</text></g>
+      <g transform="translate(100 392)"><line class="tick" x1="0" y1="0" x2="-10" y2="0"/><text class="tick-label" x="-18" y="7" text-anchor="end">300</text></g>
+      <g transform="translate(100 326)"><line class="tick" x1="0" y1="0" x2="-10" y2="0"/><text class="tick-label" x="-18" y="7" text-anchor="end">350</text></g>
+      <g transform="translate(100 261)"><line class="tick" x1="0" y1="0" x2="-10" y2="0"/><text class="tick-label" x="-18" y="7" text-anchor="end">400</text></g>
+      <g transform="translate(100 195)"><line class="tick" x1="0" y1="0" x2="-10" y2="0"/><text class="tick-label" x="-18" y="7" text-anchor="end">450</text></g>
+      <g transform="translate(100 129)"><line class="tick" x1="0" y1="0" x2="-10" y2="0"/><text class="tick-label" x="-18" y="7" text-anchor="end">500</text></g>
+    </g>
+
+    <g id="sse-x-ticks" class="tick-label" text-anchor="middle">
+      <g transform="translate(140 550)"><line class="tick" y2="10"/><text x="0" y="35">2</text></g>
+      <g transform="translate(310 550)"><line class="tick" y2="10"/><text x="0" y="35">3</text></g>
+      <g transform="translate(480 550)"><line class="tick" y2="10"/><text x="0" y="35">4</text></g>
+      <g transform="translate(650 550)"><line class="tick" y2="10"/><text x="0" y="35">5</text></g>
+      <g transform="translate(820 550)"><line class="tick" y2="10"/><text x="0" y="35">6</text></g>
+    </g>
+
+    <text class="axis-label" x="475" y="625" text-anchor="middle">K 值</text>
+    <text class="axis-label" x="31" y="320" text-anchor="middle" transform="rotate(-90 31 320)">SSE</text>
+
+    <polyline id="sse-series" class="series" points="140,103 310,333 480,478 650,515 820,530"/>
+    <g id="sse-markers">
+      <circle id="sse-k2" class="marker" cx="140" cy="103" r="9"/>
+      <circle id="sse-k3" class="marker" cx="310" cy="333" r="9"/>
+      <circle id="sse-k4" class="marker" cx="480" cy="478" r="9"/>
+      <circle id="sse-k5" class="marker" cx="650" cy="515" r="9"/>
+      <circle id="sse-k6" class="marker" cx="820" cy="530" r="9"/>
+    </g>
+  </g>
+
+  <g id="silhouette-panel">
+    <text class="title-text" x="1380" y="48" text-anchor="middle">用户分群数据：轮廓系数</text>
+
+    <g id="silhouette-grid" class="grid">
+      <line x1="990" y1="550" x2="1760" y2="550"/>
+      <line x1="990" y1="463" x2="1760" y2="463"/>
+      <line x1="990" y1="376" x2="1760" y2="376"/>
+      <line x1="990" y1="289" x2="1760" y2="289"/>
+      <line x1="990" y1="202" x2="1760" y2="202"/>
+      <line x1="990" y1="115" x2="1760" y2="115"/>
+      <line x1="1030" y1="80" x2="1030" y2="550"/>
+      <line x1="1200" y1="80" x2="1200" y2="550"/>
+      <line x1="1370" y1="80" x2="1370" y2="550"/>
+      <line x1="1540" y1="80" x2="1540" y2="550"/>
+      <line x1="1710" y1="80" x2="1710" y2="550"/>
+    </g>
+
+    <rect class="panel-border" x="990" y="80" width="770" height="470"/>
+
+    <g id="silhouette-y-ticks">
+      <g transform="translate(990 550)"><line class="tick" x1="0" y1="0" x2="-10" y2="0"/><text class="tick-label" x="-18" y="7" text-anchor="end">0.35</text></g>
+      <g transform="translate(990 463)"><line class="tick" x1="0" y1="0" x2="-10" y2="0"/><text class="tick-label" x="-18" y="7" text-anchor="end">0.40</text></g>
+      <g transform="translate(990 376)"><line class="tick" x1="0" y1="0" x2="-10" y2="0"/><text class="tick-label" x="-18" y="7" text-anchor="end">0.45</text></g>
+      <g transform="translate(990 289)"><line class="tick" x1="0" y1="0" x2="-10" y2="0"/><text class="tick-label" x="-18" y="7" text-anchor="end">0.50</text></g>
+      <g transform="translate(990 202)"><line class="tick" x1="0" y1="0" x2="-10" y2="0"/><text class="tick-label" x="-18" y="7" text-anchor="end">0.55</text></g>
+      <g transform="translate(990 115)"><line class="tick" x1="0" y1="0" x2="-10" y2="0"/><text class="tick-label" x="-18" y="7" text-anchor="end">0.60</text></g>
+    </g>
+
+    <g id="silhouette-x-ticks" class="tick-label" text-anchor="middle">
+      <g transform="translate(1030 550)"><line class="tick" y2="10"/><text x="0" y="35">2</text></g>
+      <g transform="translate(1200 550)"><line class="tick" y2="10"/><text x="0" y="35">3</text></g>
+      <g transform="translate(1370 550)"><line class="tick" y2="10"/><text x="0" y="35">4</text></g>
+      <g transform="translate(1540 550)"><line class="tick" y2="10"/><text x="0" y="35">5</text></g>
+      <g transform="translate(1710 550)"><line class="tick" y2="10"/><text x="0" y="35">6</text></g>
+    </g>
+
+    <text class="axis-label" x="1375" y="625" text-anchor="middle">K 值</text>
+    <text class="axis-label" x="900" y="315" text-anchor="middle" transform="rotate(-90 900 315)">轮廓系数</text>
+
+    <polyline id="silhouette-series" class="series" points="1030,446 1200,324 1370,205 1540,312 1710,419"/>
+    <g id="silhouette-markers">
+      <circle id="silhouette-k2" class="marker" cx="1030" cy="446" r="9"/>
+      <circle id="silhouette-k3" class="marker" cx="1200" cy="324" r="9"/>
+      <circle id="silhouette-k4" class="marker" cx="1370" cy="205" r="9"/>
+      <circle id="silhouette-k5" class="marker" cx="1540" cy="312" r="9"/>
+      <circle id="silhouette-k6" class="marker" cx="1710" cy="419" r="9"/>
+    </g>
+  </g>
+</svg>

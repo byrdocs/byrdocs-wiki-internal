@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="360" viewBox="0 0 600 360">
+  <rect width="600" height="360" fill="#fff"/>
+  <g fill="none" stroke="#111" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- 3×3 表格 -->
+    <path d="M145 55 H455 M145 135 H455 M145 215 H455 M145 295 H455"/>
+    <path d="M145 55 V295 M248 55 V295 M352 55 V295 M455 55 V295"/>
+  </g>
+  <g fill="#111" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="48" text-anchor="middle" dominant-baseline="middle">
+    <text x="197" y="95">1</text><text x="300" y="95">0</text><text x="404" y="95">−1</text>
+    <text x="197" y="175">1</text><text x="300" y="175">0</text><text x="404" y="175">−1</text>
+    <text x="197" y="255">1</text><text x="300" y="255">0</text><text x="404" y="255">−1</text>
+  </g>
+</svg>
