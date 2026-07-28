@@ -20,6 +20,27 @@ jobs:
           fetch-depth: 0
           allow-unsafe-pr-checkout: true
 
+      # The workspace now holds untrusted fork code, so the review instructions
+      # must NOT be read from it: a fork PR could rewrite .github/prompts/review.md
+      # and have this job execute it with the base repo's secrets. Always take the
+      # prompts from the base branch, which only maintainers can write to.
+      # Use base.ref (branch tip) rather than base.sha: for older PRs base.sha can
+      # predate a newly added prompt file and 404.
+      - name: Fetch trusted prompts from base branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/prompts
+          for f in review.md security-guardrails.md; do
+            gh api -H "Accept: application/vnd.github.raw" \
+              "repos/${REPO}/contents/.github/prompts/${f}?ref=${BASE_REF}" \
+              > "/tmp/prompts/${f}"
+            test -s "/tmp/prompts/${f}"
+          done
+
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -53,10 +74,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BYRDOCS_SITE_TOKEN: ${{ secrets.BYRDOCS_SITE_TOKEN }}
           DEBUG: "true"
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
         run: |
-          REVIEW_PROMPT=$(cat .github/prompts/review.md)
-          PR_NUMBER=${{ github.event.pull_request.number }}
-          REPO=${{ github.repository }}
+          set -euo pipefail
+          REVIEW_PROMPT=$(cat /tmp/prompts/review.md)
+          GUARDRAILS=$(cat /tmp/prompts/security-guardrails.md)
 
           claude -p "You are reviewing PR #${PR_NUMBER} in ${REPO}.
 
@@ -65,4 +88,5 @@ jobs:
             --mcp-config /tmp/mcp.json \
             --output-format stream-json \
             --permission-mode bypassPermissions \
+            --append-system-prompt "${GUARDRAILS}" \
             --verbose
