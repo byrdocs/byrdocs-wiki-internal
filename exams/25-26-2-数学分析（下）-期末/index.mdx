@@ -10,7 +10,7 @@
 - 网络空间安全学院
 - 计算机学院
 - 集成电路学院
-答案完成度: 残缺
+答案完成度: 完整
 ---
 
 ## 一、选择题（本大题共 10 小题，每小题 3 分，共 30 分）
@@ -114,14 +114,76 @@ $I_3=\iint_D (x^2 y^2 - 1) \,\mathrm{d}\sigma$
 
 1. 设 $z=f(xy,\, 2x+3y)$，$f$ 具有二阶连续偏导数，求 $\dfrac{\partial z}{\partial x}$ 和 $\dfrac{\partial^2 z}{\partial x \partial y}$。
 
+<Solution>
+
+$$
+\frac{\partial z}{\partial x} = y f_1 + 2 f_2
+$$
+
+$$
+\begin{aligned}
+\frac{\partial^2 z}{\partial x \partial y}
+&= f_1 + y\left( f_{11} \cdot x + f_{12} \cdot 3 \right) + 2\left( f_{21} \cdot x + f_{22} \cdot 3 \right) \\
+&= f_1 + xy f_{11} + (3y + 2x) f_{12} + 6 f_{22}
+\end{aligned}
+$$
+
+</Solution>
+
 2. 设 $z=z(x,y)$ 由方程 $xz^2 - yz + y^2 = 1$ 所确定，求 $\dfrac{\partial z}{\partial x}$。
+
+<Solution>
+
+方程两边对 $x$ 求偏导得
+
+$$
+z^2 + 2xz \frac{\partial z}{\partial x} - y \frac{\partial z}{\partial x} = 0
+$$
+
+故
+
+$$
+\frac{\partial z}{\partial x} = \frac{z^2}{y - 2xz}
+$$
+
+</Solution>
 
 ## 三、（每小题 7 分，共 14 分）
 
 1. 求函数 $f(x,y,z) = x + 2y + \dfrac{1}{2}z$ 在抛物面 $z = x^2 + y^2 - 1$ 上的最小值。
 
+<Solution>
+
+代入 $z = x^2 + y^2 - 1$ 并配方：
+
+$$
+2f = x^2 + 2x + y^2 + 4y - 1 = (x+1)^2 + (y+2)^2 - 6
+$$
+
+当 $x = -1,\ y = -2$ 时，有 $f_{\min} = -3$。
+
+</Solution>
+
 2. 设曲面 $S$ 是抛物面 $z = x^2 + y^2 - 1$ 在 $z \leq 0$ 的有限部分，求曲面积分
 $$\iint_S \frac{x^2 + y^2}{\sqrt{4z+5}} \, \mathrm{d}S$$ .
+
+<Solution>
+
+投影区域 $D: x^2 + y^2 \leq 1$，且
+
+$$
+\mathrm{d}S = \sqrt{1 + z_x^2 + z_y^2}\,\mathrm{d}x\mathrm{d}y = \sqrt{1 + 4(x^2 + y^2)}\,\mathrm{d}x\mathrm{d}y
+$$
+
+又 $4z + 5 = 1 + 4(x^2 + y^2)$，故
+
+$$
+\iint_S \frac{x^2 + y^2}{\sqrt{4z+5}}\,\mathrm{d}S
+= \iint_D (x^2 + y^2)\,\mathrm{d}x\mathrm{d}y
+= \int_0^{2\pi}\mathrm{d}\theta \int_0^1 \rho^2 \cdot \rho\,\mathrm{d}\rho = \frac{\pi}{2}
+$$
+
+</Solution>
 
 ## 四、（10 分）
 
@@ -129,13 +191,74 @@ $$\iint_S \frac{x^2 + y^2}{\sqrt{4z+5}} \, \mathrm{d}S$$ .
 $$1 + \frac{3}{2^2} + \frac{4}{2^3} + \cdots + \frac{n+1}{2^n} + \cdots$$
 的和。
 
+<Solution>
+
+收敛半径 
+
+$$
+R = \displaystyle\lim_{n\to\infty} \left|\frac{a_n}{a_{n+1}}\right| = \lim_{n\to\infty} \left|\frac{n+1}{n+2}\right| = 1
+$$
+
+经讨论 $x = \pm 1$ 时级数发散，故收敛域为 $(-1, 1)$.
+
+由 $\displaystyle\sum_{n=0}^{\infty} x^n = \frac{1}{1-x}\ (|x|<1)$，两边求导得
+
+$$
+\sum_{n=1}^{\infty} n x^{n-1} = \frac{1}{(1-x)^2}
+$$
+
+故原幂级数和函数
+
+$$
+S(x) = \sum_{n=0}^{\infty} (n+1) x^n = \frac{1}{(1-x)^2}
+$$
+
+令 $x = \dfrac{1}{2}$得
+
+$$
+\sum_{n=0}^{\infty} \frac{n+1}{2^n} = \frac{1}{\left(1 - \frac{1}{2}\right)^2} = 4
+$$
+
+故
+
+$$
+1 + \frac{3}{2^2} + \frac{4}{2^3} + \cdots = \sum_{n=1}^{\infty} \frac{n+1}{2^n} = 4 - 1 = 3
+$$
+
+</Solution>
+
 ## 五、（每小题 5 分，共 10 分）
 
 设 $D_1 \subset \mathbb{R}^2$ 为使得二重积分 $I(D) = \iint_D (4 - x^2 - y^2) \, \mathrm{d}x\mathrm{d}y$ 取得最大值的有界单连通闭区域。
 
 1. 求区域 $D_1$ 及 $I(D_1)$ 的值；
 
+<Solution>
+
+$D_1$ 为被积函数非负的整个区域
+
+$$
+D_1: x^2 + y^2 \leq 4
+$$
+
+$$
+I(D_1) = \iint_{D_1} (4 - x^2 - y^2)\,\mathrm{d}x\mathrm{d}y
+= \int_0^{2\pi}\mathrm{d}\theta \int_0^2 (4 - \rho^2)\,\rho\,\mathrm{d}\rho = 8\pi
+$$
+
+</Solution>
+
 2. 一质点在变力 $\vec{F} = (2xy - y^4 + 3)\,\vec{i} + (x^2 - 4xy^3 + x)\,\vec{j}$ 作用下，沿着 $D_1$ 的边界 $C$ 逆时针移动一周，求变力 $\vec{F}$ 做的功。
+
+<Solution>
+
+由格林公式
+
+$$
+W = \oint_C P\,\mathrm{d}x + Q\,\mathrm{d}y = \iint_{D_1} (Q_x - P_y)\,\mathrm{d}x\mathrm{d}y = \iint_{D_1} 1\,\mathrm{d}x\mathrm{d}y = 4\pi
+$$
+
+</Solution>
 
 ## 六、（10 分）
 
@@ -143,12 +266,95 @@ $$1 + \frac{3}{2^2} + \frac{4}{2^3} + \cdots + \frac{n+1}{2^n} + \cdots$$
 $$I = \iint_S xy\,\mathrm{d}y \wedge \mathrm{d}z + yz\,\mathrm{d}z \wedge \mathrm{d}x + zx\,\mathrm{d}x \wedge \mathrm{d}y,$$
 其中 $S$ 是上半球面 $z = \sqrt{1 - x^2 - y^2}$ 的上侧。
 
+<Solution>
+
+记 $\vec{F} = (xy,\, yz,\, zx)$，则散度
+
+$$
+\nabla \cdot \vec{F} = \frac{\partial(xy)}{\partial x} + \frac{\partial(yz)}{\partial y} + \frac{\partial(zx)}{\partial z} = x + y + z
+$$
+
+补上底面 $S_1: z = 0$（$x^2 + y^2 \leq 1$，取下侧），$S + S_1$ 构成闭曲面外侧，围成上半球体 $\Omega$。由高斯公式：
+
+$$
+\iint_S + \iint_{S_1} = \iiint_{\Omega} (x + y + z)\,\mathrm{d}V
+$$
+
+由 $\Omega$ 关于 $x = 0$、$y = 0$ 平面对称，$\displaystyle\iiint_{\Omega} x\,\mathrm{d}V = \iiint_{\Omega} y\,\mathrm{d}V = 0$，而
+
+$$
+\iiint_{\Omega} z\,\mathrm{d}V = \int_0^1 z \cdot \pi(1 - z^2)\,\mathrm{d}z = \pi\left[\frac{z^2}{2} - \frac{z^4}{4}\right]_0^1 = \frac{\pi}{4}
+$$
+
+底面 $S_1$ 上 $z = 0$，故 $\displaystyle\iint_{S_1} = 0$。
+
+因此
+
+$$
+I = \frac{\pi}{4} - 0 = \frac{\pi}{4}
+$$
+
+</Solution>
+
 ## 七、（10 分）
 
 试确定正常数 $\lambda$ 的值，使曲线积分
 $$\int_C x^2 y^\lambda \, \mathrm{d}x + x^\lambda y^2 \, \mathrm{d}y$$
 与路径无关，并对所求的 $\lambda$，计算 $\int_{(1,0)}^{(2,1)} x^2 y^\lambda \, \mathrm{d}x + x^\lambda y^2 \, \mathrm{d}y$ 的值。
 
+<Solution>
+
+记 $P = x^2 y^\lambda$，$Q = x^\lambda y^2$。
+
+令
+
+$$
+\frac{\partial P}{\partial y} = \frac{\partial Q}{\partial x}
+$$
+
+得
+
+$$
+\lambda x^2 y^{\lambda-1} = \lambda x^{\lambda-1} y^2
+$$
+
+故 $\lambda = 3$.
+
+此时 $P = x^2 y^3$，$Q = x^3 y^2$，取原函数
+
+$$
+u(x,y) = \frac{x^3 y^3}{3}
+$$
+
+则
+
+$$
+\int_{(1,0)}^{(2,1)} x^2 y^3\,\mathrm{d}x + x^3 y^2\,\mathrm{d}y
+= u(2,1) - u(1,0) = \frac{8}{3} - 0 = \frac{8}{3}
+$$
+
+</Solution>
+
 ## 八、（6 分）
 
 设 $f(x)$ 在 $[0,1]$ 上连续，$a_n = \int_{\frac{1}{\sqrt{n+1}}}^{\frac{1}{\sqrt{n}}} f(x) \, \mathrm{d}x \quad (n=1,2,\cdots)$，证明 $\sum_{n=1}^{\infty} a_n$ 绝对收敛。
+
+<Solution>
+
+因 $f$ 在 $[0,1]$ 上连续，故有界，设 $|f(x)| \le M$（$x \in [0,1]$）。
+
+$$
+\frac{1}{\sqrt{n}} - \frac{1}{\sqrt{n+1}}
+= \frac{1}{\sqrt{n(n+1)}\left(\sqrt{n+1} + \sqrt{n}\right)}
+< \frac{1}{n\sqrt{n}} = \frac{1}{n^{3/2}}
+$$
+
+于是
+
+$$
+|a_n| \le M\left(\frac{1}{\sqrt{n}} - \frac{1}{\sqrt{n+1}}\right) < \frac{M}{n^{3/2}}
+$$
+
+由 $p$ 级数 $\displaystyle\sum \frac{1}{n^{3/2}}$（$p = \frac{3}{2} > 1$）收敛，比较判别法知 $\displaystyle\sum_{n=1}^{\infty} |a_n|$ 收敛，即 $\displaystyle\sum_{n=1}^{\infty} a_n$ 绝对收敛。
+
+</Solution>
