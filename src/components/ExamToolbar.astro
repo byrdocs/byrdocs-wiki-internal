@@ -148,6 +148,49 @@ const { editHref, showTocToggle = false } = Astro.props;
   </button>
 </div>
 
+<dialog
+  id="examPrintDialog"
+  class="exam-print-dialog"
+  aria-labelledby="examPrintDialogTitle"
+>
+  <div class="exam-print-dialog-panel">
+    <h2 id="examPrintDialogTitle" class="exam-print-dialog-title">打印选项</h2>
+    <p class="exam-print-dialog-desc">选择要包含在打印稿中的内容。</p>
+    <label class="exam-print-dialog-option">
+      <input
+        id="examPrintInfo"
+        type="checkbox"
+        checked
+      />
+      <span>打印试题概要信息</span>
+    </label>
+    <label class="exam-print-dialog-option exam-print-dialog-option-spaced">
+      <input
+        id="examPrintAnswers"
+        type="checkbox"
+        checked
+      />
+      <span>打印答案</span>
+    </label>
+    <div class="exam-print-dialog-actions">
+      <button
+        id="examPrintDialogCancel"
+        class="exam-print-dialog-btn exam-print-dialog-btn-secondary"
+        type="button"
+      >
+        取消
+      </button>
+      <button
+        id="examPrintDialogConfirm"
+        class="exam-print-dialog-btn exam-print-dialog-btn-primary"
+        type="button"
+      >
+        打印
+      </button>
+    </div>
+  </div>
+</dialog>
+
 <style is:global>
   #examAnswersToggle [data-exam-toggle-icon] {
     display: none;
@@ -167,14 +210,125 @@ const { editHref, showTocToggle = false } = Astro.props;
     opacity: 1;
     pointer-events: auto;
   }
+  .exam-print-dialog {
+    background: none;
+    border: none;
+    margin: auto;
+    max-width: calc(100vw - 2rem);
+    padding: 0;
+    width: 24rem;
+  }
+  .exam-print-dialog::backdrop {
+    background: rgb(15 23 42 / 45%);
+    backdrop-filter: blur(2px);
+  }
+  .exam-print-dialog-panel {
+    border: 1px solid rgb(226 232 240);
+    border-radius: 12px;
+    background: #fff;
+    box-shadow:
+      0 10px 15px -3px rgb(15 23 42 / 12%),
+      0 4px 6px -4px rgb(15 23 42 / 10%);
+    color: rgb(15 23 42);
+    padding: 1.25rem;
+  }
+  .dark .exam-print-dialog-panel {
+    background: rgb(15 23 42);
+    border-color: rgb(30 41 59);
+    color: rgb(241 245 249);
+  }
+  .exam-print-dialog-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 0;
+  }
+  .exam-print-dialog-desc {
+    color: rgb(100 116 139);
+    font-size: 0.875rem;
+    margin: 0.4rem 0 1rem;
+  }
+  .dark .exam-print-dialog-desc {
+    color: rgb(148 163 184);
+  }
+  .exam-print-dialog-option {
+    align-items: center;
+    border: 1px solid rgb(226 232 240);
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    gap: 0.65rem;
+    font-size: 0.95rem;
+    padding: 0.75rem 0.85rem;
+    user-select: none;
+  }
+  .exam-print-dialog-option-spaced {
+    margin-top: 0.75rem;
+  }
+  .dark .exam-print-dialog-option {
+    border-color: rgb(51 65 85);
+  }
+  .exam-print-dialog-option input {
+    accent-color: rgb(15 23 42);
+    height: 1rem;
+    margin: 0;
+    width: 1rem;
+  }
+  .dark .exam-print-dialog-option input {
+    accent-color: rgb(226 232 240);
+  }
+  .exam-print-dialog-actions {
+    display: flex;
+    gap: 0.6rem;
+    justify-content: flex-end;
+    margin-top: 1.15rem;
+  }
+  .exam-print-dialog-btn {
+    border: 1px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.5rem 0.95rem;
+  }
+  .exam-print-dialog-btn-secondary {
+    background: transparent;
+    border-color: rgb(226 232 240);
+    color: rgb(51 65 85);
+  }
+  .dark .exam-print-dialog-btn-secondary {
+    border-color: rgb(51 65 85);
+    color: rgb(203 213 225);
+  }
+  .exam-print-dialog-btn-secondary:hover {
+    background: rgb(248 250 252);
+  }
+  .dark .exam-print-dialog-btn-secondary:hover {
+    background: rgb(30 41 59);
+  }
+  .exam-print-dialog-btn-primary {
+    background: rgb(15 23 42);
+    color: #fff;
+  }
+  .dark .exam-print-dialog-btn-primary {
+    background: rgb(226 232 240);
+    color: rgb(15 23 42);
+  }
+  .exam-print-dialog-btn-primary:hover {
+    opacity: 0.92;
+  }
   @media print {
     @page {
       margin: 2cm 1.5cm;
     }
-    #examToolbar {
+    #examToolbar,
+    #examPrintDialog {
       display: none !important;
     }
     nav, footer {
+      display: none !important;
+    }
+    html[data-print-info="false"] #examInfoBox,
+    html[data-print-info="false"] .exam-info-box {
       display: none !important;
     }
     .exam-blank {
@@ -184,50 +338,11 @@ const { editHref, showTocToggle = false } = Astro.props;
     .exam-blank-placeholder {
       display: none !important;
     }
-    .exam-blank-answer {
-      visibility: visible !important;
-    }
     .exam-blank[aria-pressed="true"].exam-blank,
     .exam-blank[aria-pressed="false"].exam-blank {
       background: transparent !important;
       box-shadow: 0 1px 0 0 #999 !important;
       border-radius: 0 !important;
-    }
-    .exam-solution {
-      break-inside: avoid;
-      border-radius: 12px !important;
-      border: 1.5px solid #ccc !important;
-    }
-    .exam-solution[open],
-    .exam-solution:not([open]) {
-      overflow: visible !important;
-    }
-    .exam-solution-summary {
-      display: none !important;
-    }
-    .exam-solution-content {
-      display: block !important;
-      padding: 1em 1.2em !important;
-    }
-    .exam-choices .exam-choice-option[data-answer="true"] {
-      outline: 1px solid #000 !important;
-      outline-offset: -2px;
-      border-radius: 8px !important;
-    }
-    .exam-choices .exam-choice-option.is-correct .exam-choice-indicator,
-    .exam-choices .exam-choice-option[data-answer="true"] .exam-choice-indicator {
-      border-color: #000 !important;
-      border-width: 2px !important;
-    }
-    .exam-choices .exam-choice-option.is-correct .exam-choice-indicator::after,
-    .exam-choices .exam-choice-option[data-answer="true"] .exam-choice-indicator::after {
-      background: #000 !important;
-      content: "" !important;
-      inset: 1.5px !important;
-      position: absolute !important;
-    }
-    .exam-choices.single .exam-choice-option[data-answer="true"] .exam-choice-indicator::after {
-      border-radius: 50% !important;
     }
     .exam-choices-submit {
       display: none !important;
@@ -248,6 +363,73 @@ const { editHref, showTocToggle = false } = Astro.props;
     }
     .print-footer a {
       color: #444;
+    }
+    html[data-print-answers="true"] .exam-blank-answer {
+      visibility: visible !important;
+    }
+    html[data-print-answers="true"] .exam-solution {
+      break-inside: avoid;
+      border-radius: 12px !important;
+      border: 1.5px solid #ccc !important;
+    }
+    html[data-print-answers="true"] .exam-solution[open],
+    html[data-print-answers="true"] .exam-solution:not([open]) {
+      overflow: visible !important;
+    }
+    html[data-print-answers="true"] .exam-solution-summary {
+      display: none !important;
+    }
+    html[data-print-answers="true"] .exam-solution-content {
+      display: block !important;
+      padding: 1em 1.2em !important;
+    }
+    html[data-print-answers="true"] .exam-choices .exam-choice-option[data-answer="true"] {
+      outline: 1px solid #000 !important;
+      outline-offset: -2px;
+      border-radius: 8px !important;
+    }
+    html[data-print-answers="true"] .exam-choices .exam-choice-option.is-correct .exam-choice-indicator,
+    html[data-print-answers="true"] .exam-choices .exam-choice-option[data-answer="true"] .exam-choice-indicator {
+      border-color: #000 !important;
+      border-width: 2px !important;
+    }
+    html[data-print-answers="true"] .exam-choices .exam-choice-option.is-correct .exam-choice-indicator::after,
+    html[data-print-answers="true"] .exam-choices .exam-choice-option[data-answer="true"] .exam-choice-indicator::after {
+      background: #000 !important;
+      content: "" !important;
+      inset: 1.5px !important;
+      position: absolute !important;
+    }
+    html[data-print-answers="true"] .exam-choices.single .exam-choice-option[data-answer="true"] .exam-choice-indicator::after {
+      border-radius: 50% !important;
+    }
+
+    html[data-print-answers="false"] .exam-blank-answer {
+      visibility: hidden !important;
+    }
+    html[data-print-answers="false"] .exam-solution {
+      display: none !important;
+    }
+    html[data-print-answers="false"] .exam-choices .exam-choice-option.is-correct,
+    html[data-print-answers="false"] .exam-choices .exam-choice-option.is-wrong,
+    html[data-print-answers="false"] .exam-choices .exam-choice-option.is-missed {
+      background: transparent !important;
+      border-color: transparent !important;
+    }
+    html[data-print-answers="false"] .exam-choices .exam-choice-option.is-correct .exam-choice-indicator,
+    html[data-print-answers="false"] .exam-choices .exam-choice-option.is-wrong .exam-choice-indicator,
+    html[data-print-answers="false"] .exam-choices .exam-choice-option.is-missed .exam-choice-indicator,
+    html[data-print-answers="false"] .exam-choices .exam-choice-input:checked + .exam-choice-indicator,
+    html[data-print-answers="false"] .exam-choices .exam-choice-option[data-answer="true"] .exam-choice-indicator {
+      border-color: #9ca3af !important;
+      border-width: 1.5px !important;
+    }
+    html[data-print-answers="false"] .exam-choices .exam-choice-option.is-correct .exam-choice-indicator::after,
+    html[data-print-answers="false"] .exam-choices .exam-choice-option.is-wrong .exam-choice-indicator::after,
+    html[data-print-answers="false"] .exam-choices .exam-choice-option.is-missed .exam-choice-indicator::after,
+    html[data-print-answers="false"] .exam-choices .exam-choice-input:checked + .exam-choice-indicator::after,
+    html[data-print-answers="false"] .exam-choices .exam-choice-option[data-answer="true"] .exam-choice-indicator::after {
+      content: none !important;
     }
   }
 </style>
@@ -307,43 +489,88 @@ const { editHref, showTocToggle = false } = Astro.props;
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
-  // Print preparation (works for both Ctrl+P and print button)
+  // Print options dialog
+  var examPrintDialog = document.getElementById("examPrintDialog");
+  var examPrintAnswers = document.getElementById("examPrintAnswers");
+  var examPrintInfo = document.getElementById("examPrintInfo");
+  var examPrintDialogCancel = document.getElementById("examPrintDialogCancel");
+  var examPrintDialogConfirm = document.getElementById("examPrintDialogConfirm");
   var printUrlFooter = null;
   var prePrintState = null;
+  var printWithAnswers = true;
+  var printWithInfo = true;
+
+  var openExamPrintDialog = function() {
+    if (!(examPrintDialog instanceof HTMLDialogElement)) {
+      window.print();
+      return;
+    }
+    if (examPrintAnswers instanceof HTMLInputElement) {
+      examPrintAnswers.checked = printWithAnswers;
+    }
+    if (examPrintInfo instanceof HTMLInputElement) {
+      examPrintInfo.checked = printWithInfo;
+    }
+    if (!examPrintDialog.open) examPrintDialog.showModal();
+  };
+
+  var closeExamPrintDialog = function() {
+    if (examPrintDialog instanceof HTMLDialogElement && examPrintDialog.open) {
+      examPrintDialog.close();
+    }
+  };
+
+  var startExamPrint = function(withAnswers, withInfo) {
+    printWithAnswers = withAnswers;
+    printWithInfo = withInfo;
+    document.documentElement.dataset.printAnswers = withAnswers ? "true" : "false";
+    document.documentElement.dataset.printInfo = withInfo ? "true" : "false";
+    closeExamPrintDialog();
+    window.print();
+  };
+
+  // Print preparation (works for button flow and browser print)
   window.addEventListener("beforeprint", function() {
+    var withAnswers = document.documentElement.dataset.printAnswers !== "false";
+    printWithAnswers = withAnswers;
     // Save current state to restore after print
     prePrintState = {
       blanks: [],
       solutions: [],
-      choices: []
+      choices: [],
+      withAnswers: withAnswers,
     };
-    // Reveal all answers
-    if (!window.__examState?.getAllShown?.()) {
-      window.__examState?.toggleAll?.();
-      prePrintState.wasHidden = true;
-    }
-    // Open all <details> solutions
-    document.querySelectorAll(".exam-solution:not([open])").forEach(function(el) {
-      el.setAttribute("open", "");
-      prePrintState.solutions.push(el);
-    });
-    // Show all blanks
-    document.querySelectorAll(".exam-blank[aria-pressed='false']").forEach(function(el) {
-      el.setAttribute("aria-pressed", "true");
-      prePrintState.blanks.push(el);
-    });
-    // Reveal all choice answers
-    document.querySelectorAll(".exam-choices[data-has-answer='true'][data-revealed='false']").forEach(function(group) {
-      group.querySelectorAll(".exam-choice-option").forEach(function(opt) {
-        if (opt.getAttribute("data-answer") === "true") {
-          opt.classList.add("is-correct");
-          var input = opt.querySelector(".exam-choice-input");
-          if (input) input.checked = true;
-        }
+
+    if (withAnswers) {
+      // Reveal all answers inline
+      if (!window.__examState?.getAllShown?.()) {
+        window.__examState?.toggleAll?.();
+        prePrintState.wasHidden = true;
+      }
+      // Open all <details> solutions
+      document.querySelectorAll(".exam-solution:not([open])").forEach(function(el) {
+        el.setAttribute("open", "");
+        prePrintState.solutions.push(el);
       });
-      group.setAttribute("data-revealed", "true");
-      prePrintState.choices.push(group);
-    });
+      // Show all blanks
+      document.querySelectorAll(".exam-blank[aria-pressed='false']").forEach(function(el) {
+        el.setAttribute("aria-pressed", "true");
+        prePrintState.blanks.push(el);
+      });
+      // Reveal all choice answers
+      document.querySelectorAll(".exam-choices[data-has-answer='true'][data-revealed='false']").forEach(function(group) {
+        group.querySelectorAll(".exam-choice-option").forEach(function(opt) {
+          if (opt.getAttribute("data-answer") === "true") {
+            opt.classList.add("is-correct");
+            var input = opt.querySelector(".exam-choice-input");
+            if (input) input.checked = true;
+          }
+        });
+        group.setAttribute("data-revealed", "true");
+        prePrintState.choices.push(group);
+      });
+    }
+
     // Add print footer
     printUrlFooter = document.createElement("div");
     printUrlFooter.className = "print-footer";
@@ -355,28 +582,54 @@ const { editHref, showTocToggle = false } = Astro.props;
     document.querySelector(".wiki-content")?.appendChild(printUrlFooter);
   });
   window.addEventListener("afterprint", function() {
-    // Remove URL footer
+    // Remove temporary print nodes
     if (printUrlFooter) { printUrlFooter.remove(); printUrlFooter = null; }
     // Restore previous state
     if (!prePrintState) return;
-    if (prePrintState.wasHidden) {
-      window.__examState?.toggleAll?.();
-    }
-    prePrintState.solutions.forEach(function(el) { el.removeAttribute("open"); });
-    prePrintState.blanks.forEach(function(el) { el.setAttribute("aria-pressed", "false"); });
-    prePrintState.choices.forEach(function(group) {
-      group.querySelectorAll(".exam-choice-option").forEach(function(opt) {
-        opt.classList.remove("is-correct");
-        var input = opt.querySelector(".exam-choice-input");
-        if (input) input.checked = false;
+    if (prePrintState.withAnswers) {
+      if (prePrintState.wasHidden) {
+        window.__examState?.toggleAll?.();
+      }
+      prePrintState.solutions.forEach(function(el) { el.removeAttribute("open"); });
+      prePrintState.blanks.forEach(function(el) { el.setAttribute("aria-pressed", "false"); });
+      prePrintState.choices.forEach(function(group) {
+        group.querySelectorAll(".exam-choice-option").forEach(function(opt) {
+          opt.classList.remove("is-correct");
+          var input = opt.querySelector(".exam-choice-input");
+          if (input) input.checked = false;
+        });
+        group.setAttribute("data-revealed", "false");
       });
-      group.setAttribute("data-revealed", "false");
-    });
+    }
     prePrintState = null;
   });
 
-  // Print button just triggers window.print()
-  examPrint?.addEventListener("click", function() { window.print(); });
+  examPrint?.addEventListener("click", function() {
+    openExamPrintDialog();
+  });
+  examPrintDialogCancel?.addEventListener("click", function() {
+    closeExamPrintDialog();
+  });
+  examPrintDialogConfirm?.addEventListener("click", function() {
+    var withAnswers = examPrintAnswers instanceof HTMLInputElement
+      ? examPrintAnswers.checked
+      : true;
+    var withInfo = examPrintInfo instanceof HTMLInputElement
+      ? examPrintInfo.checked
+      : true;
+    startExamPrint(withAnswers, withInfo);
+  });
+  examPrintDialog?.addEventListener("click", function(event) {
+    if (event.target === examPrintDialog) closeExamPrintDialog();
+  });
+  // Ctrl/Cmd+P also opens options instead of printing immediately
+  window.addEventListener("keydown", function(event) {
+    if (!(event.ctrlKey || event.metaKey)) return;
+    if (event.key !== "p" && event.key !== "P") return;
+    if (!(examPrintDialog instanceof HTMLDialogElement)) return;
+    event.preventDefault();
+    openExamPrintDialog();
+  });
 
   // Answers toggle
   var updateExamAnswersToggle = function() {

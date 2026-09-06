@@ -126,4 +126,9 @@ if (relatedExams.length === 0) return null;
   :global(.dark) .related-exams[open] > summary {
     border-bottom-color: rgb(30 41 59);
   }
+  @media print {
+    .related-exams {
+      display: none !important;
+    }
+  }
 </style>
